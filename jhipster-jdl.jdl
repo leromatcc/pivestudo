@@ -1,0 +1,177 @@
+
+// jhipster import-jdl jhipster-jdl.jdl
+
+entity Pessoa{
+	id UUID
+	nome String required minlength(3)
+}
+
+entity TipoPessoa{
+  descricao String required
+  grupo ClassificaPessoa
+}
+
+enum ClassificaPessoa{
+	MORADOR, VISITANTE, PRESTADOR, FUNCIONARIO, SECRETARIA
+}
+
+relationship OneToOne {
+  Pessoa{user(login) required}  to User with builtInEntity
+  Pessoa{tipoPessoa(descricao) required} to TipoPessoa
+}
+
+entity Telefone{
+  id UUID
+  tipoTelefone String
+  numero String required
+}
+
+entity Documento {
+  id UUID
+  tipoDocumento TipoDocumento
+  numeroDocumento String required
+  descricao String
+}
+
+enum TipoDocumento {
+    RG, CPF, PASSAPORTE, RE, OUTRO
+}
+
+relationship OneToMany {
+  Pessoa to Telefone {pessoa(nome) required}
+  Pessoa to Documento {pessoa(nome) required}
+  Pessoa to Endereco {pessoa(nome)}
+  Pessoa to LoteBlocoApartamento {pessoa(nome) required}
+  Pessoa to Automovel {pessoa(nome) required}
+}
+
+entity Endereco {
+  id UUID
+  descricao String
+  cep String
+  logradouro String
+  numero String
+  complemento String
+  referencia String
+  cidade String
+  estado String
+  pais String
+}
+
+entity LoteBlocoApartamento{
+  id UUID
+  bloco String
+  andar String
+  numero String
+}
+
+relationship ManyToOne {
+    LoteBlocoApartamento{endereco(descricao) required} to Endereco
+}
+
+
+entity Automovel{
+  id UUID
+  placa String required
+  descricao String
+}
+
+
+entity TipoAutomovel{
+  id UUID
+	descricao String required
+  grupo ClassificaAutomovel required
+}
+
+enum ClassificaAutomovel{
+	MOTO, CARRO, CAMINHAO, OUTRO
+}
+
+relationship ManyToOne {
+	Automovel{TipoAutomovel(descricao) required} to TipoAutomovel
+}
+
+
+relationship ManyToOne{
+	Estabelecimento{Endereco(descricao) required} to Endereco
+}
+
+
+entity Estabelecimento{
+	id UUID
+	descricao String required
+}
+
+entity PontoAcesso{
+  id UUID
+  descricao String required
+}
+
+relationship ManyToOne{
+  PontoAcesso{Estabelecimento(descricao) required} to Estabelecimento{PontoAcesso(descricao)}
+}
+
+
+entity AutorizacaoAcesso{
+  id UUID
+  descricao String required
+  dataInicial Instant required
+  dataFinal Instant required
+  status StatusAutorizacao required
+}
+
+enum StatusAutorizacao{
+  ATIVO, INATIVO, EXPIRADO
+}
+
+relationship ManyToOne{
+  AutorizacaoAcesso{Pessoa(nome) required} to Pessoa{nome}
+  AutorizacaoAcesso{Estabelecimento(descricao) required} to Estabelecimento
+}
+
+
+
+entity Camera{
+  descricao String required
+  enderecoRede String required
+  api String
+}
+
+relationship ManyToOne{
+
+  Camera{PontoAcesso(descricao) required} to PontoAcesso{Camera(descricao) }
+}
+
+
+entity RegistroAcesso{
+  id UUID
+  dataHora Instant required
+  cadeiaAnalisada String
+  acessoAutorizado TipoAcessoAutorizado required
+}
+
+
+enum TipoAcessoAutorizado{
+  AUTORIZADO, RECUSADO, ERRO
+}
+
+
+relationship ManyToOne{
+  RegistroAcesso{PontoAcesso(descricao) required} to PontoAcesso
+  RegistroAcesso{Automovel(descricao) required} to Automovel
+  RegistroAcesso{AutorizacaoAcesso(descricao) required}  to AutorizacaoAcesso
+}
+
+entity Imagem{
+  id UUID
+  nome String required
+  caminho String required
+  descricao String
+  cadeiaDetectada String
+  dateAnalise Instant
+}
+
+
+relationship OneToOne {
+  Imagem{RegistroAcesso(dataHora) required} to RegistroAcesso
+}

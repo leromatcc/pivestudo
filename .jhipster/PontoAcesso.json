@@ -1,0 +1,38 @@
+{
+  "annotations": {
+    "changelogDate": "20240911043259"
+  },
+  "applications": "*",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "UUID"
+    },
+    {
+      "fieldName": "descricao",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "name": "PontoAcesso",
+  "relationships": [
+    {
+      "otherEntityField": "descricao",
+      "otherEntityName": "estabelecimento",
+      "otherEntityRelationshipName": "pontoAcesso",
+      "relationshipName": "estabelecimento",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    },
+    {
+      "otherEntityField": "descricao",
+      "otherEntityName": "camera",
+      "otherEntityRelationshipName": "pontoAcesso",
+      "relationshipName": "camera",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "searchEngine": "no"
+}

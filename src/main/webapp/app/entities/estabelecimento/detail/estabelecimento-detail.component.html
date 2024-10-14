@@ -1,0 +1,44 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (estabelecimento(); as estabelecimentoRef) {
+      <div>
+        <h2 data-cy="estabelecimentoDetailsHeading">
+          <span jhiTranslate="pivestudoApp.estabelecimento.detail.title">Estabelecimento</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="pivestudoApp.estabelecimento.id">Id</span></dt>
+          <dd>
+            <span>{{ estabelecimentoRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="pivestudoApp.estabelecimento.descricao">Descricao</span></dt>
+          <dd>
+            <span>{{ estabelecimentoRef.descricao }}</span>
+          </dd>
+          <dt><span jhiTranslate="pivestudoApp.estabelecimento.endereco">Endereco</span></dt>
+          <dd>
+            @if (estabelecimento()!.endereco) {
+              <div>
+                <a [routerLink]="['/endereco', estabelecimento()!.endereco?.id, 'view']">{{ estabelecimentoRef.endereco?.descricao }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/estabelecimento', estabelecimentoRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

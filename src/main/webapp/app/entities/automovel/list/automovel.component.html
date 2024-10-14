@@ -1,0 +1,120 @@
+<div>
+  <h2 id="page-heading" data-cy="AutomovelHeading">
+    <span jhiTranslate="pivestudoApp.automovel.home.title">Automovels</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [animation]="isLoading ? 'spin' : undefined"></fa-icon>
+        <span jhiTranslate="pivestudoApp.automovel.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-automovel"
+        [routerLink]="['/automovel/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="pivestudoApp.automovel.home.createLabel">Create a new Automovel</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  @if (automovels?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="pivestudoApp.automovel.home.notFound">No Automovels found</span>
+    </div>
+  }
+
+  @if (automovels && automovels.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [sortState]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="pivestudoApp.automovel.id">Id</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="placa">
+              <div class="d-flex">
+                <span jhiTranslate="pivestudoApp.automovel.placa">Placa</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="descricao">
+              <div class="d-flex">
+                <span jhiTranslate="pivestudoApp.automovel.descricao">Descricao</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="tipoAutomovel.descricao">
+              <div class="d-flex">
+                <span jhiTranslate="pivestudoApp.automovel.tipoAutomovel">Tipo Automovel</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="pessoa.nome">
+              <div class="d-flex">
+                <span jhiTranslate="pivestudoApp.automovel.pessoa">Pessoa</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (automovel of automovels; track trackId) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/automovel', automovel.id, 'view']">{{ automovel.id }}</a>
+              </td>
+              <td>{{ automovel.placa }}</td>
+              <td>{{ automovel.descricao }}</td>
+              <td>
+                @if (automovel.tipoAutomovel) {
+                  <div>
+                    <a [routerLink]="['/tipo-automovel', automovel.tipoAutomovel.id, 'view']">{{ automovel.tipoAutomovel.descricao }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (automovel.pessoa) {
+                  <div>
+                    <a [routerLink]="['/pessoa', automovel.pessoa.id, 'view']">{{ automovel.pessoa.nome }}</a>
+                  </div>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a [routerLink]="['/automovel', automovel.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                  </a>
+
+                  <a [routerLink]="['/automovel', automovel.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(automovel)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</div>

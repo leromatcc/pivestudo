@@ -1,0 +1,155 @@
+<div>
+  <h2 id="page-heading" data-cy="RegistroAcessoHeading">
+    <span jhiTranslate="pivestudoApp.registroAcesso.home.title">Registro Acessos</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [animation]="isLoading ? 'spin' : undefined"></fa-icon>
+        <span jhiTranslate="pivestudoApp.registroAcesso.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-registro-acesso"
+        [routerLink]="['/registro-acesso/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="pivestudoApp.registroAcesso.home.createLabel">Create a new Registro Acesso</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  @if (registroAcessos?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="pivestudoApp.registroAcesso.home.notFound">No Registro Acessos found</span>
+    </div>
+  }
+
+  @if (registroAcessos && registroAcessos.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [sortState]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="pivestudoApp.registroAcesso.id">Id</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="dataHora">
+              <div class="d-flex">
+                <span jhiTranslate="pivestudoApp.registroAcesso.dataHora">Data Hora</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="cadeiaAnalisada">
+              <div class="d-flex">
+                <span jhiTranslate="pivestudoApp.registroAcesso.cadeiaAnalisada">Cadeia Analisada</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="acessoAutorizado">
+              <div class="d-flex">
+                <span jhiTranslate="pivestudoApp.registroAcesso.acessoAutorizado">Acesso Autorizado</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="pontoAcesso.descricao">
+              <div class="d-flex">
+                <span jhiTranslate="pivestudoApp.registroAcesso.pontoAcesso">Ponto Acesso</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="automovel.descricao">
+              <div class="d-flex">
+                <span jhiTranslate="pivestudoApp.registroAcesso.automovel">Automovel</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="autorizacaoAcesso.descricao">
+              <div class="d-flex">
+                <span jhiTranslate="pivestudoApp.registroAcesso.autorizacaoAcesso">Autorizacao Acesso</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (registroAcesso of registroAcessos; track trackId) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/registro-acesso', registroAcesso.id, 'view']">{{ registroAcesso.id }}</a>
+              </td>
+              <td>{{ registroAcesso.dataHora | formatMediumDatetime }}</td>
+              <td>{{ registroAcesso.cadeiaAnalisada }}</td>
+              <td [jhiTranslate]="'pivestudoApp.TipoAcessoAutorizado.' + (registroAcesso.acessoAutorizado ?? 'null')">
+                {{ { null: '', AUTORIZADO: 'AUTORIZADO', RECUSADO: 'RECUSADO', ERRO: 'ERRO' }[registroAcesso.acessoAutorizado ?? 'null'] }}
+              </td>
+              <td>
+                @if (registroAcesso.pontoAcesso) {
+                  <div>
+                    <a [routerLink]="['/ponto-acesso', registroAcesso.pontoAcesso.id, 'view']">{{
+                      registroAcesso.pontoAcesso.descricao
+                    }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (registroAcesso.automovel) {
+                  <div>
+                    <a [routerLink]="['/automovel', registroAcesso.automovel.id, 'view']">{{ registroAcesso.automovel.descricao }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (registroAcesso.autorizacaoAcesso) {
+                  <div>
+                    <a [routerLink]="['/autorizacao-acesso', registroAcesso.autorizacaoAcesso.id, 'view']">{{
+                      registroAcesso.autorizacaoAcesso.descricao
+                    }}</a>
+                  </div>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a
+                    [routerLink]="['/registro-acesso', registroAcesso.id, 'view']"
+                    class="btn btn-info btn-sm"
+                    data-cy="entityDetailsButton"
+                  >
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                  </a>
+
+                  <a
+                    [routerLink]="['/registro-acesso', registroAcesso.id, 'edit']"
+                    class="btn btn-primary btn-sm"
+                    data-cy="entityEditButton"
+                  >
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(registroAcesso)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</div>

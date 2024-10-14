@@ -1,0 +1,25 @@
+{
+  "pivestudoApp": {
+    "tipoAutomovel": {
+      "home": {
+        "title": "Tipo Automovels",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Tipo Automovel",
+        "createOrEditLabel": "Create or edit a Tipo Automovel",
+        "notFound": "No Tipo Automovels found"
+      },
+      "created": "A new Tipo Automovel is created with identifier {{ param }}",
+      "updated": "A Tipo Automovel is updated with identifier {{ param }}",
+      "deleted": "A Tipo Automovel is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Tipo Automovel {{ id }}?"
+      },
+      "detail": {
+        "title": "Tipo Automovel"
+      },
+      "id": "Id",
+      "descricao": "Descricao",
+      "grupo": "Grupo"
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "pivestudoApp": {
+    "camera": {
+      "home": {
+        "title": "Cameras",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Camera",
+        "createOrEditLabel": "Crear o editar Camera",
+        "notFound": "Ningún Cameras encontrado"
+      },
+      "created": "Un nuevo Camera ha sido creado con el identificador {{ param }}",
+      "updated": "Un Camera ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Camera ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Camera {{ id }}?"
+      },
+      "detail": {
+        "title": "Camera"
+      },
+      "id": "ID",
+      "descricao": "Descricao",
+      "enderecoRede": "Endereco Rede",
+      "api": "Api",
+      "pontoAcesso": "Ponto Acesso"
+    }
+  }
+}

@@ -1,0 +1,119 @@
+<div>
+  <h2 id="page-heading" data-cy="DocumentoHeading">
+    <span jhiTranslate="pivestudoApp.documento.home.title">Documentos</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [animation]="isLoading ? 'spin' : undefined"></fa-icon>
+        <span jhiTranslate="pivestudoApp.documento.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-documento"
+        [routerLink]="['/documento/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="pivestudoApp.documento.home.createLabel">Create a new Documento</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  @if (documentos?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="pivestudoApp.documento.home.notFound">No Documentos found</span>
+    </div>
+  }
+
+  @if (documentos && documentos.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [sortState]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="pivestudoApp.documento.id">Id</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="tipoDocumento">
+              <div class="d-flex">
+                <span jhiTranslate="pivestudoApp.documento.tipoDocumento">Tipo Documento</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="numeroDocumento">
+              <div class="d-flex">
+                <span jhiTranslate="pivestudoApp.documento.numeroDocumento">Numero Documento</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="descricao">
+              <div class="d-flex">
+                <span jhiTranslate="pivestudoApp.documento.descricao">Descricao</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="pessoa.nome">
+              <div class="d-flex">
+                <span jhiTranslate="pivestudoApp.documento.pessoa">Pessoa</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (documento of documentos; track trackId) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/documento', documento.id, 'view']">{{ documento.id }}</a>
+              </td>
+              <td [jhiTranslate]="'pivestudoApp.TipoDocumento.' + (documento.tipoDocumento ?? 'null')">
+                {{
+                  { null: '', RG: 'RG', CPF: 'CPF', PASSAPORTE: 'PASSAPORTE', RE: 'RE', OUTRO: 'OUTRO' }[documento.tipoDocumento ?? 'null']
+                }}
+              </td>
+              <td>{{ documento.numeroDocumento }}</td>
+              <td>{{ documento.descricao }}</td>
+              <td>
+                @if (documento.pessoa) {
+                  <div>
+                    <a [routerLink]="['/pessoa', documento.pessoa.id, 'view']">{{ documento.pessoa.nome }}</a>
+                  </div>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a [routerLink]="['/documento', documento.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                  </a>
+
+                  <a [routerLink]="['/documento', documento.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(documento)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</div>

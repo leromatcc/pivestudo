@@ -1,0 +1,32 @@
+{
+  "pivestudoApp": {
+    "pessoa": {
+      "home": {
+        "title": "Pessoas",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Pessoa",
+        "createOrEditLabel": "Créer ou éditer un Pessoa",
+        "notFound": "Aucun Pessoa trouvé"
+      },
+      "created": "Un nouveau Pessoa a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Pessoa avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Pessoa avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Pessoa {{ id }} ?"
+      },
+      "detail": {
+        "title": "Pessoa"
+      },
+      "id": "Id",
+      "nome": "Nome",
+      "user": "User",
+      "tipoPessoa": "Tipo Pessoa",
+      "telefone": "Telefone",
+      "documento": "Documento",
+      "endereco": "Endereco",
+      "loteBlocoApartamento": "Lote Bloco Apartamento",
+      "automovel": "Automovel",
+      "nome": "Nome"
+    }
+  }
+}

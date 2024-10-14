@@ -1,0 +1,35 @@
+{
+  "annotations": {
+    "changelogDate": "20240911043300"
+  },
+  "applications": "*",
+  "fields": [
+    {
+      "fieldName": "descricao",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "enderecoRede",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "api",
+      "fieldType": "String"
+    }
+  ],
+  "name": "Camera",
+  "relationships": [
+    {
+      "otherEntityField": "descricao",
+      "otherEntityName": "pontoAcesso",
+      "otherEntityRelationshipName": "camera",
+      "relationshipName": "pontoAcesso",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    }
+  ],
+  "searchEngine": "no"
+}

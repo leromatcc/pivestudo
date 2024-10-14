@@ -1,0 +1,163 @@
+<div>
+  <h2 id="page-heading" data-cy="EnderecoHeading">
+    <span jhiTranslate="pivestudoApp.endereco.home.title">Enderecos</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [animation]="isLoading ? 'spin' : undefined"></fa-icon>
+        <span jhiTranslate="pivestudoApp.endereco.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-endereco"
+        [routerLink]="['/endereco/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="pivestudoApp.endereco.home.createLabel">Create a new Endereco</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  @if (enderecos?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="pivestudoApp.endereco.home.notFound">No Enderecos found</span>
+    </div>
+  }
+
+  @if (enderecos && enderecos.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [sortState]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="pivestudoApp.endereco.id">Id</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="descricao">
+              <div class="d-flex">
+                <span jhiTranslate="pivestudoApp.endereco.descricao">Descricao</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="cep">
+              <div class="d-flex">
+                <span jhiTranslate="pivestudoApp.endereco.cep">Cep</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="logradouro">
+              <div class="d-flex">
+                <span jhiTranslate="pivestudoApp.endereco.logradouro">Logradouro</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="numero">
+              <div class="d-flex">
+                <span jhiTranslate="pivestudoApp.endereco.numero">Numero</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="complemento">
+              <div class="d-flex">
+                <span jhiTranslate="pivestudoApp.endereco.complemento">Complemento</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="referencia">
+              <div class="d-flex">
+                <span jhiTranslate="pivestudoApp.endereco.referencia">Referencia</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="cidade">
+              <div class="d-flex">
+                <span jhiTranslate="pivestudoApp.endereco.cidade">Cidade</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="estado">
+              <div class="d-flex">
+                <span jhiTranslate="pivestudoApp.endereco.estado">Estado</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="pais">
+              <div class="d-flex">
+                <span jhiTranslate="pivestudoApp.endereco.pais">Pais</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="pessoa.nome">
+              <div class="d-flex">
+                <span jhiTranslate="pivestudoApp.endereco.pessoa">Pessoa</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (endereco of enderecos; track trackId) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/endereco', endereco.id, 'view']">{{ endereco.id }}</a>
+              </td>
+              <td>{{ endereco.descricao }}</td>
+              <td>{{ endereco.cep }}</td>
+              <td>{{ endereco.logradouro }}</td>
+              <td>{{ endereco.numero }}</td>
+              <td>{{ endereco.complemento }}</td>
+              <td>{{ endereco.referencia }}</td>
+              <td>{{ endereco.cidade }}</td>
+              <td>{{ endereco.estado }}</td>
+              <td>{{ endereco.pais }}</td>
+              <td>
+                @if (endereco.pessoa) {
+                  <div>
+                    <a [routerLink]="['/pessoa', endereco.pessoa.id, 'view']">{{ endereco.pessoa.nome }}</a>
+                  </div>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a [routerLink]="['/endereco', endereco.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                  </a>
+
+                  <a [routerLink]="['/endereco', endereco.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(endereco)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</div>

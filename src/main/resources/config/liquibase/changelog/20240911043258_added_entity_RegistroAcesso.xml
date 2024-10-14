@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!--
+        Added the entity RegistroAcesso.
+    -->
+    <changeSet id="20240911043258-1" author="jhipster">
+        <createTable tableName="registro_acesso">
+            <column name="id" type="${uuidType}">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="data_hora" type="${datetimeType}">
+                <constraints nullable="false" />
+            </column>
+            <column name="cadeia_analisada" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="acesso_autorizado" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="ponto_acesso_id" type="${uuidType}">
+                <constraints nullable="false" />
+            </column>
+            <column name="automovel_id" type="${uuidType}">
+                <constraints nullable="false" />
+            </column>
+            <column name="autorizacao_acesso_id" type="${uuidType}">
+                <constraints nullable="false" />
+            </column>
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
+        </createTable>
+        <dropDefaultValue tableName="registro_acesso" columnName="data_hora" columnDataType="${datetimeType}"/>
+    </changeSet>
+
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->
+
+    <!--
+        Load sample data generated with Faker.js
+        - This data can be easily edited using a CSV editor (or even MS Excel) and
+          is located in the 'src/main/resources/config/liquibase/fake-data' directory
+        - By default this data is applied when running with the JHipster 'dev' profile.
+          This can be customized by adding or removing 'faker' in the 'spring.liquibase.contexts'
+          Spring Boot configuration key.
+    -->
+    <changeSet id="20240911043258-1-data" author="jhipster" context="faker">
+        <loadData
+                  file="config/liquibase/fake-data/registro_acesso.csv"
+                  separator=";"
+                  tableName="registro_acesso"
+                  usePreparedStatements="true">
+            <column name="id" type="string"/>
+            <column name="data_hora" type="date"/>
+            <column name="cadeia_analisada" type="string"/>
+            <column name="acesso_autorizado" type="string"/>
+            <column name="ponto_acesso_id" type="string"/>
+            <column name="automovel_id" type="string"/>
+            <column name="autorizacao_acesso_id" type="string"/>
+            <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
+        </loadData>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,119 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-endereco-heading" data-cy="EnderecoCreateUpdateHeading" jhiTranslate="pivestudoApp.endereco.home.createOrEditLabel">
+        Create or edit a Endereco
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="pivestudoApp.endereco.id">Id</label>
+            <input type="text" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" for="field_descricao" jhiTranslate="pivestudoApp.endereco.descricao">Descricao</label>
+          <input type="text" class="form-control" name="descricao" id="field_descricao" data-cy="descricao" formControlName="descricao" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_cep" jhiTranslate="pivestudoApp.endereco.cep">Cep</label>
+          <input type="text" class="form-control" name="cep" id="field_cep" data-cy="cep" formControlName="cep" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_logradouro" jhiTranslate="pivestudoApp.endereco.logradouro">Logradouro</label>
+          <input
+            type="text"
+            class="form-control"
+            name="logradouro"
+            id="field_logradouro"
+            data-cy="logradouro"
+            formControlName="logradouro"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_numero" jhiTranslate="pivestudoApp.endereco.numero">Numero</label>
+          <input type="text" class="form-control" name="numero" id="field_numero" data-cy="numero" formControlName="numero" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_complemento" jhiTranslate="pivestudoApp.endereco.complemento">Complemento</label>
+          <input
+            type="text"
+            class="form-control"
+            name="complemento"
+            id="field_complemento"
+            data-cy="complemento"
+            formControlName="complemento"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_referencia" jhiTranslate="pivestudoApp.endereco.referencia">Referencia</label>
+          <input
+            type="text"
+            class="form-control"
+            name="referencia"
+            id="field_referencia"
+            data-cy="referencia"
+            formControlName="referencia"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_cidade" jhiTranslate="pivestudoApp.endereco.cidade">Cidade</label>
+          <input type="text" class="form-control" name="cidade" id="field_cidade" data-cy="cidade" formControlName="cidade" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_estado" jhiTranslate="pivestudoApp.endereco.estado">Estado</label>
+          <input type="text" class="form-control" name="estado" id="field_estado" data-cy="estado" formControlName="estado" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_pais" jhiTranslate="pivestudoApp.endereco.pais">Pais</label>
+          <input type="text" class="form-control" name="pais" id="field_pais" data-cy="pais" formControlName="pais" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_pessoa" jhiTranslate="pivestudoApp.endereco.pessoa">Pessoa</label>
+          <select
+            class="form-control"
+            id="field_pessoa"
+            data-cy="pessoa"
+            name="pessoa"
+            formControlName="pessoa"
+            [compareWith]="comparePessoa"
+          >
+            <option [ngValue]="null"></option>
+            @for (pessoaOption of pessoasSharedCollection; track $index) {
+              <option [ngValue]="pessoaOption">{{ pessoaOption.nome }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

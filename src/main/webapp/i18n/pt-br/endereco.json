@@ -1,0 +1,33 @@
+{
+  "pivestudoApp": {
+    "endereco": {
+      "home": {
+        "title": "Enderecos",
+        "refreshListLabel": "Atualizar lista",
+        "createLabel": "Criar novo Endereco",
+        "createOrEditLabel": "Criar ou editar Endereco",
+        "notFound": "Nenhum Endereco encontrado"
+      },
+      "created": "Um novo Endereco foi criado com o identificador {{ param }}",
+      "updated": "Um Endereco foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Endereco foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Endereco {{ id }}?"
+      },
+      "detail": {
+        "title": "Endereco"
+      },
+      "id": "Id",
+      "descricao": "Descricao",
+      "cep": "Cep",
+      "logradouro": "Logradouro",
+      "numero": "Numero",
+      "complemento": "Complemento",
+      "referencia": "Referencia",
+      "cidade": "Cidade",
+      "estado": "Estado",
+      "pais": "Pais",
+      "pessoa": "Pessoa"
+    }
+  }
+}

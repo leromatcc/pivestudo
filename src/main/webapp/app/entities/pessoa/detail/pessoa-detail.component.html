@@ -1,0 +1,46 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (pessoa(); as pessoaRef) {
+      <div>
+        <h2 data-cy="pessoaDetailsHeading"><span jhiTranslate="pivestudoApp.pessoa.detail.title">Pessoa</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="pivestudoApp.pessoa.id">Id</span></dt>
+          <dd>
+            <span>{{ pessoaRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="pivestudoApp.pessoa.nome">Nome</span></dt>
+          <dd>
+            <span>{{ pessoaRef.nome }}</span>
+          </dd>
+          <dt><span jhiTranslate="pivestudoApp.pessoa.user">User</span></dt>
+          <dd>
+            <span>{{ pessoaRef.user?.login }}</span>
+          </dd>
+          <dt><span jhiTranslate="pivestudoApp.pessoa.tipoPessoa">Tipo Pessoa</span></dt>
+          <dd>
+            @if (pessoa()!.tipoPessoa) {
+              <div>
+                <a [routerLink]="['/tipo-pessoa', pessoa()!.tipoPessoa?.id, 'view']">{{ pessoaRef.tipoPessoa?.descricao }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/pessoa', pessoaRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

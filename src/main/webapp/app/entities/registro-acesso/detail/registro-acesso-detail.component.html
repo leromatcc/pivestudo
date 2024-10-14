@@ -1,0 +1,72 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (registroAcesso(); as registroAcessoRef) {
+      <div>
+        <h2 data-cy="registroAcessoDetailsHeading"><span jhiTranslate="pivestudoApp.registroAcesso.detail.title">Registro Acesso</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="pivestudoApp.registroAcesso.id">Id</span></dt>
+          <dd>
+            <span>{{ registroAcessoRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="pivestudoApp.registroAcesso.dataHora">Data Hora</span></dt>
+          <dd>
+            <span>{{ registroAcessoRef.dataHora | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="pivestudoApp.registroAcesso.cadeiaAnalisada">Cadeia Analisada</span></dt>
+          <dd>
+            <span>{{ registroAcessoRef.cadeiaAnalisada }}</span>
+          </dd>
+          <dt><span jhiTranslate="pivestudoApp.registroAcesso.acessoAutorizado">Acesso Autorizado</span></dt>
+          <dd>
+            <span [jhiTranslate]="'pivestudoApp.TipoAcessoAutorizado.' + (registroAcessoRef.acessoAutorizado ?? 'null')">{{
+              { null: '', AUTORIZADO: 'AUTORIZADO', RECUSADO: 'RECUSADO', ERRO: 'ERRO' }[registroAcessoRef.acessoAutorizado ?? 'null']
+            }}</span>
+          </dd>
+          <dt><span jhiTranslate="pivestudoApp.registroAcesso.pontoAcesso">Ponto Acesso</span></dt>
+          <dd>
+            @if (registroAcesso()!.pontoAcesso) {
+              <div>
+                <a [routerLink]="['/ponto-acesso', registroAcesso()!.pontoAcesso?.id, 'view']">{{
+                  registroAcessoRef.pontoAcesso?.descricao
+                }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="pivestudoApp.registroAcesso.automovel">Automovel</span></dt>
+          <dd>
+            @if (registroAcesso()!.automovel) {
+              <div>
+                <a [routerLink]="['/automovel', registroAcesso()!.automovel?.id, 'view']">{{ registroAcessoRef.automovel?.descricao }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="pivestudoApp.registroAcesso.autorizacaoAcesso">Autorizacao Acesso</span></dt>
+          <dd>
+            @if (registroAcesso()!.autorizacaoAcesso) {
+              <div>
+                <a [routerLink]="['/autorizacao-acesso', registroAcesso()!.autorizacaoAcesso?.id, 'view']">{{
+                  registroAcessoRef.autorizacaoAcesso?.descricao
+                }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/registro-acesso', registroAcessoRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

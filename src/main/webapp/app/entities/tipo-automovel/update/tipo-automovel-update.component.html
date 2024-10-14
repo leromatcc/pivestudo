@@ -1,0 +1,71 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-tipo-automovel-heading"
+        data-cy="TipoAutomovelCreateUpdateHeading"
+        jhiTranslate="pivestudoApp.tipoAutomovel.home.createOrEditLabel"
+      >
+        Create or edit a Tipo Automovel
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="pivestudoApp.tipoAutomovel.id">Id</label>
+            <input type="text" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        @let descricaoRef = editForm.get('descricao')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_descricao" jhiTranslate="pivestudoApp.tipoAutomovel.descricao">Descricao</label>
+          <input type="text" class="form-control" name="descricao" id="field_descricao" data-cy="descricao" formControlName="descricao" />
+          @if (descricaoRef.invalid && (descricaoRef.dirty || descricaoRef.touched)) {
+            <div>
+              @if (editForm.get('descricao')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        @let grupoRef = editForm.get('grupo')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_grupo" jhiTranslate="pivestudoApp.tipoAutomovel.grupo">Grupo</label>
+          <select class="form-control" name="grupo" formControlName="grupo" id="field_grupo" data-cy="grupo">
+            <option [ngValue]="null">{{ 'pivestudoApp.ClassificaAutomovel.null' | translate }}</option>
+            @for (classificaAutomovel of classificaAutomovelValues; track $index) {
+              <option [value]="classificaAutomovel">{{ 'pivestudoApp.ClassificaAutomovel.' + classificaAutomovel | translate }}</option>
+            }
+          </select>
+          @if (grupoRef.invalid && (grupoRef.dirty || grupoRef.touched)) {
+            <div>
+              @if (editForm.get('grupo')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

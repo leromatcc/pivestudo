@@ -1,0 +1,107 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-lote-bloco-apartamento-heading"
+        data-cy="LoteBlocoApartamentoCreateUpdateHeading"
+        jhiTranslate="pivestudoApp.loteBlocoApartamento.home.createOrEditLabel"
+      >
+        Create or edit a Lote Bloco Apartamento
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="pivestudoApp.loteBlocoApartamento.id">Id</label>
+            <input type="text" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" for="field_bloco" jhiTranslate="pivestudoApp.loteBlocoApartamento.bloco">Bloco</label>
+          <input type="text" class="form-control" name="bloco" id="field_bloco" data-cy="bloco" formControlName="bloco" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_andar" jhiTranslate="pivestudoApp.loteBlocoApartamento.andar">Andar</label>
+          <input type="text" class="form-control" name="andar" id="field_andar" data-cy="andar" formControlName="andar" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_numero" jhiTranslate="pivestudoApp.loteBlocoApartamento.numero">Numero</label>
+          <input type="text" class="form-control" name="numero" id="field_numero" data-cy="numero" formControlName="numero" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_endereco" jhiTranslate="pivestudoApp.loteBlocoApartamento.endereco">Endereco</label>
+          <select
+            class="form-control"
+            id="field_endereco"
+            data-cy="endereco"
+            name="endereco"
+            formControlName="endereco"
+            [compareWith]="compareEndereco"
+          >
+            @if (!editForm.get('endereco')!.value) {
+              <option [ngValue]="null" selected></option>
+            }
+            @for (enderecoOption of enderecosSharedCollection; track $index) {
+              <option [ngValue]="enderecoOption">{{ enderecoOption.descricao }}</option>
+            }
+          </select>
+        </div>
+        @if (editForm.get(['endereco'])!.invalid && (editForm.get(['endereco'])!.dirty || editForm.get(['endereco'])!.touched)) {
+          <div>
+            @if (editForm.get(['endereco'])?.errors?.required) {
+              <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+            }
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" for="field_pessoa" jhiTranslate="pivestudoApp.loteBlocoApartamento.pessoa">Pessoa</label>
+          <select
+            class="form-control"
+            id="field_pessoa"
+            data-cy="pessoa"
+            name="pessoa"
+            formControlName="pessoa"
+            [compareWith]="comparePessoa"
+          >
+            @if (editForm.get(['pessoa'])!.value == null) {
+              <option [ngValue]="null" selected></option>
+            }
+            @for (pessoaOption of pessoasSharedCollection; track $index) {
+              <option [ngValue]="pessoaOption">{{ pessoaOption.nome }}</option>
+            }
+          </select>
+        </div>
+        @if (editForm.get(['pessoa'])!.invalid && (editForm.get(['pessoa'])!.dirty || editForm.get(['pessoa'])!.touched)) {
+          <div>
+            @if (editForm.get(['pessoa'])?.errors?.required) {
+              <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+            }
+          </div>
+        }
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,46 @@
+{
+  "annotations": {
+    "changelogDate": "20240911043301"
+  },
+  "applications": "*",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "UUID"
+    },
+    {
+      "fieldName": "nome",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "caminho",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "descricao",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "cadeiaDetectada",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "dateAnalise",
+      "fieldType": "Instant"
+    }
+  ],
+  "name": "Imagem",
+  "relationships": [
+    {
+      "otherEntityField": "dataHora",
+      "otherEntityName": "registroAcesso",
+      "relationshipName": "registroAcesso",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-one",
+      "relationshipValidateRules": "required"
+    }
+  ],
+  "searchEngine": "no"
+}

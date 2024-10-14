@@ -1,0 +1,33 @@
+{
+  "pivestudoApp": {
+    "endereco": {
+      "home": {
+        "title": "Enderecos",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Endereco",
+        "createOrEditLabel": "Créer ou éditer un Endereco",
+        "notFound": "Aucun Endereco trouvé"
+      },
+      "created": "Un nouveau Endereco a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Endereco avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Endereco avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Endereco {{ id }} ?"
+      },
+      "detail": {
+        "title": "Endereco"
+      },
+      "id": "Id",
+      "descricao": "Descricao",
+      "cep": "Cep",
+      "logradouro": "Logradouro",
+      "numero": "Numero",
+      "complemento": "Complemento",
+      "referencia": "Referencia",
+      "cidade": "Cidade",
+      "estado": "Estado",
+      "pais": "Pais",
+      "pessoa": "Pessoa"
+    }
+  }
+}

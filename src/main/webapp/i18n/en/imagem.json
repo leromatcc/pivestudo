@@ -1,0 +1,29 @@
+{
+  "pivestudoApp": {
+    "imagem": {
+      "home": {
+        "title": "Imagems",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Imagem",
+        "createOrEditLabel": "Create or edit a Imagem",
+        "notFound": "No Imagems found"
+      },
+      "created": "A new Imagem is created with identifier {{ param }}",
+      "updated": "A Imagem is updated with identifier {{ param }}",
+      "deleted": "A Imagem is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Imagem {{ id }}?"
+      },
+      "detail": {
+        "title": "Imagem"
+      },
+      "id": "Id",
+      "nome": "Nome",
+      "caminho": "Caminho",
+      "descricao": "Descricao",
+      "cadeiaDetectada": "Cadeia Detectada",
+      "dateAnalise": "Date Analise",
+      "registroAcesso": "Registro Acesso"
+    }
+  }
+}

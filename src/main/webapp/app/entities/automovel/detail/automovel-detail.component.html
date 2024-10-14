@@ -1,0 +1,56 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (automovel(); as automovelRef) {
+      <div>
+        <h2 data-cy="automovelDetailsHeading"><span jhiTranslate="pivestudoApp.automovel.detail.title">Automovel</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="pivestudoApp.automovel.id">Id</span></dt>
+          <dd>
+            <span>{{ automovelRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="pivestudoApp.automovel.placa">Placa</span></dt>
+          <dd>
+            <span>{{ automovelRef.placa }}</span>
+          </dd>
+          <dt><span jhiTranslate="pivestudoApp.automovel.descricao">Descricao</span></dt>
+          <dd>
+            <span>{{ automovelRef.descricao }}</span>
+          </dd>
+          <dt><span jhiTranslate="pivestudoApp.automovel.tipoAutomovel">Tipo Automovel</span></dt>
+          <dd>
+            @if (automovel()!.tipoAutomovel) {
+              <div>
+                <a [routerLink]="['/tipo-automovel', automovel()!.tipoAutomovel?.id, 'view']">{{
+                  automovelRef.tipoAutomovel?.descricao
+                }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="pivestudoApp.automovel.pessoa">Pessoa</span></dt>
+          <dd>
+            @if (automovel()!.pessoa) {
+              <div>
+                <a [routerLink]="['/pessoa', automovel()!.pessoa?.id, 'view']">{{ automovelRef.pessoa?.nome }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/automovel', automovelRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

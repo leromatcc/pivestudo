@@ -1,0 +1,26 @@
+{
+  "pivestudoApp": {
+    "estabelecimento": {
+      "home": {
+        "title": "Estabelecimentos",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Estabelecimento",
+        "createOrEditLabel": "Crear o editar Estabelecimento",
+        "notFound": "Ningún Estabelecimentos encontrado"
+      },
+      "created": "Un nuevo Estabelecimento ha sido creado con el identificador {{ param }}",
+      "updated": "Un Estabelecimento ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Estabelecimento ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Estabelecimento {{ id }}?"
+      },
+      "detail": {
+        "title": "Estabelecimento"
+      },
+      "id": "Id",
+      "descricao": "Descricao",
+      "endereco": "Endereco",
+      "pontoAcesso": "Ponto Acesso"
+    }
+  }
+}

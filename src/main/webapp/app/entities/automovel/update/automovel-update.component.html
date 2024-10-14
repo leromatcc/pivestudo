@@ -1,0 +1,108 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-automovel-heading" data-cy="AutomovelCreateUpdateHeading" jhiTranslate="pivestudoApp.automovel.home.createOrEditLabel">
+        Create or edit a Automovel
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="pivestudoApp.automovel.id">Id</label>
+            <input type="text" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        @let placaRef = editForm.get('placa')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_placa" jhiTranslate="pivestudoApp.automovel.placa">Placa</label>
+          <input type="text" class="form-control" name="placa" id="field_placa" data-cy="placa" formControlName="placa" />
+          @if (placaRef.invalid && (placaRef.dirty || placaRef.touched)) {
+            <div>
+              @if (editForm.get('placa')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_descricao" jhiTranslate="pivestudoApp.automovel.descricao">Descricao</label>
+          <input type="text" class="form-control" name="descricao" id="field_descricao" data-cy="descricao" formControlName="descricao" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_tipoAutomovel" jhiTranslate="pivestudoApp.automovel.tipoAutomovel">Tipo Automovel</label>
+          <select
+            class="form-control"
+            id="field_tipoAutomovel"
+            data-cy="tipoAutomovel"
+            name="tipoAutomovel"
+            formControlName="tipoAutomovel"
+            [compareWith]="compareTipoAutomovel"
+          >
+            @if (!editForm.get('tipoAutomovel')!.value) {
+              <option [ngValue]="null" selected></option>
+            }
+            @for (tipoAutomovelOption of tipoAutomovelsSharedCollection; track $index) {
+              <option [ngValue]="tipoAutomovelOption">{{ tipoAutomovelOption.descricao }}</option>
+            }
+          </select>
+        </div>
+        @if (
+          editForm.get(['tipoAutomovel'])!.invalid && (editForm.get(['tipoAutomovel'])!.dirty || editForm.get(['tipoAutomovel'])!.touched)
+        ) {
+          <div>
+            @if (editForm.get(['tipoAutomovel'])?.errors?.required) {
+              <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+            }
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" for="field_pessoa" jhiTranslate="pivestudoApp.automovel.pessoa">Pessoa</label>
+          <select
+            class="form-control"
+            id="field_pessoa"
+            data-cy="pessoa"
+            name="pessoa"
+            formControlName="pessoa"
+            [compareWith]="comparePessoa"
+          >
+            @if (editForm.get(['pessoa'])!.value == null) {
+              <option [ngValue]="null" selected></option>
+            }
+            @for (pessoaOption of pessoasSharedCollection; track $index) {
+              <option [ngValue]="pessoaOption">{{ pessoaOption.nome }}</option>
+            }
+          </select>
+        </div>
+        @if (editForm.get(['pessoa'])!.invalid && (editForm.get(['pessoa'])!.dirty || editForm.get(['pessoa'])!.touched)) {
+          <div>
+            @if (editForm.get(['pessoa'])?.errors?.required) {
+              <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+            }
+          </div>
+        }
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

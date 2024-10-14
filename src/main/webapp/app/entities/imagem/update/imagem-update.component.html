@@ -1,0 +1,123 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-imagem-heading" data-cy="ImagemCreateUpdateHeading" jhiTranslate="pivestudoApp.imagem.home.createOrEditLabel">
+        Create or edit a Imagem
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="pivestudoApp.imagem.id">Id</label>
+            <input type="text" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        @let nomeRef = editForm.get('nome')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_nome" jhiTranslate="pivestudoApp.imagem.nome">Nome</label>
+          <input type="text" class="form-control" name="nome" id="field_nome" data-cy="nome" formControlName="nome" />
+          @if (nomeRef.invalid && (nomeRef.dirty || nomeRef.touched)) {
+            <div>
+              @if (editForm.get('nome')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        @let caminhoRef = editForm.get('caminho')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_caminho" jhiTranslate="pivestudoApp.imagem.caminho">Caminho</label>
+          <input type="text" class="form-control" name="caminho" id="field_caminho" data-cy="caminho" formControlName="caminho" />
+          @if (caminhoRef.invalid && (caminhoRef.dirty || caminhoRef.touched)) {
+            <div>
+              @if (editForm.get('caminho')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_descricao" jhiTranslate="pivestudoApp.imagem.descricao">Descricao</label>
+          <input type="text" class="form-control" name="descricao" id="field_descricao" data-cy="descricao" formControlName="descricao" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_cadeiaDetectada" jhiTranslate="pivestudoApp.imagem.cadeiaDetectada">Cadeia Detectada</label>
+          <input
+            type="text"
+            class="form-control"
+            name="cadeiaDetectada"
+            id="field_cadeiaDetectada"
+            data-cy="cadeiaDetectada"
+            formControlName="cadeiaDetectada"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_dateAnalise" jhiTranslate="pivestudoApp.imagem.dateAnalise">Date Analise</label>
+          <div class="d-flex">
+            <input
+              id="field_dateAnalise"
+              data-cy="dateAnalise"
+              type="datetime-local"
+              class="form-control"
+              name="dateAnalise"
+              formControlName="dateAnalise"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_registroAcesso" jhiTranslate="pivestudoApp.imagem.registroAcesso">Registro Acesso</label>
+          <select
+            class="form-control"
+            id="field_registroAcesso"
+            data-cy="registroAcesso"
+            name="registroAcesso"
+            formControlName="registroAcesso"
+            [compareWith]="compareRegistroAcesso"
+          >
+            @if (editForm.get(['registroAcesso'])!.value == null) {
+              <option [ngValue]="null" selected></option>
+            }
+            @for (registroAcessoOption of registroAcessosCollection; track $index) {
+              <option [ngValue]="registroAcessoOption">{{ registroAcessoOption.dataHora }}</option>
+            }
+          </select>
+        </div>
+        @if (
+          editForm.get(['registroAcesso'])!.invalid &&
+          (editForm.get(['registroAcesso'])!.dirty || editForm.get(['registroAcesso'])!.touched)
+        ) {
+          <div>
+            @if (editForm.get(['registroAcesso'])?.errors?.required) {
+              <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+            }
+          </div>
+        }
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

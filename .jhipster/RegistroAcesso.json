@@ -1,0 +1,55 @@
+{
+  "annotations": {
+    "changelogDate": "20240911043258"
+  },
+  "applications": "*",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "UUID"
+    },
+    {
+      "fieldName": "dataHora",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "cadeiaAnalisada",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "acessoAutorizado",
+      "fieldType": "TipoAcessoAutorizado",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "AUTORIZADO,RECUSADO,ERRO"
+    }
+  ],
+  "name": "RegistroAcesso",
+  "relationships": [
+    {
+      "otherEntityField": "descricao",
+      "otherEntityName": "pontoAcesso",
+      "relationshipName": "pontoAcesso",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    },
+    {
+      "otherEntityField": "descricao",
+      "otherEntityName": "automovel",
+      "relationshipName": "automovel",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    },
+    {
+      "otherEntityField": "descricao",
+      "otherEntityName": "autorizacaoAcesso",
+      "relationshipName": "autorizacaoAcesso",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    }
+  ],
+  "searchEngine": "no"
+}

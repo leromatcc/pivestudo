@@ -1,0 +1,21 @@
+{
+  "annotations": {
+    "changelogDate": "20240911043249"
+  },
+  "applications": "*",
+  "fields": [
+    {
+      "fieldName": "descricao",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "grupo",
+      "fieldType": "ClassificaPessoa",
+      "fieldValues": "MORADOR,VISITANTE,PRESTADOR,FUNCIONARIO,SECRETARIA"
+    }
+  ],
+  "name": "TipoPessoa",
+  "relationships": [],
+  "searchEngine": "no"
+}

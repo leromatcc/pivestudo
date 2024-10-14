@@ -17,7 +17,33 @@
     <property name="datetimeType" value="datetime(6)" dbms="mariadb"/>
 
     <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240911043248_added_entity_Pessoa.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240911043249_added_entity_TipoPessoa.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240911043250_added_entity_Telefone.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240911043251_added_entity_Documento.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240911043252_added_entity_Endereco.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240911043253_added_entity_LoteBlocoApartamento.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240911043254_added_entity_Automovel.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240911043255_added_entity_TipoAutomovel.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240911043256_added_entity_AutorizacaoAcesso.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240911043257_added_entity_Estabelecimento.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240911043258_added_entity_RegistroAcesso.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240911043259_added_entity_PontoAcesso.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240911043300_added_entity_Camera.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240911043301_added_entity_Imagem.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <include file="config/liquibase/changelog/20240911043248_added_entity_constraints_Pessoa.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240911043250_added_entity_constraints_Telefone.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240911043251_added_entity_constraints_Documento.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240911043252_added_entity_constraints_Endereco.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240911043253_added_entity_constraints_LoteBlocoApartamento.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240911043254_added_entity_constraints_Automovel.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240911043256_added_entity_constraints_AutorizacaoAcesso.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240911043257_added_entity_constraints_Estabelecimento.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240911043258_added_entity_constraints_RegistroAcesso.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240911043259_added_entity_constraints_PontoAcesso.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240911043300_added_entity_constraints_Camera.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240911043301_added_entity_constraints_Imagem.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
     <!-- jhipster-needle-liquibase-add-incremental-changelog - JHipster will add incremental liquibase changelogs here -->
 </databaseChangeLog>

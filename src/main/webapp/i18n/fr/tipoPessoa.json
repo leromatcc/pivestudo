@@ -1,0 +1,26 @@
+{
+  "pivestudoApp": {
+    "tipoPessoa": {
+      "home": {
+        "title": "TipoPessoas",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Tipo Pessoa",
+        "createOrEditLabel": "Créer ou éditer un Tipo Pessoa",
+        "notFound": "Aucun Tipo Pessoa trouvé"
+      },
+      "created": "Un nouveau Tipo Pessoa a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Tipo Pessoa avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Tipo Pessoa avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Tipo Pessoa {{ id }} ?"
+      },
+      "detail": {
+        "title": "Tipo Pessoa"
+      },
+      "id": "ID",
+      "descricao": "Descricao",
+      "grupo": "Grupo",
+      "pessoa": "Pessoa"
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "pivestudoApp": {
+    "autorizacaoAcesso": {
+      "home": {
+        "title": "Autorizacao Acessos",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Autorizacao Acesso",
+        "createOrEditLabel": "Crear o editar Autorizacao Acesso",
+        "notFound": "Ningún Autorizacao Acessos encontrado"
+      },
+      "created": "Un nuevo Autorizacao Acesso ha sido creado con el identificador {{ param }}",
+      "updated": "Un Autorizacao Acesso ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Autorizacao Acesso ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Autorizacao Acesso {{ id }}?"
+      },
+      "detail": {
+        "title": "Autorizacao Acesso"
+      },
+      "id": "Id",
+      "descricao": "Descricao",
+      "dataInicial": "Data Inicial",
+      "dataFinal": "Data Final",
+      "status": "Status",
+      "pessoa": "Pessoa",
+      "estabelecimento": "Estabelecimento"
+    }
+  }
+}

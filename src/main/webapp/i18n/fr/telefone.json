@@ -1,0 +1,26 @@
+{
+  "pivestudoApp": {
+    "telefone": {
+      "home": {
+        "title": "Telefones",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Telefone",
+        "createOrEditLabel": "Créer ou éditer un Telefone",
+        "notFound": "Aucun Telefone trouvé"
+      },
+      "created": "Un nouveau Telefone a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Telefone avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Telefone avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Telefone {{ id }} ?"
+      },
+      "detail": {
+        "title": "Telefone"
+      },
+      "id": "Id",
+      "tipoTelefone": "Tipo Telefone",
+      "numero": "Numero",
+      "pessoa": "Pessoa"
+    }
+  }
+}

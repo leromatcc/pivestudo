@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    <!--
+        Added the constraints for entity RegistroAcesso.
+    -->
+    <changeSet id="20240911043258-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="ponto_acesso_id"
+                                 baseTableName="registro_acesso"
+                                 constraintName="fk_registro_acesso__ponto_acesso_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ponto_acesso"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="automovel_id"
+                                 baseTableName="registro_acesso"
+                                 constraintName="fk_registro_acesso__automovel_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="automovel"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="autorizacao_acesso_id"
+                                 baseTableName="registro_acesso"
+                                 constraintName="fk_registro_acesso__autorizacao_acesso_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="autorizacao_acesso"
+                                 />
+    </changeSet>
+</databaseChangeLog>

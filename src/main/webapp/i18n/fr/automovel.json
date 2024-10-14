@@ -1,0 +1,27 @@
+{
+  "pivestudoApp": {
+    "automovel": {
+      "home": {
+        "title": "Automovels",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Automovel",
+        "createOrEditLabel": "Créer ou éditer un Automovel",
+        "notFound": "Aucun Automovel trouvé"
+      },
+      "created": "Un nouveau Automovel a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Automovel avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Automovel avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Automovel {{ id }} ?"
+      },
+      "detail": {
+        "title": "Automovel"
+      },
+      "id": "Id",
+      "placa": "Placa",
+      "descricao": "Descricao",
+      "tipoAutomovel": "Tipo Automovel",
+      "pessoa": "Pessoa"
+    }
+  }
+}

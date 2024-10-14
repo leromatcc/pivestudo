@@ -1,0 +1,131 @@
+<div>
+  <h2 id="page-heading" data-cy="ImagemHeading">
+    <span jhiTranslate="pivestudoApp.imagem.home.title">Imagems</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [animation]="isLoading ? 'spin' : undefined"></fa-icon>
+        <span jhiTranslate="pivestudoApp.imagem.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-imagem"
+        [routerLink]="['/imagem/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="pivestudoApp.imagem.home.createLabel">Create a new Imagem</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  @if (imagems?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="pivestudoApp.imagem.home.notFound">No Imagems found</span>
+    </div>
+  }
+
+  @if (imagems && imagems.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [sortState]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="pivestudoApp.imagem.id">Id</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="nome">
+              <div class="d-flex">
+                <span jhiTranslate="pivestudoApp.imagem.nome">Nome</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="caminho">
+              <div class="d-flex">
+                <span jhiTranslate="pivestudoApp.imagem.caminho">Caminho</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="descricao">
+              <div class="d-flex">
+                <span jhiTranslate="pivestudoApp.imagem.descricao">Descricao</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="cadeiaDetectada">
+              <div class="d-flex">
+                <span jhiTranslate="pivestudoApp.imagem.cadeiaDetectada">Cadeia Detectada</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="dateAnalise">
+              <div class="d-flex">
+                <span jhiTranslate="pivestudoApp.imagem.dateAnalise">Date Analise</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="registroAcesso.dataHora">
+              <div class="d-flex">
+                <span jhiTranslate="pivestudoApp.imagem.registroAcesso">Registro Acesso</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (imagem of imagems; track trackId) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/imagem', imagem.id, 'view']">{{ imagem.id }}</a>
+              </td>
+              <td>{{ imagem.nome }}</td>
+              <td>{{ imagem.caminho }}</td>
+              <td>{{ imagem.descricao }}</td>
+              <td>{{ imagem.cadeiaDetectada }}</td>
+              <td>{{ imagem.dateAnalise | formatMediumDatetime }}</td>
+              <td>
+                @if (imagem.registroAcesso) {
+                  <div>
+                    <a [routerLink]="['/registro-acesso', imagem.registroAcesso.id, 'view']">{{ imagem.registroAcesso.dataHora }}</a>
+                  </div>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a [routerLink]="['/imagem', imagem.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                  </a>
+
+                  <a [routerLink]="['/imagem', imagem.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(imagem)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</div>

@@ -1,0 +1,10 @@
+{
+  "pivestudoApp": {
+    "StatusAutorizacao": {
+      "null": "",
+      "ATIVO": "ATIVO",
+      "INATIVO": "INATIVO",
+      "EXPIRADO": "EXPIRADO"
+    }
+  }
+}

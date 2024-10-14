@@ -1,0 +1,11 @@
+export enum ClassificaPessoa {
+  MORADOR = 'MORADOR',
+
+  VISITANTE = 'VISITANTE',
+
+  PRESTADOR = 'PRESTADOR',
+
+  FUNCIONARIO = 'FUNCIONARIO',
+
+  SECRETARIA = 'SECRETARIA',
+}

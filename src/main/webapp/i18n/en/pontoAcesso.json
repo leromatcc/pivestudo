@@ -1,0 +1,26 @@
+{
+  "pivestudoApp": {
+    "pontoAcesso": {
+      "home": {
+        "title": "Ponto Acessos",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Ponto Acesso",
+        "createOrEditLabel": "Create or edit a Ponto Acesso",
+        "notFound": "No Ponto Acessos found"
+      },
+      "created": "A new Ponto Acesso is created with identifier {{ param }}",
+      "updated": "A Ponto Acesso is updated with identifier {{ param }}",
+      "deleted": "A Ponto Acesso is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Ponto Acesso {{ id }}?"
+      },
+      "detail": {
+        "title": "Ponto Acesso"
+      },
+      "id": "Id",
+      "descricao": "Descricao",
+      "estabelecimento": "Estabelecimento",
+      "camera": "Camera"
+    }
+  }
+}

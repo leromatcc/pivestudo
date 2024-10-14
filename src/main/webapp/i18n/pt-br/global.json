@@ -8,7 +8,20 @@
       "entities": {
         "main": "Entidades",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)",
-        "adminAuthority": "Authority"
+        "pessoa": "Pessoa",
+        "tipoPessoa": "Tipo Pessoa",
+        "telefone": "Telefone",
+        "documento": "Documento",
+        "endereco": "Endereco",
+        "loteBlocoApartamento": "Lote Bloco Apartamento",
+        "automovel": "Automovel",
+        "tipoAutomovel": "Tipo Automovel",
+        "autorizacaoAcesso": "Autorizacao Acesso",
+        "estabelecimento": "Estabelecimento",
+        "registroAcesso": "Registro Acesso",
+        "pontoAcesso": "Ponto Acesso",
+        "camera": "Camera",
+        "imagem": "Imagem"
       },
       "account": {
         "main": "Conta",
@@ -144,5 +157,5 @@
       "not.image": "File was expected to be an image but was found to be \"{{ fileType }}\""
     }
   },
-  "footer": "Este é o rodapé da página"
+  "footer": "Placa de Identificacao Veicular - PIV - Estudo"
 }

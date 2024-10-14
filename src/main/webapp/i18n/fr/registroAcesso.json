@@ -1,0 +1,30 @@
+{
+  "pivestudoApp": {
+    "registroAcesso": {
+      "home": {
+        "title": "RegistroAcessos",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Registro Acesso",
+        "createOrEditLabel": "Créer ou éditer un Registro Acesso",
+        "notFound": "Aucun Registro Acesso trouvé"
+      },
+      "created": "Un nouveau Registro Acesso a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Registro Acesso avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Registro Acesso avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Registro Acesso {{ id }} ?"
+      },
+      "detail": {
+        "title": "Registro Acesso"
+      },
+      "id": "Id",
+      "dataHora": "Data Hora",
+      "cadeiaAnalisada": "Cadeia Analisada",
+      "acessoAutorizado": "Acesso Autorizado",
+      "pontoAcesso": "Ponto Acesso",
+      "automovel": "Automovel",
+      "autorizacaoAcesso": "Autorizacao Acesso",
+      "imagem": "Imagem"
+    }
+  }
+}

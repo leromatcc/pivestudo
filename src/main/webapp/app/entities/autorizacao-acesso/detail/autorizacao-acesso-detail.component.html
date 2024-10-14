@@ -1,0 +1,68 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (autorizacaoAcesso(); as autorizacaoAcessoRef) {
+      <div>
+        <h2 data-cy="autorizacaoAcessoDetailsHeading">
+          <span jhiTranslate="pivestudoApp.autorizacaoAcesso.detail.title">Autorizacao Acesso</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="pivestudoApp.autorizacaoAcesso.id">Id</span></dt>
+          <dd>
+            <span>{{ autorizacaoAcessoRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="pivestudoApp.autorizacaoAcesso.descricao">Descricao</span></dt>
+          <dd>
+            <span>{{ autorizacaoAcessoRef.descricao }}</span>
+          </dd>
+          <dt><span jhiTranslate="pivestudoApp.autorizacaoAcesso.dataInicial">Data Inicial</span></dt>
+          <dd>
+            <span>{{ autorizacaoAcessoRef.dataInicial | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="pivestudoApp.autorizacaoAcesso.dataFinal">Data Final</span></dt>
+          <dd>
+            <span>{{ autorizacaoAcessoRef.dataFinal | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="pivestudoApp.autorizacaoAcesso.status">Status</span></dt>
+          <dd>
+            <span [jhiTranslate]="'pivestudoApp.StatusAutorizacao.' + (autorizacaoAcessoRef.status ?? 'null')">{{
+              { null: '', ATIVO: 'ATIVO', INATIVO: 'INATIVO', EXPIRADO: 'EXPIRADO' }[autorizacaoAcessoRef.status ?? 'null']
+            }}</span>
+          </dd>
+          <dt><span jhiTranslate="pivestudoApp.autorizacaoAcesso.pessoa">Pessoa</span></dt>
+          <dd>
+            @if (autorizacaoAcesso()!.pessoa) {
+              <div>
+                <a [routerLink]="['/pessoa', autorizacaoAcesso()!.pessoa?.id, 'view']">{{ autorizacaoAcessoRef.pessoa?.nome }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="pivestudoApp.autorizacaoAcesso.estabelecimento">Estabelecimento</span></dt>
+          <dd>
+            @if (autorizacaoAcesso()!.estabelecimento) {
+              <div>
+                <a [routerLink]="['/estabelecimento', autorizacaoAcesso()!.estabelecimento?.id, 'view']">{{
+                  autorizacaoAcessoRef.estabelecimento?.descricao
+                }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/autorizacao-acesso', autorizacaoAcessoRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

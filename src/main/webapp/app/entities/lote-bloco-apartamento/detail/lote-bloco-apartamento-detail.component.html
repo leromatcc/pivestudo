@@ -1,0 +1,62 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (loteBlocoApartamento(); as loteBlocoApartamentoRef) {
+      <div>
+        <h2 data-cy="loteBlocoApartamentoDetailsHeading">
+          <span jhiTranslate="pivestudoApp.loteBlocoApartamento.detail.title">Lote Bloco Apartamento</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="pivestudoApp.loteBlocoApartamento.id">Id</span></dt>
+          <dd>
+            <span>{{ loteBlocoApartamentoRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="pivestudoApp.loteBlocoApartamento.bloco">Bloco</span></dt>
+          <dd>
+            <span>{{ loteBlocoApartamentoRef.bloco }}</span>
+          </dd>
+          <dt><span jhiTranslate="pivestudoApp.loteBlocoApartamento.andar">Andar</span></dt>
+          <dd>
+            <span>{{ loteBlocoApartamentoRef.andar }}</span>
+          </dd>
+          <dt><span jhiTranslate="pivestudoApp.loteBlocoApartamento.numero">Numero</span></dt>
+          <dd>
+            <span>{{ loteBlocoApartamentoRef.numero }}</span>
+          </dd>
+          <dt><span jhiTranslate="pivestudoApp.loteBlocoApartamento.endereco">Endereco</span></dt>
+          <dd>
+            @if (loteBlocoApartamento()!.endereco) {
+              <div>
+                <a [routerLink]="['/endereco', loteBlocoApartamento()!.endereco?.id, 'view']">{{
+                  loteBlocoApartamentoRef.endereco?.descricao
+                }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="pivestudoApp.loteBlocoApartamento.pessoa">Pessoa</span></dt>
+          <dd>
+            @if (loteBlocoApartamento()!.pessoa) {
+              <div>
+                <a [routerLink]="['/pessoa', loteBlocoApartamento()!.pessoa?.id, 'view']">{{ loteBlocoApartamentoRef.pessoa?.nome }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/lote-bloco-apartamento', loteBlocoApartamentoRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

@@ -1,0 +1,40 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (tipoAutomovel(); as tipoAutomovelRef) {
+      <div>
+        <h2 data-cy="tipoAutomovelDetailsHeading"><span jhiTranslate="pivestudoApp.tipoAutomovel.detail.title">Tipo Automovel</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="pivestudoApp.tipoAutomovel.id">Id</span></dt>
+          <dd>
+            <span>{{ tipoAutomovelRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="pivestudoApp.tipoAutomovel.descricao">Descricao</span></dt>
+          <dd>
+            <span>{{ tipoAutomovelRef.descricao }}</span>
+          </dd>
+          <dt><span jhiTranslate="pivestudoApp.tipoAutomovel.grupo">Grupo</span></dt>
+          <dd>
+            <span [jhiTranslate]="'pivestudoApp.ClassificaAutomovel.' + (tipoAutomovelRef.grupo ?? 'null')">{{
+              { null: '', MOTO: 'MOTO', CARRO: 'CARRO', CAMINHAO: 'CAMINHAO', OUTRO: 'OUTRO' }[tipoAutomovelRef.grupo ?? 'null']
+            }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/tipo-automovel', tipoAutomovelRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

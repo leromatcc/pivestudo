@@ -1,0 +1,30 @@
+{
+  "pivestudoApp": {
+    "registroAcesso": {
+      "home": {
+        "title": "Registro Acessos",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Registro Acesso",
+        "createOrEditLabel": "Crear o editar Registro Acesso",
+        "notFound": "Ningún Registro Acessos encontrado"
+      },
+      "created": "Un nuevo Registro Acesso ha sido creado con el identificador {{ param }}",
+      "updated": "Un Registro Acesso ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Registro Acesso ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Registro Acesso {{ id }}?"
+      },
+      "detail": {
+        "title": "Registro Acesso"
+      },
+      "id": "Id",
+      "dataHora": "Data Hora",
+      "cadeiaAnalisada": "Cadeia Analisada",
+      "acessoAutorizado": "Acesso Autorizado",
+      "pontoAcesso": "Ponto Acesso",
+      "automovel": "Automovel",
+      "autorizacaoAcesso": "Autorizacao Acesso",
+      "imagem": "Imagem"
+    }
+  }
+}

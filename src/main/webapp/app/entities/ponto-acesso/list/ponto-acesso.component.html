@@ -1,0 +1,101 @@
+<div>
+  <h2 id="page-heading" data-cy="PontoAcessoHeading">
+    <span jhiTranslate="pivestudoApp.pontoAcesso.home.title">Ponto Acessos</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [animation]="isLoading ? 'spin' : undefined"></fa-icon>
+        <span jhiTranslate="pivestudoApp.pontoAcesso.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-ponto-acesso"
+        [routerLink]="['/ponto-acesso/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="pivestudoApp.pontoAcesso.home.createLabel">Create a new Ponto Acesso</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  @if (pontoAcessos?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="pivestudoApp.pontoAcesso.home.notFound">No Ponto Acessos found</span>
+    </div>
+  }
+
+  @if (pontoAcessos && pontoAcessos.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [sortState]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="pivestudoApp.pontoAcesso.id">Id</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="descricao">
+              <div class="d-flex">
+                <span jhiTranslate="pivestudoApp.pontoAcesso.descricao">Descricao</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="estabelecimento.descricao">
+              <div class="d-flex">
+                <span jhiTranslate="pivestudoApp.pontoAcesso.estabelecimento">Estabelecimento</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (pontoAcesso of pontoAcessos; track trackId) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/ponto-acesso', pontoAcesso.id, 'view']">{{ pontoAcesso.id }}</a>
+              </td>
+              <td>{{ pontoAcesso.descricao }}</td>
+              <td>
+                @if (pontoAcesso.estabelecimento) {
+                  <div>
+                    <a [routerLink]="['/estabelecimento', pontoAcesso.estabelecimento.id, 'view']">{{
+                      pontoAcesso.estabelecimento.descricao
+                    }}</a>
+                  </div>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a [routerLink]="['/ponto-acesso', pontoAcesso.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                  </a>
+
+                  <a [routerLink]="['/ponto-acesso', pontoAcesso.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(pontoAcesso)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</div>

@@ -1,0 +1,26 @@
+{
+  "annotations": {
+    "changelogDate": "20240911043255"
+  },
+  "applications": "*",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "UUID"
+    },
+    {
+      "fieldName": "descricao",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "grupo",
+      "fieldType": "ClassificaAutomovel",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "MOTO,CARRO,CAMINHAO,OUTRO"
+    }
+  ],
+  "name": "TipoAutomovel",
+  "relationships": [],
+  "searchEngine": "no"
+}

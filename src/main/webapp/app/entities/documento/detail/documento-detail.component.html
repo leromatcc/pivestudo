@@ -1,0 +1,52 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (documento(); as documentoRef) {
+      <div>
+        <h2 data-cy="documentoDetailsHeading"><span jhiTranslate="pivestudoApp.documento.detail.title">Documento</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="pivestudoApp.documento.id">Id</span></dt>
+          <dd>
+            <span>{{ documentoRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="pivestudoApp.documento.tipoDocumento">Tipo Documento</span></dt>
+          <dd>
+            <span [jhiTranslate]="'pivestudoApp.TipoDocumento.' + (documentoRef.tipoDocumento ?? 'null')">{{
+              { null: '', RG: 'RG', CPF: 'CPF', PASSAPORTE: 'PASSAPORTE', RE: 'RE', OUTRO: 'OUTRO' }[documentoRef.tipoDocumento ?? 'null']
+            }}</span>
+          </dd>
+          <dt><span jhiTranslate="pivestudoApp.documento.numeroDocumento">Numero Documento</span></dt>
+          <dd>
+            <span>{{ documentoRef.numeroDocumento }}</span>
+          </dd>
+          <dt><span jhiTranslate="pivestudoApp.documento.descricao">Descricao</span></dt>
+          <dd>
+            <span>{{ documentoRef.descricao }}</span>
+          </dd>
+          <dt><span jhiTranslate="pivestudoApp.documento.pessoa">Pessoa</span></dt>
+          <dd>
+            @if (documento()!.pessoa) {
+              <div>
+                <a [routerLink]="['/pessoa', documento()!.pessoa?.id, 'view']">{{ documentoRef.pessoa?.nome }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/documento', documentoRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

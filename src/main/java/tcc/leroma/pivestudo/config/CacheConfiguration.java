@@ -50,6 +50,33 @@ public class CacheConfiguration {
             createCache(cm, tcc.leroma.pivestudo.domain.User.class.getName());
             createCache(cm, tcc.leroma.pivestudo.domain.Authority.class.getName());
             createCache(cm, tcc.leroma.pivestudo.domain.User.class.getName() + ".authorities");
+            createCache(cm, tcc.leroma.pivestudo.domain.Pessoa.class.getName());
+            createCache(cm, tcc.leroma.pivestudo.domain.Pessoa.class.getName() + ".telefones");
+            createCache(cm, tcc.leroma.pivestudo.domain.Pessoa.class.getName() + ".documentos");
+            createCache(cm, tcc.leroma.pivestudo.domain.Pessoa.class.getName() + ".enderecos");
+            createCache(cm, tcc.leroma.pivestudo.domain.Pessoa.class.getName() + ".loteBlocoApartamentos");
+            createCache(cm, tcc.leroma.pivestudo.domain.Pessoa.class.getName() + ".automovels");
+            createCache(cm, tcc.leroma.pivestudo.domain.Pessoa.class.getName() + ".autorizacaoAcessos");
+            createCache(cm, tcc.leroma.pivestudo.domain.TipoPessoa.class.getName());
+            createCache(cm, tcc.leroma.pivestudo.domain.Telefone.class.getName());
+            createCache(cm, tcc.leroma.pivestudo.domain.Documento.class.getName());
+            createCache(cm, tcc.leroma.pivestudo.domain.Endereco.class.getName());
+            createCache(cm, tcc.leroma.pivestudo.domain.LoteBlocoApartamento.class.getName());
+            createCache(cm, tcc.leroma.pivestudo.domain.Automovel.class.getName());
+            createCache(cm, tcc.leroma.pivestudo.domain.TipoAutomovel.class.getName());
+            createCache(cm, tcc.leroma.pivestudo.domain.AutorizacaoAcesso.class.getName());
+            createCache(cm, tcc.leroma.pivestudo.domain.Estabelecimento.class.getName());
+            createCache(cm, tcc.leroma.pivestudo.domain.Estabelecimento.class.getName() + ".cameras");
+            createCache(cm, tcc.leroma.pivestudo.domain.Estabelecimento.class.getName() + ".pontoAcessos");
+            createCache(cm, tcc.leroma.pivestudo.domain.RegistroAcesso.class.getName());
+            createCache(cm, tcc.leroma.pivestudo.domain.RegistroAcesso.class.getName() + ".autorizacaoAcessos");
+            createCache(cm, tcc.leroma.pivestudo.domain.PontoAcesso.class.getName());
+            createCache(cm, tcc.leroma.pivestudo.domain.PontoAcesso.class.getName() + ".cameras");
+            createCache(cm, tcc.leroma.pivestudo.domain.Camera.class.getName());
+            createCache(cm, tcc.leroma.pivestudo.domain.Imagem.class.getName());
+            createCache(cm, tcc.leroma.pivestudo.domain.Estabelecimento.class.getName() + ".descricaos");
+            createCache(cm, tcc.leroma.pivestudo.domain.Pessoa.class.getName() + ".nomes");
+            createCache(cm, tcc.leroma.pivestudo.domain.AutorizacaoAcesso.class.getName() + ".registroAcessos");
             // jhipster-needle-ehcache-add-entry
         };
     }

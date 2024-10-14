@@ -1,0 +1,74 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (endereco(); as enderecoRef) {
+      <div>
+        <h2 data-cy="enderecoDetailsHeading"><span jhiTranslate="pivestudoApp.endereco.detail.title">Endereco</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="pivestudoApp.endereco.id">Id</span></dt>
+          <dd>
+            <span>{{ enderecoRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="pivestudoApp.endereco.descricao">Descricao</span></dt>
+          <dd>
+            <span>{{ enderecoRef.descricao }}</span>
+          </dd>
+          <dt><span jhiTranslate="pivestudoApp.endereco.cep">Cep</span></dt>
+          <dd>
+            <span>{{ enderecoRef.cep }}</span>
+          </dd>
+          <dt><span jhiTranslate="pivestudoApp.endereco.logradouro">Logradouro</span></dt>
+          <dd>
+            <span>{{ enderecoRef.logradouro }}</span>
+          </dd>
+          <dt><span jhiTranslate="pivestudoApp.endereco.numero">Numero</span></dt>
+          <dd>
+            <span>{{ enderecoRef.numero }}</span>
+          </dd>
+          <dt><span jhiTranslate="pivestudoApp.endereco.complemento">Complemento</span></dt>
+          <dd>
+            <span>{{ enderecoRef.complemento }}</span>
+          </dd>
+          <dt><span jhiTranslate="pivestudoApp.endereco.referencia">Referencia</span></dt>
+          <dd>
+            <span>{{ enderecoRef.referencia }}</span>
+          </dd>
+          <dt><span jhiTranslate="pivestudoApp.endereco.cidade">Cidade</span></dt>
+          <dd>
+            <span>{{ enderecoRef.cidade }}</span>
+          </dd>
+          <dt><span jhiTranslate="pivestudoApp.endereco.estado">Estado</span></dt>
+          <dd>
+            <span>{{ enderecoRef.estado }}</span>
+          </dd>
+          <dt><span jhiTranslate="pivestudoApp.endereco.pais">Pais</span></dt>
+          <dd>
+            <span>{{ enderecoRef.pais }}</span>
+          </dd>
+          <dt><span jhiTranslate="pivestudoApp.endereco.pessoa">Pessoa</span></dt>
+          <dd>
+            @if (endereco()!.pessoa) {
+              <div>
+                <a [routerLink]="['/pessoa', endereco()!.pessoa?.id, 'view']">{{ enderecoRef.pessoa?.nome }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/endereco', enderecoRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

@@ -1,0 +1,58 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (imagem(); as imagemRef) {
+      <div>
+        <h2 data-cy="imagemDetailsHeading"><span jhiTranslate="pivestudoApp.imagem.detail.title">Imagem</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="pivestudoApp.imagem.id">Id</span></dt>
+          <dd>
+            <span>{{ imagemRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="pivestudoApp.imagem.nome">Nome</span></dt>
+          <dd>
+            <span>{{ imagemRef.nome }}</span>
+          </dd>
+          <dt><span jhiTranslate="pivestudoApp.imagem.caminho">Caminho</span></dt>
+          <dd>
+            <span>{{ imagemRef.caminho }}</span>
+          </dd>
+          <dt><span jhiTranslate="pivestudoApp.imagem.descricao">Descricao</span></dt>
+          <dd>
+            <span>{{ imagemRef.descricao }}</span>
+          </dd>
+          <dt><span jhiTranslate="pivestudoApp.imagem.cadeiaDetectada">Cadeia Detectada</span></dt>
+          <dd>
+            <span>{{ imagemRef.cadeiaDetectada }}</span>
+          </dd>
+          <dt><span jhiTranslate="pivestudoApp.imagem.dateAnalise">Date Analise</span></dt>
+          <dd>
+            <span>{{ imagemRef.dateAnalise | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="pivestudoApp.imagem.registroAcesso">Registro Acesso</span></dt>
+          <dd>
+            @if (imagem()!.registroAcesso) {
+              <div>
+                <a [routerLink]="['/registro-acesso', imagem()!.registroAcesso?.id, 'view']">{{ imagemRef.registroAcesso?.dataHora }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/imagem', imagemRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

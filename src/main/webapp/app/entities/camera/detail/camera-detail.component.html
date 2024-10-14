@@ -1,0 +1,50 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (camera(); as cameraRef) {
+      <div>
+        <h2 data-cy="cameraDetailsHeading"><span jhiTranslate="pivestudoApp.camera.detail.title">Camera</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ cameraRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="pivestudoApp.camera.descricao">Descricao</span></dt>
+          <dd>
+            <span>{{ cameraRef.descricao }}</span>
+          </dd>
+          <dt><span jhiTranslate="pivestudoApp.camera.enderecoRede">Endereco Rede</span></dt>
+          <dd>
+            <span>{{ cameraRef.enderecoRede }}</span>
+          </dd>
+          <dt><span jhiTranslate="pivestudoApp.camera.api">Api</span></dt>
+          <dd>
+            <span>{{ cameraRef.api }}</span>
+          </dd>
+          <dt><span jhiTranslate="pivestudoApp.camera.pontoAcesso">Ponto Acesso</span></dt>
+          <dd>
+            @if (camera()!.pontoAcesso) {
+              <div>
+                <a [routerLink]="['/ponto-acesso', camera()!.pontoAcesso?.id, 'view']">{{ cameraRef.pontoAcesso?.descricao }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/camera', cameraRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

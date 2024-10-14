@@ -1,0 +1,25 @@
+{
+  "pivestudoApp": {
+    "tipoAutomovel": {
+      "home": {
+        "title": "Tipo Automovels",
+        "refreshListLabel": "Atualizar lista",
+        "createLabel": "Criar novo Tipo Automovel",
+        "createOrEditLabel": "Criar ou editar Tipo Automovel",
+        "notFound": "Nenhum Tipo Automovel encontrado"
+      },
+      "created": "Um novo Tipo Automovel foi criado com o identificador {{ param }}",
+      "updated": "Um Tipo Automovel foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Tipo Automovel foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Tipo Automovel {{ id }}?"
+      },
+      "detail": {
+        "title": "Tipo Automovel"
+      },
+      "id": "Id",
+      "descricao": "Descricao",
+      "grupo": "Grupo"
+    }
+  }
+}

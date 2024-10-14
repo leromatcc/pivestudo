@@ -1,0 +1,54 @@
+{
+  "annotations": {
+    "changelogDate": "20240911043256"
+  },
+  "applications": "*",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "UUID"
+    },
+    {
+      "fieldName": "descricao",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "dataInicial",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "dataFinal",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "StatusAutorizacao",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "ATIVO,INATIVO,EXPIRADO"
+    }
+  ],
+  "name": "AutorizacaoAcesso",
+  "relationships": [
+    {
+      "otherEntityField": "nome",
+      "otherEntityName": "pessoa",
+      "otherEntityRelationshipName": "nome",
+      "relationshipName": "pessoa",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    },
+    {
+      "otherEntityField": "descricao",
+      "otherEntityName": "estabelecimento",
+      "relationshipName": "estabelecimento",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    }
+  ],
+  "searchEngine": "no"
+}

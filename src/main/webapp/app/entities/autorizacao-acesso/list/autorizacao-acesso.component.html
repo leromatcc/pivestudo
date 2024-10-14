@@ -1,0 +1,148 @@
+<div>
+  <h2 id="page-heading" data-cy="AutorizacaoAcessoHeading">
+    <span jhiTranslate="pivestudoApp.autorizacaoAcesso.home.title">Autorizacao Acessos</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [animation]="isLoading ? 'spin' : undefined"></fa-icon>
+        <span jhiTranslate="pivestudoApp.autorizacaoAcesso.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-autorizacao-acesso"
+        [routerLink]="['/autorizacao-acesso/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="pivestudoApp.autorizacaoAcesso.home.createLabel">Create a new Autorizacao Acesso</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  @if (autorizacaoAcessos?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="pivestudoApp.autorizacaoAcesso.home.notFound">No Autorizacao Acessos found</span>
+    </div>
+  }
+
+  @if (autorizacaoAcessos && autorizacaoAcessos.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [sortState]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="pivestudoApp.autorizacaoAcesso.id">Id</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="descricao">
+              <div class="d-flex">
+                <span jhiTranslate="pivestudoApp.autorizacaoAcesso.descricao">Descricao</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="dataInicial">
+              <div class="d-flex">
+                <span jhiTranslate="pivestudoApp.autorizacaoAcesso.dataInicial">Data Inicial</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="dataFinal">
+              <div class="d-flex">
+                <span jhiTranslate="pivestudoApp.autorizacaoAcesso.dataFinal">Data Final</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="status">
+              <div class="d-flex">
+                <span jhiTranslate="pivestudoApp.autorizacaoAcesso.status">Status</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="pessoa.nome">
+              <div class="d-flex">
+                <span jhiTranslate="pivestudoApp.autorizacaoAcesso.pessoa">Pessoa</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="estabelecimento.descricao">
+              <div class="d-flex">
+                <span jhiTranslate="pivestudoApp.autorizacaoAcesso.estabelecimento">Estabelecimento</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (autorizacaoAcesso of autorizacaoAcessos; track trackId) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/autorizacao-acesso', autorizacaoAcesso.id, 'view']">{{ autorizacaoAcesso.id }}</a>
+              </td>
+              <td>{{ autorizacaoAcesso.descricao }}</td>
+              <td>{{ autorizacaoAcesso.dataInicial | formatMediumDatetime }}</td>
+              <td>{{ autorizacaoAcesso.dataFinal | formatMediumDatetime }}</td>
+              <td [jhiTranslate]="'pivestudoApp.StatusAutorizacao.' + (autorizacaoAcesso.status ?? 'null')">
+                {{ { null: '', ATIVO: 'ATIVO', INATIVO: 'INATIVO', EXPIRADO: 'EXPIRADO' }[autorizacaoAcesso.status ?? 'null'] }}
+              </td>
+              <td>
+                @if (autorizacaoAcesso.pessoa) {
+                  <div>
+                    <a [routerLink]="['/pessoa', autorizacaoAcesso.pessoa.id, 'view']">{{ autorizacaoAcesso.pessoa.nome }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (autorizacaoAcesso.estabelecimento) {
+                  <div>
+                    <a [routerLink]="['/estabelecimento', autorizacaoAcesso.estabelecimento.id, 'view']">{{
+                      autorizacaoAcesso.estabelecimento.descricao
+                    }}</a>
+                  </div>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a
+                    [routerLink]="['/autorizacao-acesso', autorizacaoAcesso.id, 'view']"
+                    class="btn btn-info btn-sm"
+                    data-cy="entityDetailsButton"
+                  >
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                  </a>
+
+                  <a
+                    [routerLink]="['/autorizacao-acesso', autorizacaoAcesso.id, 'edit']"
+                    class="btn btn-primary btn-sm"
+                    data-cy="entityEditButton"
+                  >
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(autorizacaoAcesso)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</div>

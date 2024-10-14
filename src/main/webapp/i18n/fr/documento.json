@@ -1,0 +1,27 @@
+{
+  "pivestudoApp": {
+    "documento": {
+      "home": {
+        "title": "Documentos",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Documento",
+        "createOrEditLabel": "Créer ou éditer un Documento",
+        "notFound": "Aucun Documento trouvé"
+      },
+      "created": "Un nouveau Documento a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Documento avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Documento avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Documento {{ id }} ?"
+      },
+      "detail": {
+        "title": "Documento"
+      },
+      "id": "Id",
+      "tipoDocumento": "Tipo Documento",
+      "numeroDocumento": "Numero Documento",
+      "descricao": "Descricao",
+      "pessoa": "Pessoa"
+    }
+  }
+}

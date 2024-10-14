@@ -1,0 +1,28 @@
+{
+  "pivestudoApp": {
+    "loteBlocoApartamento": {
+      "home": {
+        "title": "Lote Bloco Apartamentos",
+        "refreshListLabel": "Atualizar lista",
+        "createLabel": "Criar novo Lote Bloco Apartamento",
+        "createOrEditLabel": "Criar ou editar Lote Bloco Apartamento",
+        "notFound": "Nenhum Lote Bloco Apartamento encontrado"
+      },
+      "created": "Um novo Lote Bloco Apartamento foi criado com o identificador {{ param }}",
+      "updated": "Um Lote Bloco Apartamento foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Lote Bloco Apartamento foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Lote Bloco Apartamento {{ id }}?"
+      },
+      "detail": {
+        "title": "Lote Bloco Apartamento"
+      },
+      "id": "Id",
+      "bloco": "Bloco",
+      "andar": "Andar",
+      "numero": "Numero",
+      "endereco": "Endereco",
+      "pessoa": "Pessoa"
+    }
+  }
+}

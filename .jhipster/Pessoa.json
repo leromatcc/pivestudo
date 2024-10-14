@@ -1,0 +1,81 @@
+{
+  "annotations": {
+    "changelogDate": "20240911043248"
+  },
+  "applications": "*",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "UUID"
+    },
+    {
+      "fieldName": "nome",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "minlength"],
+      "fieldValidateRulesMinlength": "3"
+    }
+  ],
+  "name": "Pessoa",
+  "relationships": [
+    {
+      "otherEntityField": "login",
+      "otherEntityName": "user",
+      "relationshipName": "user",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-one",
+      "relationshipValidateRules": "required",
+      "relationshipWithBuiltInEntity": true
+    },
+    {
+      "otherEntityField": "descricao",
+      "otherEntityName": "tipoPessoa",
+      "relationshipName": "tipoPessoa",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-one",
+      "relationshipValidateRules": "required"
+    },
+    {
+      "otherEntityName": "telefone",
+      "otherEntityRelationshipName": "pessoa",
+      "relationshipName": "telefone",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "documento",
+      "otherEntityRelationshipName": "pessoa",
+      "relationshipName": "documento",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "endereco",
+      "otherEntityRelationshipName": "pessoa",
+      "relationshipName": "endereco",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "loteBlocoApartamento",
+      "otherEntityRelationshipName": "pessoa",
+      "relationshipName": "loteBlocoApartamento",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "automovel",
+      "otherEntityRelationshipName": "pessoa",
+      "relationshipName": "automovel",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "autorizacaoAcesso",
+      "otherEntityRelationshipName": "pessoa",
+      "relationshipName": "nome",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "searchEngine": "no"
+}

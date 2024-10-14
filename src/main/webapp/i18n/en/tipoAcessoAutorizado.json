@@ -1,0 +1,10 @@
+{
+  "pivestudoApp": {
+    "TipoAcessoAutorizado": {
+      "null": "",
+      "AUTORIZADO": "AUTORIZADO",
+      "RECUSADO": "RECUSADO",
+      "ERRO": "ERRO"
+    }
+  }
+}

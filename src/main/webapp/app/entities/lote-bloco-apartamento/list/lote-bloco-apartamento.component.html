@@ -1,0 +1,138 @@
+<div>
+  <h2 id="page-heading" data-cy="LoteBlocoApartamentoHeading">
+    <span jhiTranslate="pivestudoApp.loteBlocoApartamento.home.title">Lote Bloco Apartamentos</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [animation]="isLoading ? 'spin' : undefined"></fa-icon>
+        <span jhiTranslate="pivestudoApp.loteBlocoApartamento.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-lote-bloco-apartamento"
+        [routerLink]="['/lote-bloco-apartamento/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="pivestudoApp.loteBlocoApartamento.home.createLabel">Create a new Lote Bloco Apartamento</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  @if (loteBlocoApartamentos?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="pivestudoApp.loteBlocoApartamento.home.notFound">No Lote Bloco Apartamentos found</span>
+    </div>
+  }
+
+  @if (loteBlocoApartamentos && loteBlocoApartamentos.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [sortState]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="pivestudoApp.loteBlocoApartamento.id">Id</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="bloco">
+              <div class="d-flex">
+                <span jhiTranslate="pivestudoApp.loteBlocoApartamento.bloco">Bloco</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="andar">
+              <div class="d-flex">
+                <span jhiTranslate="pivestudoApp.loteBlocoApartamento.andar">Andar</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="numero">
+              <div class="d-flex">
+                <span jhiTranslate="pivestudoApp.loteBlocoApartamento.numero">Numero</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="endereco.descricao">
+              <div class="d-flex">
+                <span jhiTranslate="pivestudoApp.loteBlocoApartamento.endereco">Endereco</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="pessoa.nome">
+              <div class="d-flex">
+                <span jhiTranslate="pivestudoApp.loteBlocoApartamento.pessoa">Pessoa</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (loteBlocoApartamento of loteBlocoApartamentos; track trackId) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/lote-bloco-apartamento', loteBlocoApartamento.id, 'view']">{{ loteBlocoApartamento.id }}</a>
+              </td>
+              <td>{{ loteBlocoApartamento.bloco }}</td>
+              <td>{{ loteBlocoApartamento.andar }}</td>
+              <td>{{ loteBlocoApartamento.numero }}</td>
+              <td>
+                @if (loteBlocoApartamento.endereco) {
+                  <div>
+                    <a [routerLink]="['/endereco', loteBlocoApartamento.endereco.id, 'view']">{{
+                      loteBlocoApartamento.endereco.descricao
+                    }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (loteBlocoApartamento.pessoa) {
+                  <div>
+                    <a [routerLink]="['/pessoa', loteBlocoApartamento.pessoa.id, 'view']">{{ loteBlocoApartamento.pessoa.nome }}</a>
+                  </div>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a
+                    [routerLink]="['/lote-bloco-apartamento', loteBlocoApartamento.id, 'view']"
+                    class="btn btn-info btn-sm"
+                    data-cy="entityDetailsButton"
+                  >
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                  </a>
+
+                  <a
+                    [routerLink]="['/lote-bloco-apartamento', loteBlocoApartamento.id, 'edit']"
+                    class="btn btn-primary btn-sm"
+                    data-cy="entityEditButton"
+                  >
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(loteBlocoApartamento)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</div>

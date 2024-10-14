@@ -1,0 +1,44 @@
+{
+  "annotations": {
+    "changelogDate": "20240911043253"
+  },
+  "applications": "*",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "UUID"
+    },
+    {
+      "fieldName": "bloco",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "andar",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "numero",
+      "fieldType": "String"
+    }
+  ],
+  "name": "LoteBlocoApartamento",
+  "relationships": [
+    {
+      "otherEntityField": "descricao",
+      "otherEntityName": "endereco",
+      "relationshipName": "endereco",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    },
+    {
+      "otherEntityField": "nome",
+      "otherEntityName": "pessoa",
+      "relationshipName": "pessoa",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    }
+  ],
+  "searchEngine": "no"
+}

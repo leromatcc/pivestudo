@@ -1,0 +1,11 @@
+{
+  "pivestudoApp": {
+    "ClassificaAutomovel": {
+      "null": "",
+      "MOTO": "MOTO",
+      "CARRO": "CARRO",
+      "CAMINHAO": "CAMINHAO",
+      "OUTRO": "OUTRO"
+    }
+  }
+}

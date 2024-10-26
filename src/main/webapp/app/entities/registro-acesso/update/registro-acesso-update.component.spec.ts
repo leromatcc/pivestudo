@@ -57,10 +57,10 @@ describe('RegistroAcesso Management Update Component', () => {
   describe('ngOnInit', () => {
     it('Should call PontoAcesso query and add missing value', () => {
       const registroAcesso: IRegistroAcesso = { id: '1361f429-3817-4123-8ee3-fdf8943310b2' };
-      const pontoAcesso: IPontoAcesso = { id: 'a8c9d735-6bc5-4a07-bd08-9eaffe0aa39a' };
+      const pontoAcesso: IPontoAcesso = { id: '8975b50d-8efe-4a3a-8fcd-de10946bb40c' };
       registroAcesso.pontoAcesso = pontoAcesso;
 
-      const pontoAcessoCollection: IPontoAcesso[] = [{ id: 'f5c8d0d8-e81e-4029-8543-6bbebd450ccd' }];
+      const pontoAcessoCollection: IPontoAcesso[] = [{ id: '918d7ed2-ec0f-4deb-b501-a9a010bc88db' }];
       jest.spyOn(pontoAcessoService, 'query').mockReturnValue(of(new HttpResponse({ body: pontoAcessoCollection })));
       const additionalPontoAcessos = [pontoAcesso];
       const expectedCollection: IPontoAcesso[] = [...additionalPontoAcessos, ...pontoAcessoCollection];
@@ -79,10 +79,10 @@ describe('RegistroAcesso Management Update Component', () => {
 
     it('Should call Automovel query and add missing value', () => {
       const registroAcesso: IRegistroAcesso = { id: '1361f429-3817-4123-8ee3-fdf8943310b2' };
-      const automovel: IAutomovel = { id: '3b7138cd-75c3-44a8-9341-a4901e78c223' };
+      const automovel: IAutomovel = { id: '5878a705-fa19-4238-ba23-675b4745fadf' };
       registroAcesso.automovel = automovel;
 
-      const automovelCollection: IAutomovel[] = [{ id: 'f19f6131-296c-4871-9385-d4f24e1155f3' }];
+      const automovelCollection: IAutomovel[] = [{ id: '8cf124c5-bbe8-4f2b-961b-798dfdfbcdfd' }];
       jest.spyOn(automovelService, 'query').mockReturnValue(of(new HttpResponse({ body: automovelCollection })));
       const additionalAutomovels = [automovel];
       const expectedCollection: IAutomovel[] = [...additionalAutomovels, ...automovelCollection];
@@ -101,10 +101,10 @@ describe('RegistroAcesso Management Update Component', () => {
 
     it('Should call AutorizacaoAcesso query and add missing value', () => {
       const registroAcesso: IRegistroAcesso = { id: '1361f429-3817-4123-8ee3-fdf8943310b2' };
-      const autorizacaoAcesso: IAutorizacaoAcesso = { id: 'd0050429-f473-45c4-acf5-0922b3a67bee' };
+      const autorizacaoAcesso: IAutorizacaoAcesso = { id: '4ae6c35d-7e79-4129-89fb-cded0dee2fa0' };
       registroAcesso.autorizacaoAcesso = autorizacaoAcesso;
 
-      const autorizacaoAcessoCollection: IAutorizacaoAcesso[] = [{ id: '81c5253b-d208-45bb-89c4-9876b8b25718' }];
+      const autorizacaoAcessoCollection: IAutorizacaoAcesso[] = [{ id: '67f15ace-da17-40c2-8367-850b17415703' }];
       jest.spyOn(autorizacaoAcessoService, 'query').mockReturnValue(of(new HttpResponse({ body: autorizacaoAcessoCollection })));
       const additionalAutorizacaoAcessos = [autorizacaoAcesso];
       const expectedCollection: IAutorizacaoAcesso[] = [...additionalAutorizacaoAcessos, ...autorizacaoAcessoCollection];
@@ -123,11 +123,11 @@ describe('RegistroAcesso Management Update Component', () => {
 
     it('Should update editForm', () => {
       const registroAcesso: IRegistroAcesso = { id: '1361f429-3817-4123-8ee3-fdf8943310b2' };
-      const pontoAcesso: IPontoAcesso = { id: 'd961584d-273e-49df-921e-7cd04f4d5e2b' };
+      const pontoAcesso: IPontoAcesso = { id: 'acae9b70-f285-4081-8707-717bd5c5eae0' };
       registroAcesso.pontoAcesso = pontoAcesso;
-      const automovel: IAutomovel = { id: '6e55cf06-8f64-46a9-86bf-ca28308e2b8a' };
+      const automovel: IAutomovel = { id: '73adde32-e628-43c5-9729-d9ea1501c885' };
       registroAcesso.automovel = automovel;
-      const autorizacaoAcesso: IAutorizacaoAcesso = { id: 'dbebdace-45e9-43cd-81cb-4427ea6077bc' };
+      const autorizacaoAcesso: IAutorizacaoAcesso = { id: 'f4a53231-a5ea-4dab-855d-927b71da788a' };
       registroAcesso.autorizacaoAcesso = autorizacaoAcesso;
 
       activatedRoute.data = of({ registroAcesso });

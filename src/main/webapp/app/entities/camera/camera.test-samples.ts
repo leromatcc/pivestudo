@@ -1,27 +1,27 @@
 import { ICamera, NewCamera } from './camera.model';
 
 export const sampleWithRequiredData: ICamera = {
-  id: 12779,
-  descricao: 'when ash',
-  enderecoRede: 'though',
+  id: 7549,
+  descricao: 'who',
+  enderecoRede: 'gurn',
 };
 
 export const sampleWithPartialData: ICamera = {
-  id: 1159,
-  descricao: 'satin mean',
-  enderecoRede: 'whether',
+  id: 18872,
+  descricao: 'preside',
+  enderecoRede: 'enthusiastically irritably intrepid',
 };
 
 export const sampleWithFullData: ICamera = {
-  id: 11532,
-  descricao: 'qua thoroughly for',
-  enderecoRede: 'afterwards certainly',
-  api: 'including conciliate',
+  id: 5379,
+  descricao: 'psst within',
+  enderecoRede: 'if',
+  api: 'leading acquire',
 };
 
 export const sampleWithNewData: NewCamera = {
-  descricao: 'positively qua viciously',
-  enderecoRede: 'weaponize beneath',
+  descricao: 'tenderly always access',
+  enderecoRede: 'daily tabletop sup',
   id: null,
 };
 

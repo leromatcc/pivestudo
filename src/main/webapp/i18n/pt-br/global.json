@@ -1,6 +1,6 @@
 {
   "global": {
-    "title": "Pivestudo",
+    "title": "PIV-Estudo",
     "browsehappy": "Você está usando um navegador <strong>desatualizado</strong>. Favor <a href=\"http://browsehappy.com/?locale=pt_BR\">atualize o seu navegador</a> para ter uma experiência melhor.",
     "menu": {
       "home": "Início",
@@ -21,7 +21,9 @@
         "registroAcesso": "Registro Acesso",
         "pontoAcesso": "Ponto Acesso",
         "camera": "Camera",
-        "imagem": "Imagem"
+        "imagem": "Imagem",
+        "sobre": "Sobre",
+        "operacao": "Operacao"
       },
       "account": {
         "main": "Conta",

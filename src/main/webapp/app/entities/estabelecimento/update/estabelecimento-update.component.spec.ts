@@ -49,10 +49,10 @@ describe('Estabelecimento Management Update Component', () => {
   describe('ngOnInit', () => {
     it('Should call Endereco query and add missing value', () => {
       const estabelecimento: IEstabelecimento = { id: '1361f429-3817-4123-8ee3-fdf8943310b2' };
-      const endereco: IEndereco = { id: '5676befd-8f00-4e81-bdcb-2d7fa5e22357' };
+      const endereco: IEndereco = { id: 'abf2048d-1a5a-487c-b648-641875bfee78' };
       estabelecimento.endereco = endereco;
 
-      const enderecoCollection: IEndereco[] = [{ id: 'a0660ed9-1b8c-488f-b539-51342c15b838' }];
+      const enderecoCollection: IEndereco[] = [{ id: '02fa9ae8-9445-475a-946e-d4e35d9b87d5' }];
       jest.spyOn(enderecoService, 'query').mockReturnValue(of(new HttpResponse({ body: enderecoCollection })));
       const additionalEnderecos = [endereco];
       const expectedCollection: IEndereco[] = [...additionalEnderecos, ...enderecoCollection];
@@ -71,7 +71,7 @@ describe('Estabelecimento Management Update Component', () => {
 
     it('Should update editForm', () => {
       const estabelecimento: IEstabelecimento = { id: '1361f429-3817-4123-8ee3-fdf8943310b2' };
-      const endereco: IEndereco = { id: '948cd882-04b7-4707-8073-fbf35c1e9100' };
+      const endereco: IEndereco = { id: '734c0df8-c855-44f0-9d84-86c0164c0d89' };
       estabelecimento.endereco = endereco;
 
       activatedRoute.data = of({ estabelecimento });

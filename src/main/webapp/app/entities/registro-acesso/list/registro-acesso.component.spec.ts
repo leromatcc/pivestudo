@@ -91,7 +91,7 @@ describe('RegistroAcesso Management Component', () => {
     it('Should forward to registroAcessoService', () => {
       const entity = { id: '9fec3727-3421-4967-b213-ba36557ca194' };
       jest.spyOn(service, 'getRegistroAcessoIdentifier');
-      const id = comp.trackId(0, entity);
+      const id = comp.trackId(entity);
       expect(service.getRegistroAcessoIdentifier).toHaveBeenCalledWith(entity);
       expect(id).toBe(entity.id);
     });

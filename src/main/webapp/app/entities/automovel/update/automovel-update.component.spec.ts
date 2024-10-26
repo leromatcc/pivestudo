@@ -53,10 +53,10 @@ describe('Automovel Management Update Component', () => {
   describe('ngOnInit', () => {
     it('Should call TipoAutomovel query and add missing value', () => {
       const automovel: IAutomovel = { id: '1361f429-3817-4123-8ee3-fdf8943310b2' };
-      const tipoAutomovel: ITipoAutomovel = { id: 'a38a6e74-8911-4734-8555-c1e8ad07315d' };
+      const tipoAutomovel: ITipoAutomovel = { id: '86781745-cea0-4350-a748-cc3dbbbd82e1' };
       automovel.tipoAutomovel = tipoAutomovel;
 
-      const tipoAutomovelCollection: ITipoAutomovel[] = [{ id: '07e448bc-cce3-49d4-ab0b-3b8d78e2fea1' }];
+      const tipoAutomovelCollection: ITipoAutomovel[] = [{ id: 'd0a5246a-f849-42bc-85d2-6eaa07bfa8a0' }];
       jest.spyOn(tipoAutomovelService, 'query').mockReturnValue(of(new HttpResponse({ body: tipoAutomovelCollection })));
       const additionalTipoAutomovels = [tipoAutomovel];
       const expectedCollection: ITipoAutomovel[] = [...additionalTipoAutomovels, ...tipoAutomovelCollection];
@@ -75,10 +75,10 @@ describe('Automovel Management Update Component', () => {
 
     it('Should call Pessoa query and add missing value', () => {
       const automovel: IAutomovel = { id: '1361f429-3817-4123-8ee3-fdf8943310b2' };
-      const pessoa: IPessoa = { id: '159e200b-3fa8-41e2-8195-ea76fef9cf04' };
+      const pessoa: IPessoa = { id: 'f6c89bb0-be2e-4655-a052-5f2310f04385' };
       automovel.pessoa = pessoa;
 
-      const pessoaCollection: IPessoa[] = [{ id: '81cc4782-7d95-4a41-a29e-e3375ffa8154' }];
+      const pessoaCollection: IPessoa[] = [{ id: '133fd991-21dd-4d67-804f-790d998fe13a' }];
       jest.spyOn(pessoaService, 'query').mockReturnValue(of(new HttpResponse({ body: pessoaCollection })));
       const additionalPessoas = [pessoa];
       const expectedCollection: IPessoa[] = [...additionalPessoas, ...pessoaCollection];
@@ -97,9 +97,9 @@ describe('Automovel Management Update Component', () => {
 
     it('Should update editForm', () => {
       const automovel: IAutomovel = { id: '1361f429-3817-4123-8ee3-fdf8943310b2' };
-      const tipoAutomovel: ITipoAutomovel = { id: '97df02a8-5f24-44b6-b6aa-f7894b9726bb' };
+      const tipoAutomovel: ITipoAutomovel = { id: '45fc0a45-bedb-4ede-a65a-1bcfbb44d074' };
       automovel.tipoAutomovel = tipoAutomovel;
-      const pessoa: IPessoa = { id: 'a13988c3-40d9-49df-bec8-3c09579ad13c' };
+      const pessoa: IPessoa = { id: '8ef557af-e465-43ea-9e34-d81c32312c59' };
       automovel.pessoa = pessoa;
 
       activatedRoute.data = of({ automovel });

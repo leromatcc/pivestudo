@@ -124,6 +124,12 @@ public class ImagemResource {
         Optional<Imagem> result = imagemRepository
             .findById(imagem.getId())
             .map(existingImagem -> {
+                if (imagem.getArquivoImagem() != null) {
+                    existingImagem.setArquivoImagem(imagem.getArquivoImagem());
+                }
+                if (imagem.getArquivoImagemContentType() != null) {
+                    existingImagem.setArquivoImagemContentType(imagem.getArquivoImagemContentType());
+                }
                 if (imagem.getNome() != null) {
                     existingImagem.setNome(imagem.getNome());
                 }

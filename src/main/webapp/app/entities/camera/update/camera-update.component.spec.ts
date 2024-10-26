@@ -49,10 +49,10 @@ describe('Camera Management Update Component', () => {
   describe('ngOnInit', () => {
     it('Should call PontoAcesso query and add missing value', () => {
       const camera: ICamera = { id: 456 };
-      const pontoAcesso: IPontoAcesso = { id: '4a8b69af-2e58-454b-a6de-72ddce617ad7' };
+      const pontoAcesso: IPontoAcesso = { id: '841a3e26-ada9-47dc-bb07-568f40bebf4f' };
       camera.pontoAcesso = pontoAcesso;
 
-      const pontoAcessoCollection: IPontoAcesso[] = [{ id: '4af701e4-5055-4d9e-bf98-1f2cc851ff3b' }];
+      const pontoAcessoCollection: IPontoAcesso[] = [{ id: 'b6553a37-5649-4c5c-9be7-6c241642eedd' }];
       jest.spyOn(pontoAcessoService, 'query').mockReturnValue(of(new HttpResponse({ body: pontoAcessoCollection })));
       const additionalPontoAcessos = [pontoAcesso];
       const expectedCollection: IPontoAcesso[] = [...additionalPontoAcessos, ...pontoAcessoCollection];
@@ -71,7 +71,7 @@ describe('Camera Management Update Component', () => {
 
     it('Should update editForm', () => {
       const camera: ICamera = { id: 456 };
-      const pontoAcesso: IPontoAcesso = { id: '7ac29016-6a3c-4bef-bdc0-7a5258539c90' };
+      const pontoAcesso: IPontoAcesso = { id: '900b23dd-3244-44f5-8715-18cd39f6abc5' };
       camera.pontoAcesso = pontoAcesso;
 
       activatedRoute.data = of({ camera });

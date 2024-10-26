@@ -1,23 +1,23 @@
 import { IAutomovel, NewAutomovel } from './automovel.model';
 
 export const sampleWithRequiredData: IAutomovel = {
-  id: '7358941d-7a36-4095-a041-74cc015e6df9',
-  placa: 'until particularize acclaimed',
+  id: '30547c05-6fa8-4d5b-8c20-ff80183e63d0',
+  placa: 'bitterly while',
 };
 
 export const sampleWithPartialData: IAutomovel = {
-  id: '1a8039ef-633b-4d50-881a-72a5c0e9a8c2',
-  placa: 'frankly clearly instead',
+  id: '66089df3-ff87-42f3-821a-b3dc0a7e093a',
+  placa: 'energetically preregister',
 };
 
 export const sampleWithFullData: IAutomovel = {
-  id: 'a088f99d-1f93-4bf0-8f88-77a2af735211',
-  placa: 'boohoo meanwhile',
-  descricao: 'corner',
+  id: '917c241f-119c-4735-b42e-15365c08669b',
+  placa: 'onto',
+  descricao: 'clearly',
 };
 
 export const sampleWithNewData: NewAutomovel = {
-  placa: 'because immaculate',
+  placa: 'sandbar bind however',
   id: null,
 };
 

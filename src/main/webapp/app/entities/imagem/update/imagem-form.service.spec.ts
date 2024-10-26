@@ -20,6 +20,7 @@ describe('Imagem Form Service', () => {
         expect(formGroup.controls).toEqual(
           expect.objectContaining({
             id: expect.any(Object),
+            arquivoImagem: expect.any(Object),
             nome: expect.any(Object),
             caminho: expect.any(Object),
             descricao: expect.any(Object),
@@ -36,6 +37,7 @@ describe('Imagem Form Service', () => {
         expect(formGroup.controls).toEqual(
           expect.objectContaining({
             id: expect.any(Object),
+            arquivoImagem: expect.any(Object),
             nome: expect.any(Object),
             caminho: expect.any(Object),
             descricao: expect.any(Object),

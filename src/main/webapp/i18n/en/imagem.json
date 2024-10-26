@@ -18,6 +18,7 @@
         "title": "Imagem"
       },
       "id": "Id",
+      "arquivoImagem": "Arquivo Imagem",
       "nome": "Nome",
       "caminho": "Caminho",
       "descricao": "Descricao",

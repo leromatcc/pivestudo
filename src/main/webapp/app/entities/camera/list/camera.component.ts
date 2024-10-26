@@ -41,7 +41,7 @@ export class CameraComponent implements OnInit {
   protected modalService = inject(NgbModal);
   protected ngZone = inject(NgZone);
 
-  trackId = (_index: number, item: ICamera): number => this.cameraService.getCameraIdentifier(item);
+  trackId = (item: ICamera): number => this.cameraService.getCameraIdentifier(item);
 
   ngOnInit(): void {
     this.subscription = combineLatest([this.activatedRoute.queryParamMap, this.activatedRoute.data])

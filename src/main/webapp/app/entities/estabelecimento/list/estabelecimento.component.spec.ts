@@ -91,7 +91,7 @@ describe('Estabelecimento Management Component', () => {
     it('Should forward to estabelecimentoService', () => {
       const entity = { id: '9fec3727-3421-4967-b213-ba36557ca194' };
       jest.spyOn(service, 'getEstabelecimentoIdentifier');
-      const id = comp.trackId(0, entity);
+      const id = comp.trackId(entity);
       expect(service.getEstabelecimentoIdentifier).toHaveBeenCalledWith(entity);
       expect(id).toBe(entity.id);
     });

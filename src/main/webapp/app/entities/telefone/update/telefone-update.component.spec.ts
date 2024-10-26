@@ -49,10 +49,10 @@ describe('Telefone Management Update Component', () => {
   describe('ngOnInit', () => {
     it('Should call Pessoa query and add missing value', () => {
       const telefone: ITelefone = { id: '1361f429-3817-4123-8ee3-fdf8943310b2' };
-      const pessoa: IPessoa = { id: '9c4ece13-eaa3-4882-b1af-40b0ce9ead2a' };
+      const pessoa: IPessoa = { id: 'fd7c6c91-fb13-4bc5-bbab-2f23daeeed0f' };
       telefone.pessoa = pessoa;
 
-      const pessoaCollection: IPessoa[] = [{ id: '851ccb0f-e39a-4243-9c55-89ee996f20c5' }];
+      const pessoaCollection: IPessoa[] = [{ id: 'e6d4cd89-bac0-4d9d-9e04-b8fee65b5224' }];
       jest.spyOn(pessoaService, 'query').mockReturnValue(of(new HttpResponse({ body: pessoaCollection })));
       const additionalPessoas = [pessoa];
       const expectedCollection: IPessoa[] = [...additionalPessoas, ...pessoaCollection];
@@ -71,7 +71,7 @@ describe('Telefone Management Update Component', () => {
 
     it('Should update editForm', () => {
       const telefone: ITelefone = { id: '1361f429-3817-4123-8ee3-fdf8943310b2' };
-      const pessoa: IPessoa = { id: '7f29484d-844b-41f1-abe9-04755700b0c5' };
+      const pessoa: IPessoa = { id: '717b6d8e-d9fa-4334-9898-647bd7e0feb7' };
       telefone.pessoa = pessoa;
 
       activatedRoute.data = of({ telefone });

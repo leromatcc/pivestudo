@@ -14,6 +14,12 @@
             <column name="id" type="${uuidType}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
+            <column name="arquivo_imagem" type="${blobType}">
+                <constraints nullable="false" />
+            </column>
+            <column name="arquivo_imagem_content_type" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
             <column name="nome" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
@@ -54,6 +60,8 @@
                   tableName="imagem"
                   usePreparedStatements="true">
             <column name="id" type="string"/>
+            <column name="arquivo_imagem" type="blob"/>
+            <column name="arquivo_imagem_content_type" type="string"/>
             <column name="nome" type="string"/>
             <column name="caminho" type="string"/>
             <column name="descricao" type="string"/>

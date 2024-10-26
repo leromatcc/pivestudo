@@ -1,0 +1,24 @@
+{
+  "pivestudoApp": {
+    "operacao": {
+      "home": {
+        "title": "Operacoes",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Operacao",
+        "createOrEditLabel": "Create or edit a Operacao",
+        "notFound": "No Operacaos found"
+      },
+      "created": "A new Operacao is created with identifier {{ param }}",
+      "updated": "A Operacao is updated with identifier {{ param }}",
+      "deleted": "A Operacao is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Operacao {{ id }}?"
+      },
+      "detail": {
+        "title": "Operacao"
+      },
+      "id": "ID",
+      "descricao": "Descricao"
+    }
+  }
+}

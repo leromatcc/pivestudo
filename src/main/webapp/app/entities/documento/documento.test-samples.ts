@@ -1,25 +1,26 @@
 import { IDocumento, NewDocumento } from './documento.model';
 
 export const sampleWithRequiredData: IDocumento = {
-  id: 'd3809208-8f7e-4fea-a9f9-393a004ba0b6',
-  numeroDocumento: 'unless',
+  id: 'ee999a0b-0659-46d7-8df9-881a1b6eb83a',
+  numeroDocumento: 'progress roughly unto',
 };
 
 export const sampleWithPartialData: IDocumento = {
-  id: 'def1958a-8d10-4a31-82b8-62e6b98e3ca4',
-  tipoDocumento: 'RE',
-  numeroDocumento: 'thoughtfully potable modulo',
+  id: '15ed5ec5-23cd-4f63-9d52-3e610cef8203',
+  tipoDocumento: 'RG',
+  numeroDocumento: 'blue offensively',
+  descricao: 'oval',
 };
 
 export const sampleWithFullData: IDocumento = {
-  id: '9e4a52a3-f9c1-411b-b566-b7ed23251c58',
-  tipoDocumento: 'CPF',
-  numeroDocumento: 'worth ack defiantly',
-  descricao: 'bah',
+  id: 'bb716fc6-be85-4945-b311-f2fe9a5cd406',
+  tipoDocumento: 'RE',
+  numeroDocumento: 'now free allocation',
+  descricao: 'innocent plastic',
 };
 
 export const sampleWithNewData: NewDocumento = {
-  numeroDocumento: 'pfft',
+  numeroDocumento: 'terribly interestingly cannibalise',
   id: null,
 };
 

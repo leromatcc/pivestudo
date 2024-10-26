@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, ElementRef, OnInit, inject } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -7,10 +7,13 @@ import { finalize, map } from 'rxjs/operators';
 import SharedModule from 'app/shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { AlertError } from 'app/shared/alert/alert-error.model';
+import { EventManager, EventWithContent } from 'app/core/util/event-manager.service';
+import { DataUtils, FileLoadError } from 'app/core/util/data-util.service';
 import { IRegistroAcesso } from 'app/entities/registro-acesso/registro-acesso.model';
 import { RegistroAcessoService } from 'app/entities/registro-acesso/service/registro-acesso.service';
-import { IImagem } from '../imagem.model';
 import { ImagemService } from '../service/imagem.service';
+import { IImagem } from '../imagem.model';
 import { ImagemFormGroup, ImagemFormService } from './imagem-form.service';
 
 @Component({
@@ -25,9 +28,12 @@ export class ImagemUpdateComponent implements OnInit {
 
   registroAcessosCollection: IRegistroAcesso[] = [];
 
+  protected dataUtils = inject(DataUtils);
+  protected eventManager = inject(EventManager);
   protected imagemService = inject(ImagemService);
   protected imagemFormService = inject(ImagemFormService);
   protected registroAcessoService = inject(RegistroAcessoService);
+  protected elementRef = inject(ElementRef);
   protected activatedRoute = inject(ActivatedRoute);
 
   // eslint-disable-next-line @typescript-eslint/member-ordering
@@ -45,6 +51,31 @@ export class ImagemUpdateComponent implements OnInit {
 
       this.loadRelationshipsOptions();
     });
+  }
+
+  byteSize(base64String: string): string {
+    return this.dataUtils.byteSize(base64String);
+  }
+
+  openFile(base64String: string, contentType: string | null | undefined): void {
+    this.dataUtils.openFile(base64String, contentType);
+  }
+
+  setFileData(event: Event, field: string, isImage: boolean): void {
+    this.dataUtils.loadFileToForm(event, this.editForm, field, isImage).subscribe({
+      error: (err: FileLoadError) =>
+        this.eventManager.broadcast(new EventWithContent<AlertError>('pivestudoApp.error', { ...err, key: `error.file.${err.key}` })),
+    });
+  }
+
+  clearInputImage(field: string, fieldContentType: string, idInput: string): void {
+    this.editForm.patchValue({
+      [field]: null,
+      [fieldContentType]: null,
+    });
+    if (idInput && this.elementRef.nativeElement.querySelector(`#${idInput}`)) {
+      this.elementRef.nativeElement.querySelector(`#${idInput}`).value = null;
+    }
   }
 
   previousState(): void {

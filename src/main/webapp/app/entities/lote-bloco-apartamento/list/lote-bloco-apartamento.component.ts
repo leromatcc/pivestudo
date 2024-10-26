@@ -41,8 +41,7 @@ export class LoteBlocoApartamentoComponent implements OnInit {
   protected modalService = inject(NgbModal);
   protected ngZone = inject(NgZone);
 
-  trackId = (_index: number, item: ILoteBlocoApartamento): string =>
-    this.loteBlocoApartamentoService.getLoteBlocoApartamentoIdentifier(item);
+  trackId = (item: ILoteBlocoApartamento): string => this.loteBlocoApartamentoService.getLoteBlocoApartamentoIdentifier(item);
 
   ngOnInit(): void {
     this.subscription = combineLatest([this.activatedRoute.queryParamMap, this.activatedRoute.data])

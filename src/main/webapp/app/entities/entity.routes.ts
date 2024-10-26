@@ -76,6 +76,16 @@ const routes: Routes = [
     data: { pageTitle: 'pivestudoApp.imagem.home.title' },
     loadChildren: () => import('./imagem/imagem.routes'),
   },
+  {
+    path: 'sobre',
+    data: { pageTitle: 'pivestudoApp.sobre.home.title' },
+    loadChildren: () => import('./sobre/sobre.routes'),
+  },
+  {
+    path: 'operacao',
+    data: { pageTitle: 'pivestudoApp.operacao.home.title' },
+    loadChildren: () => import('./operacao/operacao.routes'),
+  },
   /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
 ];
 

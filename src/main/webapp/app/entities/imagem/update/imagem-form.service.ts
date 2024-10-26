@@ -31,6 +31,8 @@ type ImagemFormDefaults = Pick<NewImagem, 'id' | 'dateAnalise'>;
 
 type ImagemFormGroupContent = {
   id: FormControl<ImagemFormRawValue['id'] | NewImagem['id']>;
+  arquivoImagem: FormControl<ImagemFormRawValue['arquivoImagem']>;
+  arquivoImagemContentType: FormControl<ImagemFormRawValue['arquivoImagemContentType']>;
   nome: FormControl<ImagemFormRawValue['nome']>;
   caminho: FormControl<ImagemFormRawValue['caminho']>;
   descricao: FormControl<ImagemFormRawValue['descricao']>;
@@ -56,6 +58,10 @@ export class ImagemFormService {
           validators: [Validators.required],
         },
       ),
+      arquivoImagem: new FormControl(imagemRawValue.arquivoImagem, {
+        validators: [Validators.required],
+      }),
+      arquivoImagemContentType: new FormControl(imagemRawValue.arquivoImagemContentType),
       nome: new FormControl(imagemRawValue.nome, {
         validators: [Validators.required],
       }),

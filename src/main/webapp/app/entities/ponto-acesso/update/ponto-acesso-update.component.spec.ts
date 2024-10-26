@@ -49,10 +49,10 @@ describe('PontoAcesso Management Update Component', () => {
   describe('ngOnInit', () => {
     it('Should call Estabelecimento query and add missing value', () => {
       const pontoAcesso: IPontoAcesso = { id: '1361f429-3817-4123-8ee3-fdf8943310b2' };
-      const estabelecimento: IEstabelecimento = { id: '12bac7f7-821f-4ad7-932a-88c7aeb5da2a' };
+      const estabelecimento: IEstabelecimento = { id: 'd9b16b9c-f48d-46f9-8e4a-8cddece98f7b' };
       pontoAcesso.estabelecimento = estabelecimento;
 
-      const estabelecimentoCollection: IEstabelecimento[] = [{ id: '3262e4a1-6136-42a6-a3a5-c74f3e3145b0' }];
+      const estabelecimentoCollection: IEstabelecimento[] = [{ id: 'd272617f-5d23-414a-9e2b-7dd98a9e974a' }];
       jest.spyOn(estabelecimentoService, 'query').mockReturnValue(of(new HttpResponse({ body: estabelecimentoCollection })));
       const additionalEstabelecimentos = [estabelecimento];
       const expectedCollection: IEstabelecimento[] = [...additionalEstabelecimentos, ...estabelecimentoCollection];
@@ -71,7 +71,7 @@ describe('PontoAcesso Management Update Component', () => {
 
     it('Should update editForm', () => {
       const pontoAcesso: IPontoAcesso = { id: '1361f429-3817-4123-8ee3-fdf8943310b2' };
-      const estabelecimento: IEstabelecimento = { id: '9ae4b0be-07db-407a-8dec-f437eaeca7b0' };
+      const estabelecimento: IEstabelecimento = { id: 'd133ad19-5c7c-4abe-8242-e91fa9202c7d' };
       pontoAcesso.estabelecimento = estabelecimento;
 
       activatedRoute.data = of({ pontoAcesso });

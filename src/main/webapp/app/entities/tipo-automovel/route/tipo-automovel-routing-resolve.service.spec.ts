@@ -70,7 +70,7 @@ describe('TipoAutomovel routing resolve service', () => {
       });
 
       // THEN
-      expect(service.find).not.toBeCalled();
+      expect(service.find).not.toHaveBeenCalled();
       expect(resultTipoAutomovel).toEqual(null);
     });
 

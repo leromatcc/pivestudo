@@ -3,28 +3,27 @@ import dayjs from 'dayjs/esm';
 import { IRegistroAcesso, NewRegistroAcesso } from './registro-acesso.model';
 
 export const sampleWithRequiredData: IRegistroAcesso = {
-  id: '6459348e-7408-4615-b4a0-bc3babdd20c9',
-  dataHora: dayjs('2024-09-10T13:13'),
-  acessoAutorizado: 'AUTORIZADO',
+  id: '94e48140-cbbd-409a-85ce-e32a2cc06fec',
+  dataHora: dayjs('2024-09-11T04:11'),
+  acessoAutorizado: 'ERRO',
 };
 
 export const sampleWithPartialData: IRegistroAcesso = {
-  id: 'fcce3e33-f2da-4022-ac2c-20668fbe2cf0',
-  dataHora: dayjs('2024-09-10T04:54'),
-  cadeiaAnalisada: 'healthy',
+  id: 'f6cce31e-a9e0-4020-aa0a-670099335ef5',
+  dataHora: dayjs('2024-09-10T18:57'),
   acessoAutorizado: 'RECUSADO',
 };
 
 export const sampleWithFullData: IRegistroAcesso = {
-  id: 'c3ceeb39-12e3-4a99-abee-0e0d2703ae01',
-  dataHora: dayjs('2024-09-10T16:06'),
-  cadeiaAnalisada: 'sunrise for',
-  acessoAutorizado: 'ERRO',
+  id: '22cd58b4-668e-42bf-8c5c-a323dd240774',
+  dataHora: dayjs('2024-09-10T06:14'),
+  cadeiaAnalisada: 'officially carouse atomize',
+  acessoAutorizado: 'AUTORIZADO',
 };
 
 export const sampleWithNewData: NewRegistroAcesso = {
-  dataHora: dayjs('2024-09-10T19:59'),
-  acessoAutorizado: 'ERRO',
+  dataHora: dayjs('2024-09-10T15:43'),
+  acessoAutorizado: 'RECUSADO',
   id: null,
 };
 

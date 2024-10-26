@@ -1,22 +1,22 @@
 import { IEstabelecimento, NewEstabelecimento } from './estabelecimento.model';
 
 export const sampleWithRequiredData: IEstabelecimento = {
-  id: '2ebdae57-a88d-4df2-87be-05d1b7d905a9',
-  descricao: 'anesthetize',
+  id: '6d24ffe2-d8a8-44d2-8ea3-6580f2a772fd',
+  descricao: 'excitable handle',
 };
 
 export const sampleWithPartialData: IEstabelecimento = {
-  id: '2eed05d9-4f25-4edc-82bd-215f4b65a39b',
-  descricao: 'until',
+  id: 'ac4334b8-a40e-47b7-9dc4-7ac70777c3ce',
+  descricao: 'against now',
 };
 
 export const sampleWithFullData: IEstabelecimento = {
-  id: 'd9c08b5c-cf79-43a1-8a6d-dd214dfcfeee',
-  descricao: 'necessary',
+  id: '71d0f0ef-7a29-4752-979e-1eea514d4c16',
+  descricao: 'granny properly atop',
 };
 
 export const sampleWithNewData: NewEstabelecimento = {
-  descricao: 'unto approve wink',
+  descricao: 'hunger standard venom',
   id: null,
 };
 

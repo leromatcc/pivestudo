@@ -1,0 +1,24 @@
+{
+  "pivestudoApp": {
+    "sobre": {
+      "home": {
+        "title": "Sobres",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Sobre",
+        "createOrEditLabel": "Crear o editar Sobre",
+        "notFound": "Ningún Sobres encontrado"
+      },
+      "created": "Un nuevo Sobre ha sido creado con el identificador {{ param }}",
+      "updated": "Un Sobre ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Sobre ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Sobre {{ id }}?"
+      },
+      "detail": {
+        "title": "Sobre"
+      },
+      "id": "ID",
+      "descricao": "Descricao"
+    }
+  }
+}

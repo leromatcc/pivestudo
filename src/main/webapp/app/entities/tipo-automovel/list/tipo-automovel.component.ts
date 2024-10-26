@@ -41,7 +41,7 @@ export class TipoAutomovelComponent implements OnInit {
   protected modalService = inject(NgbModal);
   protected ngZone = inject(NgZone);
 
-  trackId = (_index: number, item: ITipoAutomovel): string => this.tipoAutomovelService.getTipoAutomovelIdentifier(item);
+  trackId = (item: ITipoAutomovel): string => this.tipoAutomovelService.getTipoAutomovelIdentifier(item);
 
   ngOnInit(): void {
     this.subscription = combineLatest([this.activatedRoute.queryParamMap, this.activatedRoute.data])

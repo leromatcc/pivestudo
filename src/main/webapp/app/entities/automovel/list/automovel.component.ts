@@ -41,7 +41,7 @@ export class AutomovelComponent implements OnInit {
   protected modalService = inject(NgbModal);
   protected ngZone = inject(NgZone);
 
-  trackId = (_index: number, item: IAutomovel): string => this.automovelService.getAutomovelIdentifier(item);
+  trackId = (item: IAutomovel): string => this.automovelService.getAutomovelIdentifier(item);
 
   ngOnInit(): void {
     this.subscription = combineLatest([this.activatedRoute.queryParamMap, this.activatedRoute.data])

@@ -66,7 +66,7 @@
           </tr>
         </thead>
         <tbody>
-          @for (telefone of telefones; track trackId) {
+          @for (telefone of telefones; track trackId(telefone)) {
             <tr data-cy="entityTable">
               <td>
                 <a [routerLink]="['/telefone', telefone.id, 'view']">{{ telefone.id }}</a>

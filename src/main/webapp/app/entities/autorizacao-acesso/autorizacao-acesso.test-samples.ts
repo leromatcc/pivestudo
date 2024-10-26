@@ -3,34 +3,34 @@ import dayjs from 'dayjs/esm';
 import { IAutorizacaoAcesso, NewAutorizacaoAcesso } from './autorizacao-acesso.model';
 
 export const sampleWithRequiredData: IAutorizacaoAcesso = {
-  id: 'd1d05cbd-8e2c-4135-b822-816bda31cbb3',
-  descricao: 'maim late deny',
-  dataInicial: dayjs('2024-09-10T12:18'),
-  dataFinal: dayjs('2024-09-11T04:06'),
-  status: 'INATIVO',
+  id: '15286d3c-bcc4-4587-99f7-35304de5d519',
+  descricao: 'finally quietly sinful',
+  dataInicial: dayjs('2024-09-10T05:06'),
+  dataFinal: dayjs('2024-09-11T00:08'),
+  status: 'ATIVO',
 };
 
 export const sampleWithPartialData: IAutorizacaoAcesso = {
-  id: '45d5e350-d953-41f9-9e43-e1e286c7c697',
-  descricao: 'under beside whenever',
-  dataInicial: dayjs('2024-09-10T11:22'),
-  dataFinal: dayjs('2024-09-10T19:56'),
+  id: 'fd615dfe-2f0c-4644-b406-2ddaee3b013e',
+  descricao: 'than',
+  dataInicial: dayjs('2024-09-10T11:50'),
+  dataFinal: dayjs('2024-09-10T10:12'),
   status: 'EXPIRADO',
 };
 
 export const sampleWithFullData: IAutorizacaoAcesso = {
-  id: '50cbb40b-df09-4f6d-b56c-175bd4fbe825',
-  descricao: 'dish wherever unabashedly',
-  dataInicial: dayjs('2024-09-10T13:22'),
-  dataFinal: dayjs('2024-09-10T13:27'),
-  status: 'INATIVO',
+  id: 'c59236be-8c23-4d05-bbc9-7bb510bbae59',
+  descricao: 'sans',
+  dataInicial: dayjs('2024-09-10T20:51'),
+  dataFinal: dayjs('2024-09-10T12:58'),
+  status: 'EXPIRADO',
 };
 
 export const sampleWithNewData: NewAutorizacaoAcesso = {
-  descricao: 'oh unto pish',
-  dataInicial: dayjs('2024-09-10T09:16'),
-  dataFinal: dayjs('2024-09-10T09:26'),
-  status: 'INATIVO',
+  descricao: 'anti gosh',
+  dataInicial: dayjs('2024-09-10T21:25'),
+  dataFinal: dayjs('2024-09-10T12:37'),
+  status: 'ATIVO',
   id: null,
 };
 

@@ -3,6 +3,8 @@ import { IRegistroAcesso } from 'app/entities/registro-acesso/registro-acesso.mo
 
 export interface IImagem {
   id: string;
+  arquivoImagem?: string | null;
+  arquivoImagemContentType?: string | null;
   nome?: string | null;
   caminho?: string | null;
   descricao?: string | null;

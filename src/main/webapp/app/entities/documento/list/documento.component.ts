@@ -41,7 +41,7 @@ export class DocumentoComponent implements OnInit {
   protected modalService = inject(NgbModal);
   protected ngZone = inject(NgZone);
 
-  trackId = (_index: number, item: IDocumento): string => this.documentoService.getDocumentoIdentifier(item);
+  trackId = (item: IDocumento): string => this.documentoService.getDocumentoIdentifier(item);
 
   ngOnInit(): void {
     this.subscription = combineLatest([this.activatedRoute.queryParamMap, this.activatedRoute.data])

@@ -15,6 +15,64 @@
           </div>
         }
 
+        @let arquivoImagemRef = editForm.get('arquivoImagem')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_arquivoImagem" jhiTranslate="pivestudoApp.imagem.arquivoImagem">Arquivo Imagem</label>
+          <div>
+            @if (arquivoImagemRef.value) {
+              <img
+                [src]="'data:' + editForm.get('arquivoImagemContentType')!.value + ';base64,' + arquivoImagemRef.value"
+                style="max-height: 100px"
+                alt="imagem"
+              />
+            }
+            @if (arquivoImagemRef.value) {
+              <div class="form-text text-danger clearfix">
+                <span class="pull-start"
+                  >{{ editForm.get('arquivoImagemContentType')!.value }}, {{ byteSize(arquivoImagemRef.value!) }}</span
+                >
+                <button
+                  type="button"
+                  (click)="clearInputImage('arquivoImagem', 'arquivoImagemContentType', 'file_arquivoImagem')"
+                  class="btn btn-secondary btn-xs pull-end"
+                >
+                  <fa-icon icon="times"></fa-icon>
+                </button>
+              </div>
+            }
+            <input
+              type="file"
+              id="file_arquivoImagem"
+              data-cy="arquivoImagem"
+              (change)="setFileData($event, 'arquivoImagem', true)"
+              accept="image/*"
+              jhiTranslate="entity.action.addimage"
+            />
+          </div>
+          <input
+            type="hidden"
+            class="form-control"
+            name="arquivoImagem"
+            id="field_arquivoImagem"
+            data-cy="arquivoImagem"
+            formControlName="arquivoImagem"
+          />
+          <input
+            type="hidden"
+            class="form-control"
+            name="arquivoImagemContentType"
+            id="field_arquivoImagemContentType"
+            formControlName="arquivoImagemContentType"
+          />
+          @if (arquivoImagemRef.invalid && (arquivoImagemRef.dirty || arquivoImagemRef.touched)) {
+            <div>
+              @if (editForm.get('arquivoImagem')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
         @let nomeRef = editForm.get('nome')!;
         <div class="mb-3">
           <label class="form-label" for="field_nome" jhiTranslate="pivestudoApp.imagem.nome">Nome</label>

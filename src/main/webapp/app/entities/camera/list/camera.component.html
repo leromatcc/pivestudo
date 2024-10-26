@@ -73,7 +73,7 @@
           </tr>
         </thead>
         <tbody>
-          @for (camera of cameras; track trackId) {
+          @for (camera of cameras; track trackId(camera)) {
             <tr data-cy="entityTable">
               <td>
                 <a [routerLink]="['/camera', camera.id, 'view']">{{ camera.id }}</a>

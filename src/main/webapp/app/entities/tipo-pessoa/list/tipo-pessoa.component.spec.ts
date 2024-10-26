@@ -91,7 +91,7 @@ describe('TipoPessoa Management Component', () => {
     it('Should forward to tipoPessoaService', () => {
       const entity = { id: 123 };
       jest.spyOn(service, 'getTipoPessoaIdentifier');
-      const id = comp.trackId(0, entity);
+      const id = comp.trackId(entity);
       expect(service.getTipoPessoaIdentifier).toHaveBeenCalledWith(entity);
       expect(id).toBe(entity.id);
     });

@@ -1,20 +1,18 @@
 import { ILoteBlocoApartamento, NewLoteBlocoApartamento } from './lote-bloco-apartamento.model';
 
 export const sampleWithRequiredData: ILoteBlocoApartamento = {
-  id: 'f6283dcc-b390-4198-8881-d275f268d506',
+  id: '09812528-560c-415a-b477-7ca53934ee58',
 };
 
 export const sampleWithPartialData: ILoteBlocoApartamento = {
-  id: 'a1f5ea64-7777-4c78-ac0a-a5d37953f42e',
-  bloco: 'everlasting where uselessly',
-  andar: 'past',
+  id: 'cdd050ae-bbb3-4e9c-8b45-ecacbd370c15',
 };
 
 export const sampleWithFullData: ILoteBlocoApartamento = {
-  id: 'bdb0bd3d-e19c-4c6b-b741-5deec7abc5b4',
-  bloco: 'scrimp knee',
-  andar: 'leafy',
-  numero: 'psst helo behind',
+  id: '56eda03b-f7a6-4a32-b983-50160d3bff6c',
+  bloco: 'lest mount',
+  andar: 'form dearly handy',
+  numero: 'since',
 };
 
 export const sampleWithNewData: NewLoteBlocoApartamento = {

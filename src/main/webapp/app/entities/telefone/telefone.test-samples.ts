@@ -1,24 +1,24 @@
 import { ITelefone, NewTelefone } from './telefone.model';
 
 export const sampleWithRequiredData: ITelefone = {
-  id: '592a6dfe-0384-4156-a157-b802af0d011b',
-  numero: 'regarding furthermore uh-huh',
+  id: '8165b0a0-0187-4cbb-a900-134d233c7671',
+  numero: 'unwelcome despite especially',
 };
 
 export const sampleWithPartialData: ITelefone = {
-  id: '273c3cc0-7268-4741-a88c-e7668156ecf4',
-  tipoTelefone: 'dwell jubilant',
-  numero: 'pervade for',
+  id: 'f6c1bf44-99bd-4020-ab3f-8371734ad9bf',
+  tipoTelefone: 'barring waft as',
+  numero: 'carp onto hmph',
 };
 
 export const sampleWithFullData: ITelefone = {
-  id: '202f16cc-210b-47f4-84b4-5989eb9d5032',
-  tipoTelefone: 'eek',
-  numero: 'vacillate on',
+  id: '3fc356c8-6f1a-46a3-95e8-f755070dfcbd',
+  tipoTelefone: 'careless',
+  numero: 'but',
 };
 
 export const sampleWithNewData: NewTelefone = {
-  numero: 'wild rightfully bleed',
+  numero: 'tomorrow at',
   id: null,
 };
 

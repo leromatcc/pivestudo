@@ -1,0 +1,24 @@
+{
+  "pivestudoApp": {
+    "operacao": {
+      "home": {
+        "title": "Operacoes",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Operacao",
+        "createOrEditLabel": "Crear o editar Operacao",
+        "notFound": "Ningún Operacaos encontrado"
+      },
+      "created": "Un nuevo Operacao ha sido creado con el identificador {{ param }}",
+      "updated": "Un Operacao ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Operacao ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Operacao {{ id }}?"
+      },
+      "detail": {
+        "title": "Operacao"
+      },
+      "id": "ID",
+      "descricao": "Descricao"
+    }
+  }
+}

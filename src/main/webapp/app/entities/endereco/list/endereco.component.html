@@ -115,7 +115,7 @@
           </tr>
         </thead>
         <tbody>
-          @for (endereco of enderecos; track trackId) {
+          @for (endereco of enderecos; track trackId(endereco)) {
             <tr data-cy="entityTable">
               <td>
                 <a [routerLink]="['/endereco', endereco.id, 'view']">{{ endereco.id }}</a>

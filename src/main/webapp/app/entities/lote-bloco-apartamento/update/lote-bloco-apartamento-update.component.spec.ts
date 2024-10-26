@@ -53,10 +53,10 @@ describe('LoteBlocoApartamento Management Update Component', () => {
   describe('ngOnInit', () => {
     it('Should call Endereco query and add missing value', () => {
       const loteBlocoApartamento: ILoteBlocoApartamento = { id: '1361f429-3817-4123-8ee3-fdf8943310b2' };
-      const endereco: IEndereco = { id: '8d51324a-ec50-41a2-ba9b-0e6075a446e9' };
+      const endereco: IEndereco = { id: '71ed76b6-7771-47c2-a72d-9486ede09cb7' };
       loteBlocoApartamento.endereco = endereco;
 
-      const enderecoCollection: IEndereco[] = [{ id: '8468c968-90d7-40c9-8c58-cb762d01440d' }];
+      const enderecoCollection: IEndereco[] = [{ id: '92b21e24-756d-4d7a-9a58-85d07068996b' }];
       jest.spyOn(enderecoService, 'query').mockReturnValue(of(new HttpResponse({ body: enderecoCollection })));
       const additionalEnderecos = [endereco];
       const expectedCollection: IEndereco[] = [...additionalEnderecos, ...enderecoCollection];
@@ -75,10 +75,10 @@ describe('LoteBlocoApartamento Management Update Component', () => {
 
     it('Should call Pessoa query and add missing value', () => {
       const loteBlocoApartamento: ILoteBlocoApartamento = { id: '1361f429-3817-4123-8ee3-fdf8943310b2' };
-      const pessoa: IPessoa = { id: 'a1773bd6-8d28-46e0-9da9-af4ac3e384e8' };
+      const pessoa: IPessoa = { id: 'fea167bb-0200-4eb1-a815-8c48328d454e' };
       loteBlocoApartamento.pessoa = pessoa;
 
-      const pessoaCollection: IPessoa[] = [{ id: '9380634b-7fb6-4df7-8ae6-08fde7b7786f' }];
+      const pessoaCollection: IPessoa[] = [{ id: '52b9861c-d2e2-441b-ab62-8638646adb40' }];
       jest.spyOn(pessoaService, 'query').mockReturnValue(of(new HttpResponse({ body: pessoaCollection })));
       const additionalPessoas = [pessoa];
       const expectedCollection: IPessoa[] = [...additionalPessoas, ...pessoaCollection];
@@ -97,9 +97,9 @@ describe('LoteBlocoApartamento Management Update Component', () => {
 
     it('Should update editForm', () => {
       const loteBlocoApartamento: ILoteBlocoApartamento = { id: '1361f429-3817-4123-8ee3-fdf8943310b2' };
-      const endereco: IEndereco = { id: '91e24c4b-33b5-46e1-bc38-61ba66ee99cc' };
+      const endereco: IEndereco = { id: '14f58f5d-abb9-4824-a334-27b3bd966849' };
       loteBlocoApartamento.endereco = endereco;
-      const pessoa: IPessoa = { id: '3932ee93-8371-4662-a369-9721adde0244' };
+      const pessoa: IPessoa = { id: '02c646aa-f62d-45df-a1a6-ddd61dce71b5' };
       loteBlocoApartamento.pessoa = pessoa;
 
       activatedRoute.data = of({ loteBlocoApartamento });

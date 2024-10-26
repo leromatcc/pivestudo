@@ -1,25 +1,25 @@
 import { ITipoAutomovel, NewTipoAutomovel } from './tipo-automovel.model';
 
 export const sampleWithRequiredData: ITipoAutomovel = {
-  id: '55cdd2a6-3e7a-41a9-a0d7-0b6f7ab83af0',
-  descricao: 'miniature',
-  grupo: 'OUTRO',
-};
-
-export const sampleWithPartialData: ITipoAutomovel = {
-  id: 'e0ca0435-5b1e-46d9-8b3e-cd7e66558a81',
-  descricao: 'forenenst stint once',
+  id: '9f606f00-f6a7-4a07-8d0f-32cc609b3a75',
+  descricao: 'gee',
   grupo: 'CAMINHAO',
 };
 
+export const sampleWithPartialData: ITipoAutomovel = {
+  id: '8189a41b-e5c2-40b6-9bcd-f9e509b1fe11',
+  descricao: 'extra-large remark naturally',
+  grupo: 'OUTRO',
+};
+
 export const sampleWithFullData: ITipoAutomovel = {
-  id: '29ef06d0-c64f-490d-a03f-96aa875a4097',
-  descricao: 'toddle glimmering eek',
+  id: '759584a8-39bf-4b20-b377-6bb60d769109',
+  descricao: 'certainly incidentally',
   grupo: 'MOTO',
 };
 
 export const sampleWithNewData: NewTipoAutomovel = {
-  descricao: 'adjudicate video',
+  descricao: 'motivate apparatus westernize',
   grupo: 'CAMINHAO',
   id: null,
 };

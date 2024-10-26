@@ -49,10 +49,10 @@ describe('Documento Management Update Component', () => {
   describe('ngOnInit', () => {
     it('Should call Pessoa query and add missing value', () => {
       const documento: IDocumento = { id: '1361f429-3817-4123-8ee3-fdf8943310b2' };
-      const pessoa: IPessoa = { id: 'ec23c3ea-9190-4ce6-b314-2ef47e8eec14' };
+      const pessoa: IPessoa = { id: '192e3316-3971-4de2-8419-203a129e7ffc' };
       documento.pessoa = pessoa;
 
-      const pessoaCollection: IPessoa[] = [{ id: 'e889d8c0-00ef-48c5-bfdd-337e106641f9' }];
+      const pessoaCollection: IPessoa[] = [{ id: '01c72d54-2e37-4fa1-84a3-8c4d9fc3059d' }];
       jest.spyOn(pessoaService, 'query').mockReturnValue(of(new HttpResponse({ body: pessoaCollection })));
       const additionalPessoas = [pessoa];
       const expectedCollection: IPessoa[] = [...additionalPessoas, ...pessoaCollection];
@@ -71,7 +71,7 @@ describe('Documento Management Update Component', () => {
 
     it('Should update editForm', () => {
       const documento: IDocumento = { id: '1361f429-3817-4123-8ee3-fdf8943310b2' };
-      const pessoa: IPessoa = { id: '0dc77c46-7c49-4d1d-8f2b-81b30bccd5fb' };
+      const pessoa: IPessoa = { id: 'da8aea54-81cc-43f4-8399-bf8b2002282a' };
       documento.pessoa = pessoa;
 
       activatedRoute.data = of({ documento });

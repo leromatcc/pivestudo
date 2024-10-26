@@ -1,27 +1,30 @@
 import { IEndereco, NewEndereco } from './endereco.model';
 
 export const sampleWithRequiredData: IEndereco = {
-  id: '20f8618f-4b5c-44dd-bd72-1f06b21634e1',
+  id: 'bcdd2f62-641a-4c56-8f4c-4772e91bf0e0',
 };
 
 export const sampleWithPartialData: IEndereco = {
-  id: 'c4ccc497-6742-4de3-b941-0bef20be3030',
-  complemento: 'provided accomplished',
-  cidade: 'oddly',
-  estado: 'acceptance',
+  id: '23865a01-c841-42a4-b02f-3267fb013a71',
+  descricao: 'vision musty daily',
+  cep: 'taxicab whenever',
+  numero: 'woot exactly save',
+  complemento: 'even structure',
+  referencia: 'platter miserable',
+  estado: 'unnaturally',
 };
 
 export const sampleWithFullData: IEndereco = {
-  id: '013c3824-f102-4fae-8400-e2cfa382e697',
-  descricao: 'deeply against familiar',
-  cep: 'that',
-  logradouro: 'incidentally tackle how',
-  numero: 'soon fixed',
-  complemento: 'corporal',
-  referencia: 'past righteously sugar',
-  cidade: 'moment beyond brr',
-  estado: 'ew translation',
-  pais: 'near hmph cardboard',
+  id: '14d9e443-b613-46b6-9e9c-f66edf08dbdf',
+  descricao: 'against',
+  cep: 'book content',
+  logradouro: 'surprisingly',
+  numero: 'urgently crossly lest',
+  complemento: 'shyly yearly ew',
+  referencia: 'so',
+  cidade: 'technician',
+  estado: 'gosh quickly',
+  pais: 'whenever comfortable',
 };
 
 export const sampleWithNewData: NewEndereco = {

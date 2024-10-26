@@ -56,7 +56,7 @@ describe('Pessoa Management Update Component', () => {
       const user: IUser = { id: 28055 };
       pessoa.user = user;
 
-      const userCollection: IUser[] = [{ id: 8445 }];
+      const userCollection: IUser[] = [{ id: 26832 }];
       jest.spyOn(userService, 'query').mockReturnValue(of(new HttpResponse({ body: userCollection })));
       const additionalUsers = [user];
       const expectedCollection: IUser[] = [...additionalUsers, ...userCollection];
@@ -75,10 +75,10 @@ describe('Pessoa Management Update Component', () => {
 
     it('Should call tipoPessoa query and add missing value', () => {
       const pessoa: IPessoa = { id: '1361f429-3817-4123-8ee3-fdf8943310b2' };
-      const tipoPessoa: ITipoPessoa = { id: 25320 };
+      const tipoPessoa: ITipoPessoa = { id: 24807 };
       pessoa.tipoPessoa = tipoPessoa;
 
-      const tipoPessoaCollection: ITipoPessoa[] = [{ id: 10573 }];
+      const tipoPessoaCollection: ITipoPessoa[] = [{ id: 8525 }];
       jest.spyOn(tipoPessoaService, 'query').mockReturnValue(of(new HttpResponse({ body: tipoPessoaCollection })));
       const expectedCollection: ITipoPessoa[] = [tipoPessoa, ...tipoPessoaCollection];
       jest.spyOn(tipoPessoaService, 'addTipoPessoaToCollectionIfMissing').mockReturnValue(expectedCollection);
@@ -93,9 +93,9 @@ describe('Pessoa Management Update Component', () => {
 
     it('Should update editForm', () => {
       const pessoa: IPessoa = { id: '1361f429-3817-4123-8ee3-fdf8943310b2' };
-      const user: IUser = { id: 26832 };
+      const user: IUser = { id: 22481 };
       pessoa.user = user;
-      const tipoPessoa: ITipoPessoa = { id: 24807 };
+      const tipoPessoa: ITipoPessoa = { id: 15113 };
       pessoa.tipoPessoa = tipoPessoa;
 
       activatedRoute.data = of({ pessoa });

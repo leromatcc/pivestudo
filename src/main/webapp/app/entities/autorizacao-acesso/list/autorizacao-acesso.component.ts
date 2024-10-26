@@ -41,7 +41,7 @@ export class AutorizacaoAcessoComponent implements OnInit {
   protected modalService = inject(NgbModal);
   protected ngZone = inject(NgZone);
 
-  trackId = (_index: number, item: IAutorizacaoAcesso): string => this.autorizacaoAcessoService.getAutorizacaoAcessoIdentifier(item);
+  trackId = (item: IAutorizacaoAcesso): string => this.autorizacaoAcessoService.getAutorizacaoAcessoIdentifier(item);
 
   ngOnInit(): void {
     this.subscription = combineLatest([this.activatedRoute.queryParamMap, this.activatedRoute.data])

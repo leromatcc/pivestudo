@@ -15,6 +15,21 @@
           <dd>
             <span>{{ imagemRef.id }}</span>
           </dd>
+          <dt><span jhiTranslate="pivestudoApp.imagem.arquivoImagem">Arquivo Imagem</span></dt>
+          <dd>
+            @if (imagemRef.arquivoImagem) {
+              <div>
+                <a (click)="openFile(imagemRef.arquivoImagem ?? '', imagemRef.arquivoImagemContentType)">
+                  <img
+                    [src]="'data:' + imagemRef.arquivoImagemContentType + ';base64,' + imagemRef.arquivoImagem"
+                    style="max-width: 100%"
+                    alt="imagem"
+                  />
+                </a>
+                {{ imagemRef.arquivoImagemContentType }}, {{ byteSize(imagemRef.arquivoImagem ?? '') }}
+              </div>
+            }
+          </dd>
           <dt><span jhiTranslate="pivestudoApp.imagem.nome">Nome</span></dt>
           <dd>
             <span>{{ imagemRef.nome }}</span>

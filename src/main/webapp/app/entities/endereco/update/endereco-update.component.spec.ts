@@ -49,10 +49,10 @@ describe('Endereco Management Update Component', () => {
   describe('ngOnInit', () => {
     it('Should call Pessoa query and add missing value', () => {
       const endereco: IEndereco = { id: '1361f429-3817-4123-8ee3-fdf8943310b2' };
-      const pessoa: IPessoa = { id: 'a7ba2df5-2436-4d4a-b3ee-ede8d702f0f3' };
+      const pessoa: IPessoa = { id: 'b43ed82b-1f9b-4946-b80d-571951b7b4e8' };
       endereco.pessoa = pessoa;
 
-      const pessoaCollection: IPessoa[] = [{ id: 'f63d642c-1dc8-4a96-9bea-cc80cdd9ddbe' }];
+      const pessoaCollection: IPessoa[] = [{ id: 'a6b89d76-1625-40c2-8ac8-09b923483817' }];
       jest.spyOn(pessoaService, 'query').mockReturnValue(of(new HttpResponse({ body: pessoaCollection })));
       const additionalPessoas = [pessoa];
       const expectedCollection: IPessoa[] = [...additionalPessoas, ...pessoaCollection];
@@ -71,7 +71,7 @@ describe('Endereco Management Update Component', () => {
 
     it('Should update editForm', () => {
       const endereco: IEndereco = { id: '1361f429-3817-4123-8ee3-fdf8943310b2' };
-      const pessoa: IPessoa = { id: '0b4fb88a-fbed-4e56-9c5c-b4582c2a417e' };
+      const pessoa: IPessoa = { id: 'bfd3b1d6-1098-4674-ae09-f72f23691ccf' };
       endereco.pessoa = pessoa;
 
       activatedRoute.data = of({ endereco });

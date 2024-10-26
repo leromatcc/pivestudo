@@ -42,6 +42,13 @@
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
             </th>
+            <th scope="col" jhiSortBy="arquivoImagem">
+              <div class="d-flex">
+                <span jhiTranslate="pivestudoApp.imagem.arquivoImagem">Arquivo Imagem</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
             <th scope="col" jhiSortBy="nome">
               <div class="d-flex">
                 <span jhiTranslate="pivestudoApp.imagem.nome">Nome</span>
@@ -87,10 +94,22 @@
           </tr>
         </thead>
         <tbody>
-          @for (imagem of imagems; track trackId) {
+          @for (imagem of imagems; track trackId(imagem)) {
             <tr data-cy="entityTable">
               <td>
                 <a [routerLink]="['/imagem', imagem.id, 'view']">{{ imagem.id }}</a>
+              </td>
+              <td>
+                @if (imagem.arquivoImagem) {
+                  <a (click)="openFile(imagem.arquivoImagem, imagem.arquivoImagemContentType)">
+                    <img
+                      [src]="'data:' + imagem.arquivoImagemContentType + ';base64,' + imagem.arquivoImagem"
+                      style="max-height: 30px"
+                      alt="imagem"
+                    />
+                  </a>
+                  <span>{{ imagem.arquivoImagemContentType }}, {{ byteSize(imagem.arquivoImagem) }}</span>
+                }
               </td>
               <td>{{ imagem.nome }}</td>
               <td>{{ imagem.caminho }}</td>

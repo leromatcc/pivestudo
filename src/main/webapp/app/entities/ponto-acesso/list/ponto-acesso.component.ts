@@ -41,7 +41,7 @@ export class PontoAcessoComponent implements OnInit {
   protected modalService = inject(NgbModal);
   protected ngZone = inject(NgZone);
 
-  trackId = (_index: number, item: IPontoAcesso): string => this.pontoAcessoService.getPontoAcessoIdentifier(item);
+  trackId = (item: IPontoAcesso): string => this.pontoAcessoService.getPontoAcessoIdentifier(item);
 
   ngOnInit(): void {
     this.subscription = combineLatest([this.activatedRoute.queryParamMap, this.activatedRoute.data])

@@ -41,7 +41,7 @@ export class EnderecoComponent implements OnInit {
   protected modalService = inject(NgbModal);
   protected ngZone = inject(NgZone);
 
-  trackId = (_index: number, item: IEndereco): string => this.enderecoService.getEnderecoIdentifier(item);
+  trackId = (item: IEndereco): string => this.enderecoService.getEnderecoIdentifier(item);
 
   ngOnInit(): void {
     this.subscription = combineLatest([this.activatedRoute.queryParamMap, this.activatedRoute.data])

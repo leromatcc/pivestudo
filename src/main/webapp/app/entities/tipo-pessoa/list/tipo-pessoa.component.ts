@@ -41,7 +41,7 @@ export class TipoPessoaComponent implements OnInit {
   protected modalService = inject(NgbModal);
   protected ngZone = inject(NgZone);
 
-  trackId = (_index: number, item: ITipoPessoa): number => this.tipoPessoaService.getTipoPessoaIdentifier(item);
+  trackId = (item: ITipoPessoa): number => this.tipoPessoaService.getTipoPessoaIdentifier(item);
 
   ngOnInit(): void {
     this.subscription = combineLatest([this.activatedRoute.queryParamMap, this.activatedRoute.data])

@@ -41,7 +41,7 @@ export class EstabelecimentoComponent implements OnInit {
   protected modalService = inject(NgbModal);
   protected ngZone = inject(NgZone);
 
-  trackId = (_index: number, item: IEstabelecimento): string => this.estabelecimentoService.getEstabelecimentoIdentifier(item);
+  trackId = (item: IEstabelecimento): string => this.estabelecimentoService.getEstabelecimentoIdentifier(item);
 
   ngOnInit(): void {
     this.subscription = combineLatest([this.activatedRoute.queryParamMap, this.activatedRoute.data])

@@ -28,6 +28,14 @@ public class Imagem implements Serializable {
     @Column(name = "id", length = 36)
     private UUID id;
 
+    @Lob
+    @Column(name = "arquivo_imagem", nullable = false)
+    private byte[] arquivoImagem;
+
+    @NotNull
+    @Column(name = "arquivo_imagem_content_type", nullable = false)
+    private String arquivoImagemContentType;
+
     @NotNull
     @Column(name = "nome", nullable = false)
     private String nome;
@@ -64,6 +72,32 @@ public class Imagem implements Serializable {
 
     public void setId(UUID id) {
         this.id = id;
+    }
+
+    public byte[] getArquivoImagem() {
+        return this.arquivoImagem;
+    }
+
+    public Imagem arquivoImagem(byte[] arquivoImagem) {
+        this.setArquivoImagem(arquivoImagem);
+        return this;
+    }
+
+    public void setArquivoImagem(byte[] arquivoImagem) {
+        this.arquivoImagem = arquivoImagem;
+    }
+
+    public String getArquivoImagemContentType() {
+        return this.arquivoImagemContentType;
+    }
+
+    public Imagem arquivoImagemContentType(String arquivoImagemContentType) {
+        this.arquivoImagemContentType = arquivoImagemContentType;
+        return this;
+    }
+
+    public void setArquivoImagemContentType(String arquivoImagemContentType) {
+        this.arquivoImagemContentType = arquivoImagemContentType;
     }
 
     public String getNome() {
@@ -168,6 +202,8 @@ public class Imagem implements Serializable {
     public String toString() {
         return "Imagem{" +
             "id=" + getId() +
+            ", arquivoImagem='" + getArquivoImagem() + "'" +
+            ", arquivoImagemContentType='" + getArquivoImagemContentType() + "'" +
             ", nome='" + getNome() + "'" +
             ", caminho='" + getCaminho() + "'" +
             ", descricao='" + getDescricao() + "'" +

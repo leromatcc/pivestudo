@@ -53,10 +53,10 @@ describe('AutorizacaoAcesso Management Update Component', () => {
   describe('ngOnInit', () => {
     it('Should call Pessoa query and add missing value', () => {
       const autorizacaoAcesso: IAutorizacaoAcesso = { id: '1361f429-3817-4123-8ee3-fdf8943310b2' };
-      const pessoa: IPessoa = { id: 'ba882ade-4a85-474f-a851-6c1c833f8423' };
+      const pessoa: IPessoa = { id: '7109e58e-3829-4006-8c78-7d25ef3f036c' };
       autorizacaoAcesso.pessoa = pessoa;
 
-      const pessoaCollection: IPessoa[] = [{ id: '979ab6fe-88b3-42c0-a70d-252a832fa129' }];
+      const pessoaCollection: IPessoa[] = [{ id: '63bff3c9-cc73-46fb-b6fe-e8e5174f6527' }];
       jest.spyOn(pessoaService, 'query').mockReturnValue(of(new HttpResponse({ body: pessoaCollection })));
       const additionalPessoas = [pessoa];
       const expectedCollection: IPessoa[] = [...additionalPessoas, ...pessoaCollection];
@@ -75,10 +75,10 @@ describe('AutorizacaoAcesso Management Update Component', () => {
 
     it('Should call Estabelecimento query and add missing value', () => {
       const autorizacaoAcesso: IAutorizacaoAcesso = { id: '1361f429-3817-4123-8ee3-fdf8943310b2' };
-      const estabelecimento: IEstabelecimento = { id: 'b49d24c0-ed80-46e3-8529-20f83f89e59d' };
+      const estabelecimento: IEstabelecimento = { id: '4d40d0e5-908f-495d-a072-47325420d1dd' };
       autorizacaoAcesso.estabelecimento = estabelecimento;
 
-      const estabelecimentoCollection: IEstabelecimento[] = [{ id: '0a78284e-793f-4245-a141-2205d911dcde' }];
+      const estabelecimentoCollection: IEstabelecimento[] = [{ id: '10b78536-c686-4956-82ba-5a8d2b0dbd0a' }];
       jest.spyOn(estabelecimentoService, 'query').mockReturnValue(of(new HttpResponse({ body: estabelecimentoCollection })));
       const additionalEstabelecimentos = [estabelecimento];
       const expectedCollection: IEstabelecimento[] = [...additionalEstabelecimentos, ...estabelecimentoCollection];
@@ -97,9 +97,9 @@ describe('AutorizacaoAcesso Management Update Component', () => {
 
     it('Should update editForm', () => {
       const autorizacaoAcesso: IAutorizacaoAcesso = { id: '1361f429-3817-4123-8ee3-fdf8943310b2' };
-      const pessoa: IPessoa = { id: 'b403ee4d-7852-4db5-a17f-398b19248698' };
+      const pessoa: IPessoa = { id: 'b0249b88-5441-4ea3-8a0d-e6d8af3fb8a3' };
       autorizacaoAcesso.pessoa = pessoa;
-      const estabelecimento: IEstabelecimento = { id: 'e1b0fb57-28a5-493e-b6ac-9688d699f506' };
+      const estabelecimento: IEstabelecimento = { id: '6740ed59-f5d2-4d1f-8b53-b41f6dc85c73' };
       autorizacaoAcesso.estabelecimento = estabelecimento;
 
       activatedRoute.data = of({ autorizacaoAcesso });

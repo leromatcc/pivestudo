@@ -41,7 +41,7 @@ export class TelefoneComponent implements OnInit {
   protected modalService = inject(NgbModal);
   protected ngZone = inject(NgZone);
 
-  trackId = (_index: number, item: ITelefone): string => this.telefoneService.getTelefoneIdentifier(item);
+  trackId = (item: ITelefone): string => this.telefoneService.getTelefoneIdentifier(item);
 
   ngOnInit(): void {
     this.subscription = combineLatest([this.activatedRoute.queryParamMap, this.activatedRoute.data])

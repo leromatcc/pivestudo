@@ -1,0 +1,198 @@
+application {
+  config {
+    applicationType monolith
+    authenticationType jwt
+    baseName pivestudo
+    blueprints []
+    buildTool maven
+    cacheProvider ehcache
+    clientFramework angular
+    clientPackageManager npm
+    creationTimestamp 1725827323526
+    databaseType sql
+    devDatabaseType h2Disk
+    enableHibernateCache true
+    enableSwaggerCodegen false
+    enableTranslation true
+    jhiPrefix jhi
+    jhipsterVersion "8.7.1"
+    jwtSecretKey "MzZjOWEwNGY0Njc0YWEzMGJiZmRlZTNiOWIxMmQyMmEwZTBiZmU3YWEwZGM1YjkyMjEwOGU3MWZiNzU2MDE4MGU1NjQwYzI5ZWY0NmU5NGNmNzViMDBkNWZlNmIzZjk5OGJlMTA4ODRhMmZjOGYwZTY2ZTFjNWQwZjAwYjQ3ZmQ="
+    languages [en, fr, pt-br, es]
+    nativeLanguage en
+    packageName tcc.leroma.pivestudo
+    prodDatabaseType mariadb
+    searchEngine false
+    serverPort 8080
+    serviceDiscoveryType false
+    testFrameworks []
+    websocket false
+    withAdminUi true
+  }
+
+  entities Automovel, AutorizacaoAcesso, Camera, Documento, Endereco, Estabelecimento, Imagem, LoteBlocoApartamento, Operacao, Pessoa, PontoAcesso, RegistroAcesso, Sobre, Telefone, TipoAutomovel, TipoPessoa
+}
+
+@ChangelogDate("20240911043254")
+entity Automovel {
+  id UUID
+  placa String required
+  descricao String
+}
+@ChangelogDate("20240911043256")
+entity AutorizacaoAcesso {
+  id UUID
+  descricao String required
+  dataInicial Instant required
+  dataFinal Instant required
+  status StatusAutorizacao required
+}
+@ChangelogDate("20240911043300")
+entity Camera {
+  descricao String required
+  enderecoRede String required
+  api String
+}
+@ChangelogDate("20240911043251")
+entity Documento {
+  id UUID
+  tipoDocumento TipoDocumento
+  numeroDocumento String required
+  descricao String
+}
+@ChangelogDate("20240911043252")
+entity Endereco {
+  id UUID
+  descricao String
+  cep String
+  logradouro String
+  numero String
+  complemento String
+  referencia String
+  cidade String
+  estado String
+  pais String
+}
+@ChangelogDate("20240911043257")
+entity Estabelecimento {
+  id UUID
+  descricao String required
+}
+@ChangelogDate("20240911043301")
+entity Imagem {
+  id UUID
+  arquivoImagem ImageBlob required
+  nome String required
+  caminho String required
+  descricao String
+  cadeiaDetectada String
+  dateAnalise Instant
+}
+@ChangelogDate("20240911043253")
+entity LoteBlocoApartamento {
+  id UUID
+  bloco String
+  andar String
+  numero String
+}
+@ChangelogDate("20241024015710")
+@SkipServer
+entity Operacao {
+  descricao String
+}
+@ChangelogDate("20240911043248")
+entity Pessoa {
+  id UUID
+  nome String required minlength(3)
+}
+@ChangelogDate("20240911043259")
+entity PontoAcesso {
+  id UUID
+  descricao String required
+}
+@ChangelogDate("20240911043258")
+entity RegistroAcesso {
+  id UUID
+  dataHora Instant required
+  cadeiaAnalisada String
+  acessoAutorizado TipoAcessoAutorizado required
+}
+@ChangelogDate("20241024015709")
+@SkipServer
+entity Sobre {
+  descricao String
+}
+@ChangelogDate("20240911043250")
+entity Telefone {
+  id UUID
+  tipoTelefone String
+  numero String required
+}
+@ChangelogDate("20240911043255")
+entity TipoAutomovel {
+  id UUID
+  descricao String required
+  grupo ClassificaAutomovel required
+}
+@ChangelogDate("20240911043249")
+entity TipoPessoa {
+  descricao String required
+  grupo ClassificaPessoa
+}
+
+enum StatusAutorizacao {
+  ATIVO,
+  INATIVO,
+  EXPIRADO
+}
+enum TipoDocumento {
+  RG,
+  CPF,
+  PASSAPORTE,
+  RE,
+  OUTRO
+}
+enum TipoAcessoAutorizado {
+  AUTORIZADO,
+  RECUSADO,
+  ERRO
+}
+enum ClassificaAutomovel {
+  MOTO,
+  CARRO,
+  CAMINHAO,
+  OUTRO
+}
+enum ClassificaPessoa {
+  MORADOR,
+  VISITANTE,
+  PRESTADOR,
+  FUNCIONARIO,
+  SECRETARIA
+}
+
+relationship OneToOne {
+  Imagem{registroAcesso(dataHora) required} to RegistroAcesso
+  Pessoa{user(login) required} to User with builtInEntity
+  Pessoa{tipoPessoa(descricao) required} to TipoPessoa
+}
+relationship OneToMany {
+  Pessoa{telefone} to Telefone
+  Pessoa{documento} to Documento
+  Pessoa{endereco} to Endereco
+  Pessoa{loteBlocoApartamento} to LoteBlocoApartamento
+  Pessoa{automovel} to Automovel
+}
+relationship ManyToOne {
+  Automovel{tipoAutomovel(descricao) required} to TipoAutomovel
+  AutorizacaoAcesso{pessoa(nome) required} to Pessoa{nome}
+  AutorizacaoAcesso{estabelecimento(descricao) required} to Estabelecimento
+  Camera{pontoAcesso(descricao) required} to PontoAcesso{camera(descricao)}
+  Estabelecimento{endereco(descricao) required} to Endereco
+  LoteBlocoApartamento{endereco(descricao) required} to Endereco
+  PontoAcesso{estabelecimento(descricao) required} to Estabelecimento{pontoAcesso(descricao)}
+  RegistroAcesso{pontoAcesso(descricao) required} to PontoAcesso
+  RegistroAcesso{automovel(descricao) required} to Automovel
+  RegistroAcesso{autorizacaoAcesso(descricao) required} to AutorizacaoAcesso
+}
+
+search Automovel, AutorizacaoAcesso, Camera, Documento, Endereco, Estabelecimento, Imagem, LoteBlocoApartamento, Operacao, Pessoa, PontoAcesso, RegistroAcesso, Sobre, Telefone, TipoAutomovel, TipoPessoa with no

@@ -1,6 +1,17 @@
 
 // jhipster import-jdl jhipster-jdl.jdl
 
+@skipServer
+entity Sobre{
+  descricao String
+}
+
+@skipServer
+entity Operacao{
+  descricao String
+}
+
+
 entity Pessoa{
 	id UUID
 	nome String required minlength(3)
@@ -164,11 +175,13 @@ relationship ManyToOne{
 
 entity Imagem{
   id UUID
+  arquivoImagem ImageBlob required
   nome String required
   caminho String required
   descricao String
   cadeiaDetectada String
   dateAnalise Instant
+
 }
 
 

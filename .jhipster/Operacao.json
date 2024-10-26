@@ -1,0 +1,16 @@
+{
+  "annotations": {
+    "changelogDate": "20241024015710",
+    "skipServer": true
+  },
+  "applications": "*",
+  "fields": [
+    {
+      "fieldName": "descricao",
+      "fieldType": "String"
+    }
+  ],
+  "name": "Operacao",
+  "relationships": [],
+  "searchEngine": "no"
+}

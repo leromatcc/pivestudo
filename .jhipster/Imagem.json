@@ -9,6 +9,11 @@
       "fieldType": "UUID"
     },
     {
+      "fieldName": "arquivoImagem",
+      "fieldType": "ImageBlob",
+      "fieldValidateRules": ["required"]
+    },
+    {
       "fieldName": "nome",
       "fieldType": "String",
       "fieldValidateRules": ["required"]

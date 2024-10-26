@@ -13,6 +13,7 @@ import jakarta.persistence.EntityManager;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.UUID;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -41,6 +42,11 @@ import tcc.leroma.pivestudo.repository.ImagemRepository;
 @AutoConfigureMockMvc
 @WithMockUser
 class ImagemResourceIT {
+
+    private static final byte[] DEFAULT_ARQUIVO_IMAGEM = TestUtil.createByteArray(1, "0");
+    private static final byte[] UPDATED_ARQUIVO_IMAGEM = TestUtil.createByteArray(1, "1");
+    private static final String DEFAULT_ARQUIVO_IMAGEM_CONTENT_TYPE = "image/jpg";
+    private static final String UPDATED_ARQUIVO_IMAGEM_CONTENT_TYPE = "image/png";
 
     private static final String DEFAULT_NOME = "AAAAAAAAAA";
     private static final String UPDATED_NOME = "BBBBBBBBBB";
@@ -87,6 +93,8 @@ class ImagemResourceIT {
      */
     public static Imagem createEntity(EntityManager em) {
         Imagem imagem = new Imagem()
+            .arquivoImagem(DEFAULT_ARQUIVO_IMAGEM)
+            .arquivoImagemContentType(DEFAULT_ARQUIVO_IMAGEM_CONTENT_TYPE)
             .nome(DEFAULT_NOME)
             .caminho(DEFAULT_CAMINHO)
             .descricao(DEFAULT_DESCRICAO)
@@ -113,6 +121,8 @@ class ImagemResourceIT {
      */
     public static Imagem createUpdatedEntity(EntityManager em) {
         Imagem updatedImagem = new Imagem()
+            .arquivoImagem(UPDATED_ARQUIVO_IMAGEM)
+            .arquivoImagemContentType(UPDATED_ARQUIVO_IMAGEM_CONTENT_TYPE)
             .nome(UPDATED_NOME)
             .caminho(UPDATED_CAMINHO)
             .descricao(UPDATED_DESCRICAO)
@@ -227,6 +237,8 @@ class ImagemResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(imagem.getId().toString())))
+            .andExpect(jsonPath("$.[*].arquivoImagemContentType").value(hasItem(DEFAULT_ARQUIVO_IMAGEM_CONTENT_TYPE)))
+            .andExpect(jsonPath("$.[*].arquivoImagem").value(hasItem(Base64.getEncoder().encodeToString(DEFAULT_ARQUIVO_IMAGEM))))
             .andExpect(jsonPath("$.[*].nome").value(hasItem(DEFAULT_NOME)))
             .andExpect(jsonPath("$.[*].caminho").value(hasItem(DEFAULT_CAMINHO)))
             .andExpect(jsonPath("$.[*].descricao").value(hasItem(DEFAULT_DESCRICAO)))
@@ -263,6 +275,8 @@ class ImagemResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(imagem.getId().toString()))
+            .andExpect(jsonPath("$.arquivoImagemContentType").value(DEFAULT_ARQUIVO_IMAGEM_CONTENT_TYPE))
+            .andExpect(jsonPath("$.arquivoImagem").value(Base64.getEncoder().encodeToString(DEFAULT_ARQUIVO_IMAGEM)))
             .andExpect(jsonPath("$.nome").value(DEFAULT_NOME))
             .andExpect(jsonPath("$.caminho").value(DEFAULT_CAMINHO))
             .andExpect(jsonPath("$.descricao").value(DEFAULT_DESCRICAO))
@@ -290,6 +304,8 @@ class ImagemResourceIT {
         // Disconnect from session so that the updates on updatedImagem are not directly saved in db
         em.detach(updatedImagem);
         updatedImagem
+            .arquivoImagem(UPDATED_ARQUIVO_IMAGEM)
+            .arquivoImagemContentType(UPDATED_ARQUIVO_IMAGEM_CONTENT_TYPE)
             .nome(UPDATED_NOME)
             .caminho(UPDATED_CAMINHO)
             .descricao(UPDATED_DESCRICAO)
@@ -368,7 +384,11 @@ class ImagemResourceIT {
         Imagem partialUpdatedImagem = new Imagem();
         partialUpdatedImagem.setId(imagem.getId());
 
-        partialUpdatedImagem.nome(UPDATED_NOME).caminho(UPDATED_CAMINHO).descricao(UPDATED_DESCRICAO);
+        partialUpdatedImagem
+            .arquivoImagem(UPDATED_ARQUIVO_IMAGEM)
+            .arquivoImagemContentType(UPDATED_ARQUIVO_IMAGEM_CONTENT_TYPE)
+            .descricao(UPDATED_DESCRICAO)
+            .cadeiaDetectada(UPDATED_CADEIA_DETECTADA);
 
         restImagemMockMvc
             .perform(
@@ -397,6 +417,8 @@ class ImagemResourceIT {
         partialUpdatedImagem.setId(imagem.getId());
 
         partialUpdatedImagem
+            .arquivoImagem(UPDATED_ARQUIVO_IMAGEM)
+            .arquivoImagemContentType(UPDATED_ARQUIVO_IMAGEM_CONTENT_TYPE)
             .nome(UPDATED_NOME)
             .caminho(UPDATED_CAMINHO)
             .descricao(UPDATED_DESCRICAO)

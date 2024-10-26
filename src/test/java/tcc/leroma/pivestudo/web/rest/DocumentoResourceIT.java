@@ -334,8 +334,6 @@ class DocumentoResourceIT {
         Documento partialUpdatedDocumento = new Documento();
         partialUpdatedDocumento.setId(documento.getId());
 
-        partialUpdatedDocumento.numeroDocumento(UPDATED_NUMERO_DOCUMENTO);
-
         restDocumentoMockMvc
             .perform(
                 patch(ENTITY_API_URL_ID, partialUpdatedDocumento.getId())

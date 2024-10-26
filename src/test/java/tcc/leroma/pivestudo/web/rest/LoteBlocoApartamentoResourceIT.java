@@ -347,7 +347,7 @@ class LoteBlocoApartamentoResourceIT {
         LoteBlocoApartamento partialUpdatedLoteBlocoApartamento = new LoteBlocoApartamento();
         partialUpdatedLoteBlocoApartamento.setId(loteBlocoApartamento.getId());
 
-        partialUpdatedLoteBlocoApartamento.bloco(UPDATED_BLOCO);
+        partialUpdatedLoteBlocoApartamento.bloco(UPDATED_BLOCO).numero(UPDATED_NUMERO);
 
         restLoteBlocoApartamentoMockMvc
             .perform(

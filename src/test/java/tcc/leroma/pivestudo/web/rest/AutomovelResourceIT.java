@@ -343,8 +343,6 @@ class AutomovelResourceIT {
         Automovel partialUpdatedAutomovel = new Automovel();
         partialUpdatedAutomovel.setId(automovel.getId());
 
-        partialUpdatedAutomovel.descricao(UPDATED_DESCRICAO);
-
         restAutomovelMockMvc
             .perform(
                 patch(ENTITY_API_URL_ID, partialUpdatedAutomovel.getId())

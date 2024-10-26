@@ -347,7 +347,7 @@ class CameraResourceIT {
         Camera partialUpdatedCamera = new Camera();
         partialUpdatedCamera.setId(camera.getId());
 
-        partialUpdatedCamera.descricao(UPDATED_DESCRICAO).api(UPDATED_API);
+        partialUpdatedCamera.descricao(UPDATED_DESCRICAO).enderecoRede(UPDATED_ENDERECO_REDE).api(UPDATED_API);
 
         restCameraMockMvc
             .perform(

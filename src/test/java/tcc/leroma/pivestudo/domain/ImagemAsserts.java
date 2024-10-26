@@ -47,6 +47,12 @@ public class ImagemAsserts {
     public static void assertImagemUpdatableFieldsEquals(Imagem expected, Imagem actual) {
         assertThat(expected)
             .as("Verify Imagem relevant properties")
+            .satisfies(e -> assertThat(e.getArquivoImagem()).as("check arquivoImagem").isEqualTo(actual.getArquivoImagem()))
+            .satisfies(e ->
+                assertThat(e.getArquivoImagemContentType())
+                    .as("check arquivoImagem contenty type")
+                    .isEqualTo(actual.getArquivoImagemContentType())
+            )
             .satisfies(e -> assertThat(e.getNome()).as("check nome").isEqualTo(actual.getNome()))
             .satisfies(e -> assertThat(e.getCaminho()).as("check caminho").isEqualTo(actual.getCaminho()))
             .satisfies(e -> assertThat(e.getDescricao()).as("check descricao").isEqualTo(actual.getDescricao()))

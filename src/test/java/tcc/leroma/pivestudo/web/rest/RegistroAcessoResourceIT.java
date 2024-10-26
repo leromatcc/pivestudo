@@ -401,7 +401,7 @@ class RegistroAcessoResourceIT {
         RegistroAcesso partialUpdatedRegistroAcesso = new RegistroAcesso();
         partialUpdatedRegistroAcesso.setId(registroAcesso.getId());
 
-        partialUpdatedRegistroAcesso.dataHora(UPDATED_DATA_HORA);
+        partialUpdatedRegistroAcesso.dataHora(UPDATED_DATA_HORA).acessoAutorizado(UPDATED_ACESSO_AUTORIZADO);
 
         restRegistroAcessoMockMvc
             .perform(

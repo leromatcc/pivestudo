@@ -349,8 +349,8 @@ class EnderecoResourceIT {
             .descricao(UPDATED_DESCRICAO)
             .cep(UPDATED_CEP)
             .logradouro(UPDATED_LOGRADOURO)
-            .complemento(UPDATED_COMPLEMENTO)
-            .cidade(UPDATED_CIDADE)
+            .numero(UPDATED_NUMERO)
+            .referencia(UPDATED_REFERENCIA)
             .estado(UPDATED_ESTADO);
 
         restEnderecoMockMvc

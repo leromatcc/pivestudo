@@ -420,8 +420,6 @@ class AutorizacaoAcessoResourceIT {
         AutorizacaoAcesso partialUpdatedAutorizacaoAcesso = new AutorizacaoAcesso();
         partialUpdatedAutorizacaoAcesso.setId(autorizacaoAcesso.getId());
 
-        partialUpdatedAutorizacaoAcesso.status(UPDATED_STATUS);
-
         restAutorizacaoAcessoMockMvc
             .perform(
                 patch(ENTITY_API_URL_ID, partialUpdatedAutorizacaoAcesso.getId())

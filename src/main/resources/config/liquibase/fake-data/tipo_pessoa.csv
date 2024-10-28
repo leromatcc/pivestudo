@@ -1,11 +1,11 @@
 id;descricao;grupo
-1;royal considering opposite;FUNCIONARIO
-2;blah;MORADOR
-3;broken easily;SECRETARIA
-4;soup yippee er;VISITANTE
-5;large;FUNCIONARIO
-6;axe jell narrate;MORADOR
-7;vaguely sleepily blah;SECRETARIA
-8;cycle beyond whether;VISITANTE
-9;likewise postbox;MORADOR
-10;crocodile gah aw;VISITANTE
+1;Prestador Servico Telefonia;FUNCIONARIO
+5;Prestador Servico Jardinagem;FUNCIONARIO
+2;Morador Proprietario;MORADOR
+3;Auxiliar Administracao;SECRETARIA
+4;Visitante Regular;VISITANTE
+6;Morador Inquilino;MORADOR
+7;Secretaria;SECRETARIA
+8;Visitante Exporadico;VISITANTE
+9;Morador Filho;MORADOR
+10;Visitante Delivery;VISITANTE

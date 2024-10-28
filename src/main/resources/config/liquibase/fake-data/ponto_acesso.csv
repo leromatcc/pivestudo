@@ -1,11 +1,13 @@
 id;descricao;estabelecimento_id
-e68a4725-25c4-440b-8187-cc556f35384f;lined extroverted;84318dcb-fb02-4ac9-8a9f-56c6e34baf65
-0ecd9129-7239-42d8-8852-74ff1902d0a2;affectionate;a173e646-e046-4bd8-8a44-6110faf6bfd7
-5c5dd980-d4c4-47f6-908d-d4a33489abef;as;a191e1a4-ee43-47ba-bf6f-f88a4cddea10
-14cb3d16-b71b-4938-873e-e4e26b0c89bd;spirited;c187f28d-a59d-45aa-90a2-43aec8bf73d6
-b67d36bf-8804-4e99-829e-b5ec92d1264d;forenenst ouch;9c15f73d-a988-45d2-b7fd-def57ef64fc1
-948d601d-12d2-49b4-abb3-20c6dda1c1c9;yet fail;5b385fdb-497c-4ffc-bbe2-86c8a598d989
-f51d3a93-30d0-497a-bbe7-b831ac99747d;rapid whether;0bdee426-4ffe-4c68-b257-2ae490d50fbe
-d80b4148-c798-434c-a71b-9512c6c7055c;yippee anti er;752221e0-7adf-4f96-9bc2-6ce79b952fe9
-3080814f-0a14-43f7-81c1-2b4019ee658f;numb teriyaki afore;9b4bbd80-c33e-4d46-88ac-1aa32c0be912
-e59ff230-ae81-4fb0-9e19-2b4cb497134c;gadzooks singing;3c115e7d-1e8a-4c8f-9f47-88781e261d86
+e68a4725-25c4-440b-8187-cc556f35384f;Carros Moradores A;84318dcb-fb02-4ac9-8a9f-56c6e34baf65
+0ecd9129-7239-42d8-8852-74ff1902d0a2;Carros Visitantes A;84318dcb-fb02-4ac9-8a9f-56c6e34baf65
+14cb3d16-b71b-4938-873e-e4e26b0c89bd;Pedestres Moradores A;84318dcb-fb02-4ac9-8a9f-56c6e34baf65
+5c5dd980-d4c4-47f6-908d-d4a33489abef;Carros Servico A;a173e646-e046-4bd8-8a44-6110faf6bfd7
+b67d36bf-8804-4e99-829e-b5ec92d1264d;Pedestres Servico A;a173e646-e046-4bd8-8a44-6110faf6bfd7
+948d601d-12d2-49b4-abb3-20c6dda1c1c9;Pedestres Clube A;a191e1a4-ee43-47ba-bf6f-f88a4cddea10
+f51d3a93-30d0-497a-bbe7-b831ac99747d;Carros Moradores B;c187f28d-a59d-45aa-90a2-43aec8bf73d6
+d80b4148-c798-434c-a71b-9512c6c7055c;Carros Visitantes B;c187f28d-a59d-45aa-90a2-43aec8bf73d6
+3080814f-0a14-43f7-81c1-2b4019ee658f;Pedestres Moradores B;c187f28d-a59d-45aa-90a2-43aec8bf73d6
+e59ff230-ae81-4fb0-9e19-2b4cb497134c;Pedestres Clube B;5b385fdb-497c-4ffc-bbe2-86c8a598d989
+
+

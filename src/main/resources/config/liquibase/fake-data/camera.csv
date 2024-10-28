@@ -1,11 +1,11 @@
 id;descricao;endereco_rede;api;ponto_acesso_id
-1;as;woefully quick-witted stunt;speedily contractor;e68a4725-25c4-440b-8187-cc556f35384f
-2;remark;unripe;irritably co-producer brochure;0ecd9129-7239-42d8-8852-74ff1902d0a2
-3;yum;lest quirkily;electronics pear while;5c5dd980-d4c4-47f6-908d-d4a33489abef
-4;challenge;snuggle;calmly baritone but;14cb3d16-b71b-4938-873e-e4e26b0c89bd
-5;fat till;kindly;until seldom;b67d36bf-8804-4e99-829e-b5ec92d1264d
-6;of woot except;wherever gratefully;tensely scramble;948d601d-12d2-49b4-abb3-20c6dda1c1c9
-7;around;lone queasily;phew solution;f51d3a93-30d0-497a-bbe7-b831ac99747d
-8;monocle out;runway unabashedly willfully;supposing reproachfully blah;d80b4148-c798-434c-a71b-9512c6c7055c
-9;pearl pfft;aha;extent behind;3080814f-0a14-43f7-81c1-2b4019ee658f
-10;bah accidentally of;deduct though;overconfidently secularize yippee;e59ff230-ae81-4fb0-9e19-2b4cb497134c
+1;Carros A           ;192.168.100.010;/api/feed/static;e68a4725-25c4-440b-8187-cc556f35384f
+2;Pedestres A        ;192.168.100.020;/api/feed/static;0ecd9129-7239-42d8-8852-74ff1902d0a2
+3;Carros Servico A   ;192.168.100.030;/api/feed/static;5c5dd980-d4c4-47f6-908d-d4a33489abef
+4;Pedestres Servico A;192.168.100.040;/api/feed/static;14cb3d16-b71b-4938-873e-e4e26b0c89bd
+5;Pedestres Clube A  ;192.168.100.050;/api/feed/static;b67d36bf-8804-4e99-829e-b5ec92d1264d
+6;Carros B           ;192.168.200.010;/live/video/scramble;948d601d-12d2-49b4-abb3-20c6dda1c1c9
+7;Pedestres B        ;192.168.200.020;/live/video/scramble;f51d3a93-30d0-497a-bbe7-b831ac99747d
+8;Carros Servico B   ;192.168.200.030;/live/video/scramble;d80b4148-c798-434c-a71b-9512c6c7055c
+9;Pedestres Servico B;192.168.200.040;/live/video/scramble;3080814f-0a14-43f7-81c1-2b4019ee658f
+10;Pedestres Clube B ;192.168.200.050;/live/video/scramble;e59ff230-ae81-4fb0-9e19-2b4cb497134c

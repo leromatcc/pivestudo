@@ -18,7 +18,8 @@ type OperacaoFormDefaults = Pick<NewOperacao, 'id'>;
 
 type OperacaoFormGroupContent = {
   id: FormControl<IOperacao['id'] | NewOperacao['id']>;
-  descricao: FormControl<IOperacao['descricao']>;
+  arquivoImagem: FormControl<IOperacao['arquivoImagem']>;
+  arquivoImagemContentType: FormControl<IOperacao['arquivoImagemContentType']>;
 };
 
 export type OperacaoFormGroup = FormGroup<OperacaoFormGroupContent>;
@@ -38,7 +39,10 @@ export class OperacaoFormService {
           validators: [Validators.required],
         },
       ),
-      descricao: new FormControl(operacaoRawValue.descricao),
+      arquivoImagem: new FormControl(operacaoRawValue.arquivoImagem, {
+        validators: [Validators.required],
+      }),
+      arquivoImagemContentType: new FormControl(operacaoRawValue.arquivoImagemContentType),
     });
   }
 

@@ -20,7 +20,7 @@ describe('Operacao Form Service', () => {
         expect(formGroup.controls).toEqual(
           expect.objectContaining({
             id: expect.any(Object),
-            descricao: expect.any(Object),
+            arquivoImagem: expect.any(Object),
           }),
         );
       });
@@ -31,7 +31,7 @@ describe('Operacao Form Service', () => {
         expect(formGroup.controls).toEqual(
           expect.objectContaining({
             id: expect.any(Object),
-            descricao: expect.any(Object),
+            arquivoImagem: expect.any(Object),
           }),
         );
       });

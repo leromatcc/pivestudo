@@ -15,9 +15,20 @@
           <dd>
             <span>{{ operacaoRef.id }}</span>
           </dd>
-          <dt><span jhiTranslate="pivestudoApp.operacao.descricao">Descricao</span></dt>
+          <dt><span jhiTranslate="pivestudoApp.operacao.arquivoImagem">Arquivo Imagem</span></dt>
           <dd>
-            <span>{{ operacaoRef.descricao }}</span>
+            @if (operacaoRef.arquivoImagem) {
+              <div>
+                <a (click)="openFile(operacaoRef.arquivoImagem ?? '', operacaoRef.arquivoImagemContentType)">
+                  <img
+                    [src]="'data:' + operacaoRef.arquivoImagemContentType + ';base64,' + operacaoRef.arquivoImagem"
+                    style="max-width: 100%"
+                    alt="operacao"
+                  />
+                </a>
+                {{ operacaoRef.arquivoImagemContentType }}, {{ byteSize(operacaoRef.arquivoImagem ?? '') }}
+              </div>
+            }
           </dd>
         </dl>
 

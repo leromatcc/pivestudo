@@ -8,6 +8,7 @@ import { SortByDirective, SortDirective, SortService, type SortState, sortStateS
 import { DurationPipe, FormatMediumDatePipe, FormatMediumDatetimePipe } from 'app/shared/date';
 import { FormsModule } from '@angular/forms';
 import { DEFAULT_SORT_DATA, ITEM_DELETED_EVENT, SORT } from 'app/config/navigation.constants';
+import { DataUtils } from 'app/core/util/data-util.service';
 import { IOperacao } from '../operacao.model';
 import { EntityArrayResponseType, OperacaoService } from '../service/operacao.service';
 import { OperacaoDeleteDialogComponent } from '../delete/operacao-delete-dialog.component';
@@ -38,6 +39,7 @@ export class OperacaoComponent implements OnInit {
   protected operacaoService = inject(OperacaoService);
   protected activatedRoute = inject(ActivatedRoute);
   protected sortService = inject(SortService);
+  protected dataUtils = inject(DataUtils);
   protected modalService = inject(NgbModal);
   protected ngZone = inject(NgZone);
 
@@ -54,6 +56,14 @@ export class OperacaoComponent implements OnInit {
         }),
       )
       .subscribe();
+  }
+
+  byteSize(base64String: string): string {
+    return this.dataUtils.byteSize(base64String);
+  }
+
+  openFile(base64String: string, contentType: string | null | undefined): void {
+    return this.dataUtils.openFile(base64String, contentType);
   }
 
   delete(operacao: IOperacao): void {

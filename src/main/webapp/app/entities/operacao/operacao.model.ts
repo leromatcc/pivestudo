@@ -1,6 +1,7 @@
 export interface IOperacao {
   id: number;
-  descricao?: string | null;
+  arquivoImagem?: string | null;
+  arquivoImagemContentType?: string | null;
 }
 
 export type NewOperacao = Omit<IOperacao, 'id'> & { id: null };

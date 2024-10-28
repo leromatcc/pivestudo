@@ -8,7 +8,7 @@ entity Sobre{
 
 @skipServer
 entity Operacao{
-  descricao String
+  arquivoImagem ImageBlob required
 }
 
 

@@ -95,9 +95,9 @@ entity LoteBlocoApartamento {
   numero String
 }
 @ChangelogDate("20241024015710")
-@SkipServer
-entity Operacao {
-  descricao String
+@skipServer
+entity Operacao{
+  arquivoImagem ImageBlob required
 }
 @ChangelogDate("20240911043248")
 entity Pessoa {

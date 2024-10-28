@@ -6,8 +6,9 @@
   "applications": "*",
   "fields": [
     {
-      "fieldName": "descricao",
-      "fieldType": "String"
+      "fieldName": "arquivoImagem",
+      "fieldType": "ImageBlob",
+      "fieldValidateRules": ["required"]
     }
   ],
   "name": "Operacao",

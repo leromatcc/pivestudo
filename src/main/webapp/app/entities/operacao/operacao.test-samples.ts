@@ -1,19 +1,19 @@
 import { IOperacao, NewOperacao } from './operacao.model';
 
 export const sampleWithRequiredData: IOperacao = {
-  id: 7893,
+  id: 19580,
   arquivoImagem: '../fake-data/blob/hipster.png',
   arquivoImagemContentType: 'unknown',
 };
 
 export const sampleWithPartialData: IOperacao = {
-  id: 8523,
+  id: 7978,
   arquivoImagem: '../fake-data/blob/hipster.png',
   arquivoImagemContentType: 'unknown',
 };
 
 export const sampleWithFullData: IOperacao = {
-  id: 3358,
+  id: 26189,
   arquivoImagem: '../fake-data/blob/hipster.png',
   arquivoImagemContentType: 'unknown',
 };

@@ -31,6 +31,7 @@
     <include file="config/liquibase/changelog/20240911043259_added_entity_PontoAcesso.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20240911043300_added_entity_Camera.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20240911043301_added_entity_Imagem.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20241024015710_added_entity_Operacao.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="config/liquibase/changelog/20240911043248_added_entity_constraints_Pessoa.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20240911043250_added_entity_constraints_Telefone.xml" relativeToChangelogFile="false"/>

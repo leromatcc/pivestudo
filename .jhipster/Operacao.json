@@ -1,7 +1,6 @@
 {
   "annotations": {
-    "changelogDate": "20241024015710",
-    "skipServer": true
+    "changelogDate": "20241024015710"
   },
   "applications": "*",
   "fields": [

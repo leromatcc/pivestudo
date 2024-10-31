@@ -5,15 +5,15 @@
     "logged": {
       "message": "Vous êtes connecté en tant que \"{{username}}\"."
     },
-    "question": "Si vous avez des questions à propos de JHipster :",
+    "question": "Si vous avez des questions à propos de PIV-Estudo :",
     "link": {
-      "homepage": "Page d'accueil de JHipster",
-      "stackoverflow": "JHipster sur Stack Overflow",
-      "bugtracker": "JHipster bug tracker",
-      "chat": "JHipster public chat room",
-      "follow": "Suivez @jhipster sur Twitter"
+      "homepage": "Page d'accueil de PIV-Estudo",
+      "stackoverflow": "PIV-Estudo sur Stack Overflow",
+      "bugtracker": "PIV-Estudo bug tracker",
+      "chat": "PIV-Estudo public chat room",
+      "follow": "Suivez @PIV-Estudo sur Twitter"
     },
-    "like": "Si vous aimez JHipster, donnez nous une étoile sur",
+    "like": "Si vous aimez PIV-Estudo, donnez nous une étoile sur",
     "github": "GitHub "
   }
 }

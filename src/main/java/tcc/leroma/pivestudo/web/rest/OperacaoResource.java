@@ -27,13 +27,27 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestClient;
 import org.springframework.web.client.RestTemplate;
 import tcc.leroma.pivestudo.domain.Operacao;
+import tcc.leroma.pivestudo.domain.Operacao_;
+import tcc.leroma.pivestudo.interop.CallScripts;
 import tcc.leroma.pivestudo.repository.OperacaoRepository;
 import tcc.leroma.pivestudo.web.rest.errors.BadRequestAlertException;
 import tech.jhipster.web.util.HeaderUtil;
 import tech.jhipster.web.util.ResponseUtil;
 
+
+
+import java.io.*;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+
+import java.text.SimpleDateFormat;
 /**
  * REST controller for managing {@link tcc.leroma.pivestudo.domain.Operacao}.
  */
@@ -77,11 +91,13 @@ public class OperacaoResource {
         LOG.info("(OperacaoResource) ew URI(\"/api/operacaos/\" + operacao.getId()): {}", new URI("/api/operacaos/" + operacao.getId()));
         // LOG.info("(OperacaoResource) : ", );
 
-        pythonEnvio1();
-        pythonEnvio2(operacao);
+        // pythonEnvio1();
+        // pythonEnvio2(operacao);
+
         // pythonEnvio3(operacao);
         // pythonEnvio4(operacao);
-        pythonEnvio5(operacao);
+        // pythonEnvio5(operacao);
+        pythonProcessaLocal(operacao);
 
         return ResponseEntity.created(new URI("/api/operacaos/" + operacao.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, operacao.getId().toString()))
@@ -130,7 +146,6 @@ public class OperacaoResource {
         LOG.info("(OperacaoResource) response: {}", response);
     }
 
-
     private static void pythonEnvio4(Operacao operacao) {
 
         byte[] bytes = operacao.getArquivoImagem();
@@ -165,8 +180,6 @@ public class OperacaoResource {
 
     }
 
-
-
     private static void pythonEnvio5(Operacao operacao) {
         String url = "http://localhost:8000/detector/upload/";
 
@@ -191,7 +204,6 @@ public class OperacaoResource {
         response.getBody();
         LOG.info("(OperacaoResource.pythonEnvio5) response.body(): {}", response.getBody());
     }
-
 
     private static void pythonEnvio6(Operacao operacao) {
         String url = "http://localhost:8000/detector/upload/";
@@ -218,6 +230,51 @@ public class OperacaoResource {
         response.getBody();
         LOG.info("(OperacaoResource.pythonEnvio5) response.body(): {}", response.getBody());
     }
+
+
+    private void pythonProcessaLocal(Operacao operacao){
+
+        CallScripts csp = new CallScripts();
+        //salvar imagem operacao.getArquivoImagem()
+        // pegar caminho imagem
+        // passar como parametro
+
+        // create the object of ByteArrayInputStream class
+        // and initialized it with the byte array.
+        ByteArrayInputStream inStreambj = new ByteArrayInputStream(operacao.getArquivoImagem());
+
+
+        try {
+            // read image from byte array
+            BufferedImage newImage = ImageIO.read(inStreambj);
+            // write output image
+            File novoArquivo = new File("./pythonDetectImages/images/operacao/"+generateUniqueFileName());
+            LOG.info("novoArquivo:{}", novoArquivo.getAbsolutePath());
+            LOG.info("novoArquivo.getName():{}", novoArquivo.getName());
+            ImageIO.write(newImage, "jpg", novoArquivo);
+            System.out.println("Image generated from the byte array.");
+
+            String resultado = "DESATIVADO";
+            resultado = csp.callPythonScript(novoArquivo.getName());
+            LOG.info("resultado: [{}]", resultado);
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+
+
+    }
+
+    private static String generateUniqueFileName()
+    {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
+        String timestamp = dateFormat.format(new Date());
+        return "outputImage_" + timestamp + ".jpg";
+    }
+
+
+
 
     /**
      * {@code PUT  /operacaos/:id} : Updates an existing operacao.

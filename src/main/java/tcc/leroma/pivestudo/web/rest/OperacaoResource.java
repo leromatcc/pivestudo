@@ -1,5 +1,6 @@
 package tcc.leroma.pivestudo.web.rest;
 
+import jakarta.persistence.EntityManager;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 
@@ -11,12 +12,15 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 import java.util.*;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.AutoConfigureOrder;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpEntity;
@@ -30,12 +34,10 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestClient;
 import org.springframework.web.client.RestTemplate;
-import tcc.leroma.pivestudo.domain.Automovel;
-import tcc.leroma.pivestudo.domain.Operacao;
-import tcc.leroma.pivestudo.domain.Operacao_;
+import tcc.leroma.pivestudo.domain.*;
+import tcc.leroma.pivestudo.domain.enumeration.TipoAcessoAutorizado;
 import tcc.leroma.pivestudo.interop.CallScripts;
-import tcc.leroma.pivestudo.repository.AutomovelRepository;
-import tcc.leroma.pivestudo.repository.OperacaoRepository;
+import tcc.leroma.pivestudo.repository.*;
 import tcc.leroma.pivestudo.web.rest.errors.BadRequestAlertException;
 import tech.jhipster.web.util.HeaderUtil;
 import tech.jhipster.web.util.ResponseUtil;
@@ -70,6 +72,15 @@ public class OperacaoResource {
 
     @Autowired
     public AutomovelRepository automovelRepository;
+
+    @Autowired
+    public PontoAcessoRepository pontoAcessoRepository;
+
+    @Autowired
+    public AutorizacaoAcessoRepository autorizacaoAcessoRepository;
+
+    @Autowired
+    public RegistroAcessoRepository registroAcessoRepository;
 
     public OperacaoResource(OperacaoRepository operacaoRepository) {
         this.operacaoRepository = operacaoRepository;
@@ -261,15 +272,26 @@ public class OperacaoResource {
             ImageIO.write(newImage, "jpg", novoArquivo);
             System.out.println("Image generated from the byte array.");
 
-            String resultado = "DESATIVADO";
-            resultado = csp.callPythonScript(novoArquivo.getName());
-            resultado = resultado.trim();
-            LOG.info("resultado: [{}]", resultado);
+            String cadeiaAnalisada = "NAOACESSO";
+            //cadeiaAnalisada = "14010Y2";
+            //cadeiaAnalisada = "7LUV110";
+            cadeiaAnalisada = csp.callPythonScript(novoArquivo.getName());
+            cadeiaAnalisada = cadeiaAnalisada.trim();
+            LOG.info("resultado: [{}]", cadeiaAnalisada);
 
-            Optional<Automovel> opt = automovelRepository.findByPlacaContaining(resultado);
+            if(cadeiaAnalisada.length() <1 || "".equals(cadeiaAnalisada)){
+                cadeiaAnalisada = "NAOACESSO";
+            }
+
+            Optional<Automovel> opt = automovelRepository.findByPlacaContaining(cadeiaAnalisada);
             if( opt!=null && opt.isPresent()){
                 Automovel  automovel = (Automovel) opt.get();
                 LOG.info("Automovel encontrado: {}", automovel);
+                if("NAOACESSO".equals(cadeiaAnalisada)){
+                    createRegistroAcesso(cadeiaAnalisada, TipoAcessoAutorizado.RECUSADO, automovel);
+                } else {
+                    createRegistroAcesso(cadeiaAnalisada, TipoAcessoAutorizado.AUTORIZADO, automovel);
+                }
             } else {
                 LOG.info("Automovel nao encontrado: {}");
             }
@@ -280,6 +302,36 @@ public class OperacaoResource {
 
 
 
+    }
+
+    private void createRegistroAcesso(String cadeiaAnalisada,
+                                      TipoAcessoAutorizado tipoAcessoAutorizado,
+                                      Automovel automovel){
+
+        LOG.info("createRegistroAcesso.cadeiaAnalisada:[{}]", cadeiaAnalisada);
+        LOG.info("createRegistroAcesso.tipoAcessoAutorizado:[{}]", tipoAcessoAutorizado);
+        LOG.info("createRegistroAcesso.automovel:[{}]", automovel);
+
+        RegistroAcesso registroAcesso = new RegistroAcesso()
+            .dataHora( Instant.now().truncatedTo(ChronoUnit.MILLIS) )
+            .cadeiaAnalisada(cadeiaAnalisada)
+            .acessoAutorizado(tipoAcessoAutorizado);
+
+        registroAcesso.setAutomovel(automovel);
+
+        PontoAcesso pontoAcesso = pontoAcessoRepository.findAll().get(0);
+        registroAcesso.setPontoAcesso(pontoAcesso);
+
+        AutorizacaoAcesso autorizacaoAcesso = autorizacaoAcessoRepository.findAll().get(0);
+        registroAcesso.setAutorizacaoAcesso(autorizacaoAcesso);
+
+        LOG.debug("Request to save RegistroAcesso : {}", registroAcesso);
+        if (registroAcesso.getId() != null) {
+            throw new BadRequestAlertException("A new registroAcesso cannot already have an ID", ENTITY_NAME, "idexists");
+        }
+        registroAcesso = registroAcessoRepository.save(registroAcesso);
+
+        LOG.info("registroAcesso: [{}]", registroAcesso);
     }
 
     private static String generateUniqueFileName()

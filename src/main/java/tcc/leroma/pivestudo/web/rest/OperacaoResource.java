@@ -15,6 +15,7 @@ import java.util.*;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.core.io.Resource;
@@ -29,9 +30,11 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestClient;
 import org.springframework.web.client.RestTemplate;
+import tcc.leroma.pivestudo.domain.Automovel;
 import tcc.leroma.pivestudo.domain.Operacao;
 import tcc.leroma.pivestudo.domain.Operacao_;
 import tcc.leroma.pivestudo.interop.CallScripts;
+import tcc.leroma.pivestudo.repository.AutomovelRepository;
 import tcc.leroma.pivestudo.repository.OperacaoRepository;
 import tcc.leroma.pivestudo.web.rest.errors.BadRequestAlertException;
 import tech.jhipster.web.util.HeaderUtil;
@@ -65,8 +68,12 @@ public class OperacaoResource {
 
     private final OperacaoRepository operacaoRepository;
 
+    @Autowired
+    public AutomovelRepository automovelRepository;
+
     public OperacaoResource(OperacaoRepository operacaoRepository) {
         this.operacaoRepository = operacaoRepository;
+
     }
 
     /**
@@ -256,7 +263,16 @@ public class OperacaoResource {
 
             String resultado = "DESATIVADO";
             resultado = csp.callPythonScript(novoArquivo.getName());
+            resultado = resultado.trim();
             LOG.info("resultado: [{}]", resultado);
+
+            Optional<Automovel> opt = automovelRepository.findByPlacaContaining(resultado);
+            if( opt!=null && opt.isPresent()){
+                Automovel  automovel = (Automovel) opt.get();
+                LOG.info("Automovel encontrado: {}", automovel);
+            } else {
+                LOG.info("Automovel nao encontrado: {}");
+            }
 
         } catch (IOException e) {
             throw new RuntimeException(e);

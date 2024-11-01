@@ -40,4 +40,13 @@ public interface AutomovelRepository extends JpaRepository<Automovel, UUID> {
         "select automovel from Automovel automovel left join fetch automovel.tipoAutomovel left join fetch automovel.pessoa where automovel.id =:id"
     )
     Optional<Automovel> findOneWithToOneRelationships(@Param("id") UUID id);
+
+
+
+    @Query(
+        "select automovel from Automovel automovel where UPPER(automovel.placa) = UPPER(:placa)"
+    )
+    Optional<Automovel> findByPlacaContaining(@Param("placa") String placa);
+
+
 }

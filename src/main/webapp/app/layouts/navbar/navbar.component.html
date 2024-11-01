@@ -38,10 +38,18 @@
         </li>
 
         @if (account() !== null) {
+
           <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
             <a class="nav-link" routerLink="/operacao" (click)="collapseNavbar()">
               <fa-icon icon="asterisk"></fa-icon>
-              <span jhiTranslate="global.menu.entities.operacao">Sobre</span>
+              <span jhiTranslate="global.menu.entities.operacao">Operacao</span>
+            </a>
+          </li>
+
+          <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+            <a class="nav-link" routerLink="/registro-acesso" (click)="collapseNavbar()">
+              <fa-icon icon="asterisk"></fa-icon>
+              <span jhiTranslate="global.menu.entities.registroAcesso">Registro Acesso</span>
             </a>
           </li>
 

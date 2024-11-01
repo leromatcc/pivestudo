@@ -1,86 +1,43 @@
-<div>
-  <h2 id="page-heading" data-cy="SobreHeading">
-    <span jhiTranslate="pivestudoApp.sobre.home.title">Sobres</span>
+<div class="row">
+  <div class="col-md-3">
+    <span class="hipster img-fluid rounded"></span>
+  </div>
 
-    <div class="d-flex justify-content-end">
-      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
-        <fa-icon icon="sync" [animation]="isLoading ? 'spin' : undefined"></fa-icon>
-        <span jhiTranslate="pivestudoApp.sobre.home.refreshListLabel">Refresh list</span>
-      </button>
+  <div class="col-md-9">
+    <div>
+      <h1>PIV-Estudo</h1>
+      <h2>Reconhecimento de Placa de Identifica&ccedil;&atilde;o Veicular para Controle de Acessos<br /></h2>
 
-      <button
-        id="jh-create-entity"
-        data-cy="entityCreateButton"
-        class="btn btn-primary jh-create-entity create-sobre"
-        [routerLink]="['/sobre/new']"
-      >
-        <fa-icon icon="plus"></fa-icon>
-        <span jhiTranslate="pivestudoApp.sobre.home.createLabel">Create a new Sobre</span>
-      </button>
+      <h3><br />Leandro Mattos<br />
+        Projeto Final II - Prof. Jos&eacute; Matias<br />
+        PUC-Campinas &ndash; 2024 - Engenharia de Computa&ccedil;&atilde;o<br />
+        <br /></h3>
     </div>
-  </h2>
 
-  <jhi-alert-error></jhi-alert-error>
-
-  <jhi-alert></jhi-alert>
-
-  @if (sobres?.length === 0) {
-    <div class="alert alert-warning" id="no-result">
-      <span jhiTranslate="pivestudoApp.sobre.home.notFound">No Sobres found</span>
+    <div>
+      <h1>Refer&ecirc;ncias</h1>
+      <h2>Normas</h2>
+      <ul>
+        <li>Resolu&ccedil;&atilde;o 780/2019 CONTRAN, de 26 de junho de 2019. Dispon&iacute;vel em: &lt; https://www.in.gov.br/web/dou/-/resolucao-n-780-de-26-de-junho-de-2019-179414765 &gt; Acesso em: 24 de outubro de 2024.</li>
+        <li>ISO/IEC 18013-1:2015 - Padr&atilde;o internacional para reconhecimento de placas. Dispon&iacute;vel em: &lt; https://www.iso.org/standard/63798.html &gt; Acesso em: 24 de outubro de 2024.</li>
+        <li>ANSI/NIST-ITL 1-2015 - Padr&atilde;o americano para reconhecimento de placas. Dispon&iacute;vel em: https://www.nist.gov/programs-projects/ansinist-itl-standard Acesso em: 24 de outubro de 2024.</li>
+      </ul>
+      <p>&nbsp;</p>
+      <h2>Empresas e solu&ccedil;&otilde;es</h2>
+      <ul>
+        <li>Automated license plate recognition &ndash; For invaluable vehicle intelligence, 2023 .Dispon&iacute;vel em: &lt; https://www.axis.com/solutions/license-plate-recognition &gt;. Acesso em: 24 de outubro de 2024.</li>
+        <li>Gerenciamento Da Entrada De Ve&iacute;culo Com Lpr. Hikvision Blog, 2023. Dispon&iacute;vel em: &lt; https://www.hikvision.com/pt-br/newsroom/blog/managing-vehicle-entry-with-anpr/ &gt;. Acesso em: 24 de outubro de 2024.</li>
+        <li>Reconhecimento Autom&aacute;tico De Placas De Ve&iacute;culos Para Seguran&ccedil;a De Edif&iacute;cios E Parques Corporativos. Constru&ccedil;&atilde;o de Seguran&ccedil;a, 2023. Dispon&iacute;vel em: &lt; https://www.genetec.com/br/produtos/seguranca-unificada/autovu/construcao-de-seguran&ccedil;a &gt;. Acesso em: 24 de outubro de 2024.</li>
+      </ul>
+      <p>&nbsp;</p>
+      <h2>Implementa&ccedil;&otilde;es</h2>
+      <ul>
+        <li>openalpr/openalpr: Automatic License Plate Recognition library. Dispon&iacute;vel em: &lt; https://github.com/openalpr/openalpr &gt;. Acesso em: 24 de outubro de 2024.</li>
+        <li>tesseract-ocr/tesseract: Tesseract Open Source OCR Engine . Dispon&iacute;vel em: &lt; https://github.com/tesseract-ocr/tesseract &gt;. Acesso em: 24 de outubro de 2024.</li>
+        <li>Amazon Rekognition . Dispon&iacute;vel em: &lt; https://docs.aws.amazon.com/rekognition/latest/dg/text-detection.html &gt;. Acesso em: 24 de outubro de 2024.</li>
+        <li>Google Cloud Platform - Cloud Vision . Dispon&iacute;vel em: &lt; https://cloud.google.com/vision/ &gt;. Acesso em: 24 de outubro de 2024.</li>
+      </ul>
+      <p>&nbsp;</p>
     </div>
-  }
-
-  @if (sobres && sobres.length > 0) {
-    <div class="table-responsive table-entities" id="entities">
-      <table class="table table-striped" aria-describedby="page-heading">
-        <thead>
-          <tr jhiSort [sortState]="sortState" (sortChange)="navigateToWithComponentValues($event)">
-            <th scope="col" jhiSortBy="id">
-              <div class="d-flex">
-                <span jhiTranslate="global.field.id">ID</span>
-
-                <fa-icon class="p-1" icon="sort"></fa-icon>
-              </div>
-            </th>
-            <th scope="col" jhiSortBy="descricao">
-              <div class="d-flex">
-                <span jhiTranslate="pivestudoApp.sobre.descricao">Descricao</span>
-
-                <fa-icon class="p-1" icon="sort"></fa-icon>
-              </div>
-            </th>
-            <th scope="col"></th>
-          </tr>
-        </thead>
-        <tbody>
-          @for (sobre of sobres; track trackId(sobre)) {
-            <tr data-cy="entityTable">
-              <td>
-                <a [routerLink]="['/sobre', sobre.id, 'view']">{{ sobre.id }}</a>
-              </td>
-              <td>{{ sobre.descricao }}</td>
-              <td class="text-end">
-                <div class="btn-group">
-                  <a [routerLink]="['/sobre', sobre.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
-                    <fa-icon icon="eye"></fa-icon>
-                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
-                  </a>
-
-                  <a [routerLink]="['/sobre', sobre.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
-                    <fa-icon icon="pencil-alt"></fa-icon>
-                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
-                  </a>
-
-                  <button type="submit" (click)="delete(sobre)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
-                    <fa-icon icon="times"></fa-icon>
-                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
-                  </button>
-                </div>
-              </td>
-            </tr>
-          }
-        </tbody>
-      </table>
-    </div>
-  }
+  </div>
 </div>

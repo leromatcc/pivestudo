@@ -30,8 +30,22 @@
         <!-- jhipster-needle-add-element-to-menu - JHipster will add new menu items here -->
 
 
+        <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+          <a class="nav-link" routerLink="/sobre" (click)="collapseNavbar()">
+            <fa-icon icon="asterisk"></fa-icon>
+            <span jhiTranslate="global.menu.entities.sobre">Sobre</span>
+          </a>
+        </li>
 
         @if (account() !== null) {
+          <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+            <a class="nav-link" routerLink="/operacao" (click)="collapseNavbar()">
+              <fa-icon icon="asterisk"></fa-icon>
+              <span jhiTranslate="global.menu.entities.operacao">Sobre</span>
+            </a>
+          </li>
+
+        <!--
           <li
             ngbDropdown
             class="nav-item dropdown pointer"
@@ -70,10 +84,10 @@
                   <span jhiTranslate="global.menu.entities.operacao">Operacao</span>
                 </a>
               </li>
-              <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
+              &lt;!&ndash; jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here &ndash;&gt;
             </ul>
           </li>
-
+-->
           <li
             ngbDropdown
             class="nav-item dropdown pointer"

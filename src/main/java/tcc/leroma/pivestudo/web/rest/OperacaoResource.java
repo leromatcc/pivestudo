@@ -294,6 +294,13 @@ public class OperacaoResource {
                 }
             } else {
                 LOG.info("Automovel nao encontrado: {}");
+                Optional<Automovel> opt2 = automovelRepository.findByPlacaContaining("NAOACESSO");
+                if( opt2!=null && opt2.isPresent()){
+                    Automovel  automovel = (Automovel) opt2.get();
+
+                    createRegistroAcesso(cadeiaAnalisada, TipoAcessoAutorizado.RECUSADO, automovel);
+                }
+
             }
 
         } catch (IOException e) {
